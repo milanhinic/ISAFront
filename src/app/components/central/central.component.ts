@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
-import { PozBioService } from './services/poz-bio.service';
+import { Component, OnInit } from '@angular/core';
+import { PozBioService } from '../../services/poz-bio.service';
 import { Router } from '@angular/router';
 
+
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-central',
+  templateUrl: './central.component.html',
+  styleUrls: ['./central.component.css']
 })
-export class AppComponent {
-  title = 'app';
+export class CentralComponent implements OnInit {
 
   constructor(private pozBioService : PozBioService, private router: Router) { }
 
@@ -29,4 +29,5 @@ export class AppComponent {
       this.router.navigate(['/pozorista']);
     });
   }
+
 }

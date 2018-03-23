@@ -20,7 +20,7 @@
     font-family: Helvetica;
 }
 
-.navbar-default .navbar-brand, .navbar-default .navbar-text, .navbar-default a p{
+.navbar-default .navbar-brand, .navbar-default .navbar-text, .navbar-default a p, .nav-item .btn-link {
     color: #00264d;
     font-family: Helvetica;
 }
