@@ -9,6 +9,10 @@ import { CentralComponent } from './components/central/central.component';
 import { PozBioComponent } from './components/poz-bio/poz-bio.component';
 
 import { PozBioService } from './services/poz-bio.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -16,6 +20,8 @@ import { PozBioService } from './services/poz-bio.service';
     AppComponent,
     CentralComponent,
     PozBioComponent,
+    RegisterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,9 +40,19 @@ import { PozBioService } from './services/poz-bio.service';
         {
           path : 'bioskopi',
           component : PozBioComponent
+        },
+        {
+          path : 'register',
+          component : RegisterComponent
+        },
+        {
+          path : 'login',
+          component : LoginComponent
         }
       ]
-     )
+     ),
+     FormsModule,
+     ReactiveFormsModule
   ],
   providers: [ PozBioService, HttpClientModule ],
   bootstrap: [AppComponent]
