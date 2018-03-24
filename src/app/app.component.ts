@@ -17,16 +17,12 @@ export class AppComponent {
   }
 
   prikaziBioskope(){
-    this.pozBioService.vratiSadrzaj('/app/bioskopi').subscribe((data) => {
-      this.pozBioService.pozBios = data.content; 
-      this.router.navigate(['/bioskopi']);
-    });
+    this.pozBioService.setTip('bio');
+    this.router.navigate(['/bioskopi']);
   }
 
   prikaziPozorista(){
-    this.pozBioService.vratiSadrzaj('/app/pozorista').subscribe((data) => {
-      this.pozBioService.pozBios = data.content; 
-      this.router.navigate(['/pozorista']);
-    });
+    this.pozBioService.setTip('poz');
+    this.router.navigate(['/pozorista']);
   }
 }

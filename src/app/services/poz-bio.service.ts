@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class PozBioService {
 
-  public pozBios : any;
+  private tip : string;
 
   constructor(public http:Http) {}
 
@@ -13,6 +13,12 @@ export class PozBioService {
     return this.http.get(path).map(res => res.json());
   }
 
+  setTip(param: string){
+    this.tip = param;
+  }
 
+  getTip(){
+    return this.tip;
+  }
    
 }

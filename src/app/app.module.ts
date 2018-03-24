@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
+import { PozBioPreviewComponent } from './components/poz-bio-preview/poz-bio-preview.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { LoginComponent } from './components/login/login.component';
     PozBioComponent,
     RegisterComponent,
     LoginComponent,
+    PozBioPreviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +43,14 @@ import { LoginComponent } from './components/login/login.component';
         {
           path : 'bioskopi',
           component : PozBioComponent
+        },
+        {
+          path : 'pozorista/:id',
+          component : PozBioPreviewComponent
+        },
+        {
+          path : 'bioskopi/:id',
+          component : PozBioPreviewComponent
         },
         {
           path : 'register',
