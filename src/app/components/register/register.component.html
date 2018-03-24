@@ -46,7 +46,6 @@
         <div class="form-group row">
         <div class="col-md-4 mx-auto">
           <input type="text" class="form-control" name="telefon" id="telefon" placeholder="Kontakt Telefon" formControlName="telefon">
-          <span class = "error-message" *ngIf="registracijaForma.get('telefon').hasError('required') && registracijaForma.get('telefon').dirty">Obavezno unesite telefon</span>
           <span class = "error-message" *ngIf="registracijaForma.get('telefon').hasError('pattern') && registracijaForma.get('telefon').dirty">Unesite telefon u validnoj formi</span>
         </div>
         </div>
