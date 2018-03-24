@@ -9,7 +9,8 @@ import { CentralComponent } from './components/central/central.component';
 import { PozBioComponent } from './components/poz-bio/poz-bio.component';
 
 import { PozBioService } from './services/poz-bio.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { RegisterService } from './services/register.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
@@ -54,7 +55,7 @@ import { LoginComponent } from './components/login/login.component';
      FormsModule,
      ReactiveFormsModule
   ],
-  providers: [ PozBioService, HttpClientModule ],
+  providers: [ PozBioService, RegisterService, HttpClientModule ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

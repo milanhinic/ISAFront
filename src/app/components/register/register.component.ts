@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
+import { RegisterService } from '../../services/register.service';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +12,7 @@ export class RegisterComponent implements OnInit {
 
   registracijaForma;
 
-  constructor() { }
+  constructor(private router : Router, private registerService : RegisterService) { }
 
   ngOnInit() {
     this.registracijaForma = new FormGroup({
@@ -18,7 +20,7 @@ export class RegisterComponent implements OnInit {
         Validators.required,
         Validators.pattern('[a-zA-z0-9._]{0,64}@[a-z]{2,10}(\\.[a-z]{2,10})+')
       ])),
-      sifra : new FormControl("",Validators.compose([
+      lozinka : new FormControl("",Validators.compose([
         Validators.required,
         Validators.minLength(8)
       ])),
@@ -35,15 +37,13 @@ export class RegisterComponent implements OnInit {
 
   passwordMatchValidator = function(g: FormGroup) {
 
-    if(g.get('sifra').value === g.get('sifraPotvrda').value){
-        return null;
-    }else{
-      return {'missmatch': true};
-    }
+    return g.get('lozinka').value === g.get('sifraPotvrda').value ? null : {'missmatch': true};
+
  }
 
   registruj = function(korisnik){
-    console.log(korisnik);
+
+    this.registerService.registrujKorisnika('/app/registracija', korisnik).subscribe((data) => {});
   }
 
 }

@@ -11,9 +11,9 @@
         </div>
       <div class="form-group row">
         <div class="col-md-4 mx-auto">
-          <input type="password" class="form-control" name="sifra" id="sifra" placeholder="Lozinka" formControlName="sifra">
-          <span class = "error-message" *ngIf="registracijaForma.get('sifra').hasError('required') && registracijaForma.get('sifra').dirty">Obavezno unesite lozinku</span>
-          <span class = "error-message" *ngIf="registracijaForma.get('sifra').hasError('minlength') && registracijaForma.get('sifra').dirty">Vasa lozinka mora sadrzati bar 8 karaktera</span>
+          <input type="password" class="form-control" name="sifra" id="sifra" placeholder="Lozinka" formControlName="lozinka">
+          <span class = "error-message" *ngIf="registracijaForma.get('lozinka').hasError('required') && registracijaForma.get('lozinka').dirty">Obavezno unesite lozinku</span>
+          <span class = "error-message" *ngIf="registracijaForma.get('lozinka').hasError('minlength') && registracijaForma.get('lozinka').dirty">Vasa lozinka mora sadrzati bar 8 karaktera</span>
            </div>
       </div>
      <div class="form-group row">
