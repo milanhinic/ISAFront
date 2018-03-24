@@ -1,0 +1,61 @@
+<div class="container">
+  <form [formGroup] = "registracijaForma" (ngSubmit) = "registruj(registracijaForma.value)">
+    <fieldset>
+      <legend class="leg" align="center">Registrujte se na nas sajt</legend>
+     <div class="form-group row">
+        <div class="col-md-4 mx-auto">
+          <input type="text" class="form-control" name="mail" id="mail" placeholder="Email Adresa" formControlName="email">
+          <span class = "error-message" *ngIf="registracijaForma.get('email').hasError('required') && registracijaForma.get('email').dirty">Obavezno unesite email</span>
+          <span class = "error-message" *ngIf="registracijaForma.get('email').hasError('pattern') && registracijaForma.get('email').dirty">Unesite e-mail u validnoj formi</span>
+        </div>
+        </div>
+      <div class="form-group row">
+        <div class="col-md-4 mx-auto">
+          <input type="password" class="form-control" name="sifra" id="sifra" placeholder="Lozinka" formControlName="sifra">
+          <span class = "error-message" *ngIf="registracijaForma.get('sifra').hasError('required') && registracijaForma.get('sifra').dirty">Obavezno unesite lozinku</span>
+          <span class = "error-message" *ngIf="registracijaForma.get('sifra').hasError('minlength') && registracijaForma.get('sifra').dirty">Vasa lozinka mora sadrzati bar 8 karaktera</span>
+           </div>
+      </div>
+     <div class="form-group row">
+        <div class="col-md-4 mx-auto">
+          <input type="password" class="form-control" name="sifra2" id="sifra2" placeholder="Potvrda Lozinke" formControlName="sifraPotvrda">
+          <span class = "error-message" *ngIf="registracijaForma.get('sifraPotvrda').hasError('required') && registracijaForma.get('sifraPotvrda').dirty">Morate potvrditi vasu lozinku</span>
+          <span class = "error-message" *ngIf="registracijaForma.get('sifraPotvrda').hasError('minlength') && registracijaForma.get('sifraPotvrda').dirty">Vasa lozinka mora sadrzati bar 8 karaktera</span>
+          <span class = "error-message" *ngIf="registracijaForma.hasError('missmatch') && registracijaForma.get('sifraPotvrda').dirty">Lozinke se ne poklapaju</span>
+          <span class = "success-message" *ngIf="!registracijaForma.hasError('missmatch') && registracijaForma.get('sifraPotvrda').dirty">Lozinke se poklapaju</span>
+           </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-4 mx-auto">
+          <input type="text" class="form-control" name="ime" id="ime" placeholder="Ime" formControlName="ime">
+          <span class = "error-message" *ngIf="registracijaForma.get('ime').hasError('required') && registracijaForma.get('ime').dirty">Obavezno unesite ime</span>
+        </div>
+        </div>
+        <div class="form-group row">
+        <div class="col-md-4 mx-auto">
+          <input type="text" class="form-control" name="prezime" id="prezime" placeholder="Prezime" formControlName="prezime">
+          <span class = "error-message" *ngIf="registracijaForma.get('prezime').hasError('required') && registracijaForma.get('prezime').dirty">Obavezno unesite prezime</span>
+        </div>
+        </div>
+      <div class="form-group row">
+        <div class="col-md-4 mx-auto">
+          <input type="text" class="form-control" name="grad" id="grad" placeholder="Grad" formControlName="grad">
+          <span class = "error-message" *ngIf="registracijaForma.get('grad').hasError('required') && registracijaForma.get('grad').dirty">Obavezno unesite grad</span>
+        </div>
+        </div>
+        <div class="form-group row">
+        <div class="col-md-4 mx-auto">
+          <input type="text" class="form-control" name="telefon" id="telefon" placeholder="Kontakt Telefon" formControlName="telefon">
+          <span class = "error-message" *ngIf="registracijaForma.get('telefon').hasError('required') && registracijaForma.get('telefon').dirty">Obavezno unesite telefon</span>
+          <span class = "error-message" *ngIf="registracijaForma.get('telefon').hasError('pattern') && registracijaForma.get('telefon').dirty">Unesite telefon u validnoj formi</span>
+        </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-4 mx-auto">
+            <button type="submit" class="logregBtn btn btn-primary btn-md btn-block" name="regPrijava" [disabled] = "!registracijaForma.valid">Registracija</button>
+          </div>
+        </div>
+  </fieldset>
+
+  </form>
+</div>

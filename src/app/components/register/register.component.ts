@@ -33,8 +33,17 @@ export class RegisterComponent implements OnInit {
         Validators.required,
         Validators.pattern('\\+?[0-9]{0,12}')
       ]))
-    })
+    },this.passwordMatchValidator)
   }
+
+  passwordMatchValidator = function(g: FormGroup) {
+
+    if(g.get('sifra').value === g.get('sifraPotvrda').value){
+        return null;
+    }else{
+      return {'missmatch': true};
+    }
+ }
 
   registruj = function(korisnik){
     console.log(korisnik);

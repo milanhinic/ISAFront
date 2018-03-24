@@ -11,8 +11,8 @@ import { PozBioComponent } from './components/poz-bio/poz-bio.component';
 import { PozBioService } from './services/poz-bio.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
