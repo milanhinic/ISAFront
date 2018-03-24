@@ -11,11 +11,20 @@ export class PozBioComponent implements OnInit {
   pozBios : any;
 
   constructor(private pozBioService : PozBioService) { 
-    this.pozBios = pozBioService.pozBios;
-    console.log(this.pozBios);
+    
   }
 
   ngOnInit() {
+    
+    if(this.pozBioService.getTip() === 'bio'){
+        this.pozBioService.vratiSadrzaj('/app/bioskopi').subscribe((data) => {
+          this.pozBios = data.content;
+        });
+    }else{
+      this.pozBioService.vratiSadrzaj('/app/pozorista').subscribe((data) => {
+        this.pozBios = data.content;
+      });
+    }
     
   }
 
