@@ -43,12 +43,32 @@
     margin-top:20px; 
 }
 
+.orangeText {
+    font-size: large;
+    color: #d46611;
+    font-family: Helvetica;
+}
+
+.blueText{
+    font-size: large;
+    color: #00264d;
+    font-family: Helvetica;
+}
+
 .gap-top{
 	margin-top:50px; 
 }
 
+.center-items{
+    align-items: center;
+}
+
 .set-center {
     text-align: center;
+}
+
+.push-bottomn {
+    vertical-align: bottom;
 }
 
 .logregBtn{

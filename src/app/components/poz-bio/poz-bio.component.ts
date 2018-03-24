@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PozBioService } from '../../services/poz-bio.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-poz-bio',
@@ -10,12 +11,12 @@ export class PozBioComponent implements OnInit {
 
   pozBios : any;
 
-  constructor(private pozBioService : PozBioService) { 
+  constructor(private pozBioService : PozBioService, private router: Router) { 
     
   }
 
   ngOnInit() {
-    
+
     if(this.pozBioService.getTip() === 'bio'){
         this.pozBioService.vratiSadrzaj('/app/bioskopi').subscribe((data) => {
           this.pozBios = data.content;
@@ -26,6 +27,14 @@ export class PozBioComponent implements OnInit {
       });
     }
     
+  }
+
+  pogledaj(param){
+    if(this.pozBioService.getTip() === 'bio'){
+      this.router.navigate(['/bioskopi', param]);
+    }else{
+      this.router.navigate(['/pozorista', param]);
+    }
   }
 
 }
