@@ -37,19 +37,19 @@ import { PozBioPreviewComponent } from './components/poz-bio-preview/poz-bio-pre
           component : CentralComponent
         },
         {
-          path : 'pozorista',
+          path : 'pozorista/stranica/:id',
           component : PozBioComponent
         },
         {
-          path : 'bioskopi',
+          path : 'bioskopi/stranica/:id',
           component : PozBioComponent
         },
         {
-          path : 'pozorista/:id',
+          path : 'pozorista/stranica/:id/:id',
           component : PozBioPreviewComponent
         },
         {
-          path : 'bioskopi/:id',
+          path : 'bioskopi/stranica/:id/:id',
           component : PozBioPreviewComponent
         },
         {

@@ -63,6 +63,10 @@
     align-items: center;
 }
 
+.right-items{
+    float:right;
+}
+
 .set-center {
     text-align: center;
 }

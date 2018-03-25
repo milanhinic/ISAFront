@@ -7,7 +7,7 @@
             <th scope="col">Naziv</th>
             <th scope="col">Adresa</th>
             <th scope="col">Rejting</th>
-            <th scope="col">Repertoar</th>
+            <th scope="col">Stranica</th>
           </tr>
         </thead>
         <tbody>
@@ -21,6 +21,11 @@
           </tr>
          </tbody>
       </table>
+      <div>
+        <button class="btn btn-info right-items" (click)="next()">&#x21E8;</button>
+        <button class="btn btn-info right-items" (click)="prev()">{{stranica}}</button>
+        <button class="btn btn-info right-items" (click)="prev()">&#x21E6;</button>
+      </div>
       </div>
     </div>
 </div>

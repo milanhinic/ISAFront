@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
-import { ActivatedRoute } from '@angular/router';
-import 'rxjs/add/operator/map';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PozBioService } from '../../services/poz-bio.service';
 
 @Component({
   selector: 'app-poz-bio-preview',
@@ -13,17 +13,21 @@ export class PozBioPreviewComponent implements OnInit {
   public pozBio: any;
   public id: number;
 
-  constructor(public http:Http, private route: ActivatedRoute) { }
+  constructor(private http:Http, private route: ActivatedRoute, private router: Router, private pozBioService: PozBioService) { }
 
   ngOnInit() {
 
     this.pozBio = this.route.params.subscribe(params => {
       this.id = +params['id'];
+    });
+
+    this.http.get('/app/vratiJedan/'+this.id).subscribe((res) => {
       
-      this.http.get('/app/vratiJedan/'+this.id).map(res => res.json()).subscribe((data) => {
-        this.pozBio = data;
-      });
-      
+      if(res['_body'] === ""){
+        this.router.navigate(['/']);
+      }else{
+        this.pozBio = res.json();
+      }
     });
   }
 
