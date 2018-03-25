@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators, AbstractControl, ValidatorFn} from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisterService } from '../../services/register.service';
 
@@ -11,6 +11,8 @@ import { RegisterService } from '../../services/register.service';
 export class RegisterComponent implements OnInit {
 
   registracijaForma;
+  message : string;
+  error : boolean = true;
 
   constructor(private router : Router, private registerService : RegisterService) { }
 
@@ -43,7 +45,10 @@ export class RegisterComponent implements OnInit {
 
   registruj = function(korisnik){
 
-    this.registerService.registrujKorisnika('/app/registracija', korisnik).subscribe((data) => {});
+    this.registerService.registrujKorisnika('/app/registracija', korisnik).subscribe((res) => {
+      this.error = res.body;
+      this.message = res.headers.get('message');
+    });
   }
 
 }
