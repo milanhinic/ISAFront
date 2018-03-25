@@ -16,6 +16,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { PozBioPreviewComponent } from './components/poz-bio-preview/poz-bio-preview.component';
 import { UspesnaRegistracijaComponent } from './components/uspesna-registracija/uspesna-registracija.component';
+import { AktiviranNalogComponent } from './components/aktiviran-nalog/aktiviran-nalog.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { UspesnaRegistracijaComponent } from './components/uspesna-registracija/
     LoginComponent,
     PozBioPreviewComponent,
     UspesnaRegistracijaComponent,
+    AktiviranNalogComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +67,10 @@ import { UspesnaRegistracijaComponent } from './components/uspesna-registracija/
         {
           path :'uspesnaRegistracija',
           component : UspesnaRegistracijaComponent
+        },
+        {
+          path : 'aktiviranNalog',
+          component : AktiviranNalogComponent
         }
       ]
      ),
