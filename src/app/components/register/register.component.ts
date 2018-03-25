@@ -20,19 +20,31 @@ export class RegisterComponent implements OnInit {
     this.registracijaForma = new FormGroup({
       email : new FormControl("",Validators.compose([
         Validators.required,
-        Validators.pattern('[a-zA-z0-9._]{0,64}@[a-z]{2,10}(\\.[a-z]{2,10})+')
+        Validators.pattern('[a-zA-z0-9._]{0,64}@[a-z]{2,10}(\\.[a-z]{2,10})+'),
+        Validators.maxLength(90)
       ])),
       lozinka : new FormControl("",Validators.compose([
         Validators.required,
-        Validators.minLength(8)
+        Validators.minLength(8),
+        Validators.maxLength(30)
       ])),
       sifraPotvrda : new FormControl("",Validators.compose([
         Validators.required,
-        Validators.minLength(8)
+        Validators.minLength(8),
+        Validators.maxLength(30)
       ])),
-      ime : new FormControl("",Validators.required),
-      prezime : new FormControl("",Validators.required),
-      grad : new FormControl("",Validators.required),
+      ime : new FormControl("",Validators.compose([
+        Validators.required,
+        Validators.maxLength(30)
+      ])),
+      prezime : new FormControl("",Validators.compose([
+        Validators.required,
+        Validators.maxLength(30)
+      ])),
+      grad : new FormControl("",Validators.compose([
+        Validators.required,
+        Validators.maxLength(60)
+      ])),
       telefon : new FormControl("",Validators.pattern('\\+?[0-9]{6,12}'))
     },this.passwordMatchValidator)
   }
@@ -46,8 +58,11 @@ export class RegisterComponent implements OnInit {
   registruj = function(korisnik){
 
     this.registerService.registrujKorisnika('/app/registracija', korisnik).subscribe((res) => {
-      this.error = res.body;
+      this.error = res.json();
       this.message = res.headers.get('message');
+      if(this.error){
+        this.router.navigate(['/uspesnaRegistracija']);
+      }
     });
   }
 
