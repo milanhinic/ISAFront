@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+import { AgmCoreModule } from '@agm/core';
 
 import { AppComponent } from './app.component';
 import { CentralComponent } from './components/central/central.component';
@@ -69,7 +70,10 @@ import { UspesnaRegistracijaComponent } from './components/uspesna-registracija/
       ]
      ),
      FormsModule,
-     ReactiveFormsModule
+     ReactiveFormsModule,
+     AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAXBX98N0e-Hh2Yvv1dgTcTnS5CLbUJIvY'
+    })
   ],
   providers: [ PozBioService, RegisterService, HttpClientModule ],
   bootstrap: [AppComponent]

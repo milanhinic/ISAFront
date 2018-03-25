@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PozBioService } from '../../services/poz-bio.service';
+import { AgmCoreModule } from '@agm/core';
+
 
 @Component({
   selector: 'app-poz-bio-preview',
@@ -12,6 +14,8 @@ export class PozBioPreviewComponent implements OnInit {
 
   public pozBio: any;
   public id: number;
+  latitude: number = 51.678418;
+  longitude: number = 7.809007;
 
   constructor(private http:Http, private route: ActivatedRoute, private router: Router, private pozBioService: PozBioService) { }
 
@@ -28,6 +32,13 @@ export class PozBioPreviewComponent implements OnInit {
       }else{
         this.pozBio = res.json();
       }
+    });
+
+    this.http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + 'novi sad zmaj jovina').subscribe((res) => {
+      let temp = res.json();
+      console.log(temp.results[0].geometry.location);
+      this.longitude = res.json().results[0].geometry.location.lng;
+      this.latitude = res.json().results[0].geometry.location.lat;
     });
   }
 
