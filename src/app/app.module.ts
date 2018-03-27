@@ -4,6 +4,9 @@ import { RouterModule, Routes, Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 
+import { AlertComponent } from './directives/alert.component';
+import { AlertService } from './services/alert.service';
+
 import { AppComponent } from './app.component';
 import { CentralComponent } from './components/central/central.component';
 import { PozBioComponent } from './components/poz-bio/poz-bio.component';
@@ -29,6 +32,7 @@ import { AktiviranNalogComponent } from './components/aktiviran-nalog/aktiviran-
     PozBioPreviewComponent,
     UspesnaRegistracijaComponent,
     AktiviranNalogComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +81,7 @@ import { AktiviranNalogComponent } from './components/aktiviran-nalog/aktiviran-
      FormsModule,
      ReactiveFormsModule
   ],
-  providers: [ PozBioService, RegisterService, HttpClientModule ],
+  providers: [ PozBioService, RegisterService, HttpClientModule, AlertService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

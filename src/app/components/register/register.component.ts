@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators, AbstractControl, ValidatorFn} from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisterService } from '../../services/register.service';
+import { AlertService } from '../../services/alert.service'
 
 @Component({
   selector: 'app-register',
@@ -12,9 +13,9 @@ export class RegisterComponent implements OnInit {
 
   registracijaForma;
   message : string;
-  error : boolean = true;
+  success : boolean;
 
-  constructor(private router : Router, private registerService : RegisterService) { }
+  constructor(private router : Router, private registerService : RegisterService, private alertService : AlertService) { }
 
   ngOnInit() {
     this.registracijaForma = new FormGroup({
@@ -58,9 +59,11 @@ export class RegisterComponent implements OnInit {
   registruj = function(korisnik){
 
     this.registerService.registrujKorisnika('/app/registracija', korisnik).subscribe((res) => {
-      this.error = res.json();
+      this.success = res.json();
       this.message = res.headers.get('message');
-      if(this.error){
+      if(!this.success){
+        this.alertService.error(this.message);
+      }else{
         this.router.navigate(['/uspesnaRegistracija']);
       }
     });
