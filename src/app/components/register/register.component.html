@@ -1,4 +1,5 @@
 <div class="container">
+  <alert></alert>
   <form [formGroup] = "registracijaForma" (ngSubmit) = "registruj(registracijaForma.value)">
     <fieldset>
       <legend class="leg" align="center">Registrujte se na nas sajt</legend>
@@ -62,7 +63,4 @@
         </div>
   </fieldset>
   </form>
-  <div class="set-center">
-    <span class="error-message" align = "center" *ngIf=!error>{{message}}</span>
-</div>
 </div>
