@@ -18,7 +18,7 @@ export class PozBioComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
     let niz = this.router.url.split('/');
 
     for(let i = 0; i < niz.length; i++){
@@ -57,7 +57,7 @@ export class PozBioComponent implements OnInit {
     this.stranica--;
 
     if(this.stranica >= 1){
-      this.promeniStranicu();
+      this.promeniStranicu(vratiSadrzaj => this.vratiSadrzaj);
       
     }else{
       this.stranica = 1;
@@ -67,10 +67,11 @@ export class PozBioComponent implements OnInit {
 
   next(){
     this.stranica++;
-    this.promeniStranicu();
+    this.promeniStranicu(vratiSadrzaj => this.vratiSadrzaj);
   }
 
-  promeniStranicu(){
+  promeniStranicu(vratiSadrzaj){
+    
     if(this.tip === 'bio'){
       this.vratiSadrzaj('/app/bioskopi/');
     }else if(this.tip === 'poz'){

@@ -23,12 +23,16 @@ export class AppComponent {
 
   prikaziBioskope(){
     this.pozBioService.setTip('bio');
-    this.router.navigate(['/bioskopi']);
+    this.router.navigate(['/bioskopi/stranica/1']);
   }
 
   prikaziPozorista(){
     this.pozBioService.setTip('poz');
-    this.router.navigate(['/pozorista']);
+    this.router.navigate(['/pozorista/stranica/1']);
+  }
+
+  napraviNovoPB(){
+    this.router.navigate(['/noviPozBio']);
   }
 
   odjava = function(){

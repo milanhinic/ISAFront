@@ -11,6 +11,7 @@ import { AlertService } from './services/alert.service';
 import { AppComponent } from './app.component';
 import { CentralComponent } from './components/central/central.component';
 import { PozBioComponent } from './components/poz-bio/poz-bio.component';
+import { NoviPozBioComponent } from './components/novi-poz-bio/novi-poz-bio.component';
 
 import { PozBioService } from './services/poz-bio.service';
 import { RegisterService } from './services/register.service';
@@ -33,7 +34,8 @@ import { AktiviranNalogComponent } from './components/aktiviran-nalog/aktiviran-
     PozBioPreviewComponent,
     UspesnaRegistracijaComponent,
     AktiviranNalogComponent,
-    AlertComponent
+    AlertComponent,
+    NoviPozBioComponent
   ],
   imports: [
     BrowserModule,
@@ -76,6 +78,10 @@ import { AktiviranNalogComponent } from './components/aktiviran-nalog/aktiviran-
         {
           path : 'aktiviranNalog',
           component : AktiviranNalogComponent
+        },
+        {
+          path : 'noviPozBio',
+          component : NoviPozBioComponent
         }
       ]
      ),
