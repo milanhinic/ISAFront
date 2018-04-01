@@ -15,6 +15,7 @@ import { NoviPozBioComponent } from './components/novi-poz-bio/novi-poz-bio.comp
 
 import { PozBioService } from './services/poz-bio.service';
 import { RegisterService } from './services/register.service';
+import { IzmeniService } from './services/izmeni.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { RegisterComponent } from './components/register/register.component';
@@ -22,6 +23,7 @@ import { LoginComponent } from './components/login/login.component';
 import { PozBioPreviewComponent } from './components/poz-bio-preview/poz-bio-preview.component';
 import { UspesnaRegistracijaComponent } from './components/uspesna-registracija/uspesna-registracija.component';
 import { AktiviranNalogComponent } from './components/aktiviran-nalog/aktiviran-nalog.component';
+import { ProfilComponent } from './components/profil/profil.component';
 
 
 @NgModule({
@@ -35,7 +37,8 @@ import { AktiviranNalogComponent } from './components/aktiviran-nalog/aktiviran-
     UspesnaRegistracijaComponent,
     AktiviranNalogComponent,
     AlertComponent,
-    NoviPozBioComponent
+    NoviPozBioComponent,
+    ProfilComponent
   ],
   imports: [
     BrowserModule,
@@ -82,6 +85,10 @@ import { AktiviranNalogComponent } from './components/aktiviran-nalog/aktiviran-
         {
           path : 'noviPozBio',
           component : NoviPozBioComponent
+        },
+        {
+          path : "profil",
+          component : ProfilComponent
         }
       ]
      ),
@@ -91,7 +98,7 @@ import { AktiviranNalogComponent } from './components/aktiviran-nalog/aktiviran-
       apiKey: 'AIzaSyAXBX98N0e-Hh2Yvv1dgTcTnS5CLbUJIvY'
     })
   ],
-  providers: [ PozBioService, RegisterService, HttpClientModule, AlertService ],
+  providers: [ PozBioService, RegisterService, HttpClientModule, AlertService, IzmeniService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

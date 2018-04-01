@@ -10,15 +10,16 @@ import { Subject } from 'rxjs/Subject';
 })
 export class AppComponent {
   title = 'app';
-  logovanKorisnik : any;
+  logovanKorisnik : any = JSON.parse(localStorage.getItem('logovanKorisnik'));
 
   constructor(private pozBioService : PozBioService, private router: Router) {
-      AppComponent.updateUserStatus.subscribe(res => {
-      this.logovanKorisnik = JSON.parse(localStorage.getItem('logovanKorisnik'));
-    })
+   
    }
 
   ngOnInit() {
+    AppComponent.updateUserStatus.subscribe(res => {
+      this.logovanKorisnik = JSON.parse(localStorage.getItem('logovanKorisnik'));
+    })
   }
 
   prikaziBioskope(){
@@ -39,6 +40,7 @@ export class AppComponent {
     this.logovanKorisnik = null;
     localStorage.removeItem("logovanKorisnik");
   }
+
 
   public static updateUserStatus: Subject<boolean> = new Subject();
 
