@@ -15,6 +15,7 @@ import { NoviPozBioComponent } from './components/novi-poz-bio/novi-poz-bio.comp
 
 import { PozBioService } from './services/poz-bio.service';
 import { RegisterService } from './services/register.service';
+import { IzmeniService } from './services/izmeni.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { RegisterComponent } from './components/register/register.component';
@@ -23,6 +24,7 @@ import { PozBioPreviewComponent } from './components/poz-bio-preview/poz-bio-pre
 import { UspesnaRegistracijaComponent } from './components/uspesna-registracija/uspesna-registracija.component';
 import { AktiviranNalogComponent } from './components/aktiviran-nalog/aktiviran-nalog.component';
 import { DodajIzmeniSaluComponent } from './components/dodaj-izmeni-salu/dodaj-izmeni-salu.component';
+import { ProfilComponent } from './components/profil/profil.component';
 
 
 @NgModule({
@@ -37,7 +39,8 @@ import { DodajIzmeniSaluComponent } from './components/dodaj-izmeni-salu/dodaj-i
     AktiviranNalogComponent,
     AlertComponent,
     NoviPozBioComponent,
-    DodajIzmeniSaluComponent
+    DodajIzmeniSaluComponent,
+    ProfilComponent
   ],
   imports: [
     BrowserModule,
@@ -92,6 +95,10 @@ import { DodajIzmeniSaluComponent } from './components/dodaj-izmeni-salu/dodaj-i
         {
           path : 'izmeniSalu/:id',
           component : DodajIzmeniSaluComponent
+        },
+        {
+          path : "profil",
+          component : ProfilComponent
         }
       ]
      ),
@@ -101,7 +108,7 @@ import { DodajIzmeniSaluComponent } from './components/dodaj-izmeni-salu/dodaj-i
       apiKey: 'AIzaSyAXBX98N0e-Hh2Yvv1dgTcTnS5CLbUJIvY'
     })
   ],
-  providers: [ PozBioService, RegisterService, HttpClientModule, AlertService ],
+  providers: [ PozBioService, RegisterService, HttpClientModule, AlertService, IzmeniService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
