@@ -13,6 +13,7 @@ import { AgmCoreModule } from '@agm/core';
 export class PozBioPreviewComponent implements OnInit {
 
   public pozBio: any;
+  public sale: any[];
   public id: number;
   latitude: number = 51.678418;
   longitude: number = 7.809007;
@@ -34,12 +35,33 @@ export class PozBioPreviewComponent implements OnInit {
       }
     });
 
+    this.http.get('/app/vratiSale/'+this.id).subscribe((res) => {
+      
+      if(res['_body'] === ""){
+        this.router.navigate(['/']);
+      }else{
+        this.sale = res.json();
+        console.log(this.sale)
+      }
+    });
+   
+
     this.http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + 'novi sad zmaj jovina').subscribe((res) => {
       let temp = res.json();
       console.log(temp.results[0].geometry.location);
       this.longitude = res.json().results[0].geometry.location.lng;
       this.latitude = res.json().results[0].geometry.location.lat;
     });
+
   }
+
+  izmeni = function(salaId : number){
+    this.router.navigate(['/izmeniSalu/'+salaId]);
+  }
+  
+  dodaj = function(){
+    this.router.navigate(['/dodajSalu/poz_bio/'+this.id]);
+  }
+  
 
 }
