@@ -102,9 +102,9 @@ export class PozBioComponent implements OnInit {
   pogledaj(param){
     this.stranica = 1;
     if(this.pozBioService.getTip() === 'bio'){
-      this.router.navigate(['/bioskopi/stranica/'+this.stranica, param]);
+      this.router.navigate(['/bioskopi/bioskop', param]);
     }else{
-      this.router.navigate(['/pozorista/stranica/'+this.stranica, param]);
+      this.router.navigate(['/pozorista/pozoriste', param]);
     }
   }
 

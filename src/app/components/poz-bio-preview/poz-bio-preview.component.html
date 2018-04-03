@@ -14,6 +14,33 @@
               <p class="blueText">{{pozBio.opis}}</p>
             </div>
         </div>
+        <div class="row">
+          <div class="gap-top col-lg-5">
+            <div class="gap-top card card-block bg-faded pozadina3 col-lg-11">
+              <div>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Naziv</th>
+                        <th scope="col">*</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let tempSala of sale">
+                        <td>{{tempSala.naziv}}</td>
+                        <td>
+                          <button type="button" class="btn btn-info" (click)="izmeni(tempSala.id)">Izmeni</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-info form-control" (click)="dodaj()">Dodaj novu salu</button>
+                </div>
+              </div>
+          </div>
+          
+        </div>
   </div>
 </div>
-

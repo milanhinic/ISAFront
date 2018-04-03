@@ -36,10 +36,9 @@ export class NoviPozBioComponent implements OnInit {
   potvrdi = function(value){
     console.log(value);
     this.http.post('/app/dodajNoviPozBio', value).subscribe((res) => {
-      
-      console.log(res['_body']);
 
       if(res['_body'] != ""){
+        let novaSala = res.json();
         this.router.navigate(['']);
       }else{
         alert(res.headers.get('message'))

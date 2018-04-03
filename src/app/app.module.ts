@@ -23,6 +23,7 @@ import { LoginComponent } from './components/login/login.component';
 import { PozBioPreviewComponent } from './components/poz-bio-preview/poz-bio-preview.component';
 import { UspesnaRegistracijaComponent } from './components/uspesna-registracija/uspesna-registracija.component';
 import { AktiviranNalogComponent } from './components/aktiviran-nalog/aktiviran-nalog.component';
+import { DodajIzmeniSaluComponent } from './components/dodaj-izmeni-salu/dodaj-izmeni-salu.component';
 import { ProfilComponent } from './components/profil/profil.component';
 
 
@@ -38,6 +39,7 @@ import { ProfilComponent } from './components/profil/profil.component';
     AktiviranNalogComponent,
     AlertComponent,
     NoviPozBioComponent,
+    DodajIzmeniSaluComponent,
     ProfilComponent
   ],
   imports: [
@@ -59,11 +61,11 @@ import { ProfilComponent } from './components/profil/profil.component';
           component : PozBioComponent
         },
         {
-          path : 'pozorista/stranica/:id/:id',
+          path : 'pozorista/pozoriste/:id',
           component : PozBioPreviewComponent
         },
         {
-          path : 'bioskopi/stranica/:id/:id',
+          path : 'bioskopi/bioskop/:id',
           component : PozBioPreviewComponent
         },
         {
@@ -85,6 +87,14 @@ import { ProfilComponent } from './components/profil/profil.component';
         {
           path : 'noviPozBio',
           component : NoviPozBioComponent
+        },
+        {
+          path : 'dodajSalu/poz_bio/:id',
+          component : DodajIzmeniSaluComponent
+        },
+        {
+          path : 'izmeniSalu/:id',
+          component : DodajIzmeniSaluComponent
         },
         {
           path : "profil",
