@@ -15,7 +15,7 @@ import { NoviPozBioComponent } from './components/novi-poz-bio/novi-poz-bio.comp
 
 import { PozBioService } from './services/poz-bio.service';
 import { RegisterService } from './services/register.service';
-import { IzmeniService } from './services/izmeni.service';
+import { PrijavljenKorisnikService } from './services/prijavljen-korisnik.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { RegisterComponent } from './components/register/register.component';
@@ -98,7 +98,7 @@ import { ProfilComponent } from './components/profil/profil.component';
       apiKey: 'AIzaSyAXBX98N0e-Hh2Yvv1dgTcTnS5CLbUJIvY'
     })
   ],
-  providers: [ PozBioService, RegisterService, HttpClientModule, AlertService, IzmeniService ],
+  providers: [ PozBioService, RegisterService, HttpClientModule, AlertService, PrijavljenKorisnikService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,7 @@
 <div class="container">
   <alert></alert>
   <legend class="leg" align="center">Licni podaci: <button *ngIf="!izmena" (click) = "izmeni()" class="logregBtn btn btn-primary btn-sm">Izmeni</button></legend>
-  <table class="leg table" *ngIf="!izmena">
+  <table class="leg table" *ngIf="!izmena && logovanKorisnik">
       <tr>
         <td class="w-25" align = "center">Email</td>
         <td class="w-25" align = "center">{{logovanKorisnik.email}}</td>

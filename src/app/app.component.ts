@@ -10,7 +10,9 @@ import { Subject } from 'rxjs/Subject';
 })
 export class AppComponent {
   title = 'app';
-  logovanKorisnik : any = JSON.parse(localStorage.getItem('logovanKorisnik'));
+  korisnikToken : string;
+  logovanKorisnik : any;
+
 
   constructor(private pozBioService : PozBioService, private router: Router) {
    
@@ -18,8 +20,13 @@ export class AppComponent {
 
   ngOnInit() {
     AppComponent.updateUserStatus.subscribe(res => {
-      this.logovanKorisnik = JSON.parse(localStorage.getItem('logovanKorisnik'));
+      this.korisnikToken = localStorage.getItem('logovanKorisnik');
+      this.logovanKorisnik = JSON.parse(window.atob(this.korisnikToken.split('.')[1]));
     })
+    this.korisnikToken = localStorage.getItem('logovanKorisnik');
+    if(this.korisnikToken){
+      this.logovanKorisnik = JSON.parse(window.atob(this.korisnikToken.split('.')[1]));
+    }
   }
 
   prikaziBioskope(){
@@ -34,6 +41,14 @@ export class AppComponent {
 
   napraviNovoPB(){
     this.router.navigate(['/noviPozBio']);
+  }
+
+  idiNaProfil(){
+    this.router.navigate(['/profil']);
+  }
+
+  prijava(){
+    this.router.navigate(['/login']);
   }
 
   odjava = function(){

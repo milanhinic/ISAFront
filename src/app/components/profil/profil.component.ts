@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators, AbstractControl, ValidatorFn} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertService } from '../../services/alert.service'
-import { IzmeniService } from '../../services/izmeni.service';
 import { AppComponent } from '../../app.component';
+import { PrijavljenKorisnikService } from '../../services/prijavljen-korisnik.service';
 
 @Component({
   selector: 'app-profil',
@@ -13,13 +13,16 @@ import { AppComponent } from '../../app.component';
 export class ProfilComponent implements OnInit {
 
   izmenaForma;
-  logovanKorisnik : any = JSON.parse(localStorage.getItem('logovanKorisnik'));
+  logovanKorisnik : any;
   zaIzmenu : any;
   izmena : boolean = false;
 
-  constructor(private izmeniService : IzmeniService, private alertService : AlertService) { }
+  constructor(private alertService : AlertService, private prijavljenKorisnikService: PrijavljenKorisnikService) { }
 
   ngOnInit() {
+    this.prijavljenKorisnikService.dobaviRegistrovanogKorisnika('/app/secured/vratiRegKorisnika').subscribe(res=>{
+      this.logovanKorisnik = res.json();
+    });
   }
 
   izmeni = function(){
@@ -50,14 +53,13 @@ export class ProfilComponent implements OnInit {
     
     korisnik.email = this.logovanKorisnik.email;
     korisnik.tip = this.logovanKorisnik.tip;
-    this.izmeniService.izmeniKorisnika('/app/secured/izmena',korisnik).subscribe((res) => {
+    this.prijavljenKorisnikService.izmeniKorisnika('/app/secured/izmena',korisnik).subscribe((res) => {
       this.success = res.json();
       this.message = res.headers.get('message');
       if(!this.success){
         this.alertService.error(this.message);
       }else{
-        localStorage.setItem('logovanKorisnik',JSON.stringify(korisnik));
-        AppComponent.updateUserStatus.next(true);
+        this.logovanKorisnik = korisnik;
         this.alertService.success(this.message);
       }
     });

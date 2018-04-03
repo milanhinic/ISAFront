@@ -29,8 +29,8 @@ export class LoginComponent implements OnInit {
     this.registerService.registrujKorisnika('/app/login', korisnik).subscribe(res=>{
 
         try{
-          this.korisnik = res.json();
-          localStorage.setItem('logovanKorisnik',JSON.stringify(this.korisnik));
+          this.korisnik = res.text();
+          localStorage.setItem('logovanKorisnik',this.korisnik);
           AppComponent.updateUserStatus.next(true);
           this.router.navigate(['']);
         }catch(error){
@@ -42,7 +42,3 @@ export class LoginComponent implements OnInit {
 
 }
 
-interface Korisnik{
-  email : string;
-  lozinka : string;
-}
