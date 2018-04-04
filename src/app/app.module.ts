@@ -25,6 +25,7 @@ import { UspesnaRegistracijaComponent } from './components/uspesna-registracija/
 import { AktiviranNalogComponent } from './components/aktiviran-nalog/aktiviran-nalog.component';
 import { DodajIzmeniSaluComponent } from './components/dodaj-izmeni-salu/dodaj-izmeni-salu.component';
 import { ProfilComponent } from './components/profil/profil.component';
+import { PrijateljiComponent } from './components/prijatelji/prijatelji.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { ProfilComponent } from './components/profil/profil.component';
     AlertComponent,
     NoviPozBioComponent,
     DodajIzmeniSaluComponent,
-    ProfilComponent
+    ProfilComponent,
+    PrijateljiComponent
   ],
   imports: [
     BrowserModule,
@@ -99,6 +101,10 @@ import { ProfilComponent } from './components/profil/profil.component';
         {
           path : "profil",
           component : ProfilComponent
+        },
+        {
+          path : "prijatelji",
+          component : PrijateljiComponent
         }
       ]
      ),

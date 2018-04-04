@@ -47,6 +47,10 @@ export class AppComponent {
     this.router.navigate(['/profil']);
   }
 
+  idiPrijatelje(){
+    this.router.navigate(['/prijatelji']);
+  }
+
   prijava(){
     this.router.navigate(['/login']);
   }
