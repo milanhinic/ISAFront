@@ -12,10 +12,17 @@ export class DodajIzmeniSaluComponent implements OnInit {
 
   public idPozBio: number;
   private salaForma: any;
+  private idSala : number;
+  private sala: any;
+  // 0 => dodavanje, 1 => izmena
+  private mode: number;
 
   constructor(private http:Http, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+
+    let niz = this.router.url.split('/');
+    this.idSala = -1;
 
     this.route.params.subscribe(params => {
       this.idPozBio = +params['id'];
@@ -29,21 +36,68 @@ export class DodajIzmeniSaluComponent implements OnInit {
       ]))
     })
 
+    for(let i = 0; i < niz.length; i++){
+      if(niz[i] === 'izmeniSalu'){
+
+        this.mode = 1;
+
+        this.route.params.subscribe(params => {
+          this.idSala = +params['id'];
+        });
+
+        this.http.get('/app/vratiJednuSalu/'+this.idSala).subscribe((res) => {
+          
+          console.log(res['_body'])
+    
+          if(res['_body'] != ""){
+            this.sala = res.json();
+            this.salaForma.patchValue({naziv: this.sala.naziv});
+            this.salaForma.patchValue({naziv: this.sala.naziv});
+          }else{
+            alert(res.headers.get('message'))
+          }
+      
+        });
+
+        break;
+
+      }else if(niz[i] === 'dodajSalu'){
+        this.mode = 1;
+        break;
+      }
+    }
+
   }
 
   potvrdi = function(sala:any){
     console.log(sala)
-    this.http.post('/app/dodajSalu/'+this.idPozBio, sala).subscribe((res) => {
-          
-      console.log(res['_body'])
 
-      if(res['_body'] != ""){
-        this.router.navigate([this.router.url]);
-      }else{
-        alert(res.headers.get('message'))
-      }
-  
-    });
+    if(this.mode = 0){
+
+      this.http.post('/app/dodajSalu/'+this.idPozBio, sala).subscribe((res) => {   
+        console.log(res['_body'])
+
+        if(res['_body'] != ""){
+          this.router.navigate([this.router.url]);
+        }else{
+          alert(res.headers.get('message'))
+        }
+    
+      });
+
+    }else{
+      this.sala.naziv = sala.naziv;
+      this.http.put('/app/izmeniSalu/'+this.idSala, this.sala).subscribe((res) => {   
+        console.log(res['_body'])
+
+        if(res['_body'] != ""){
+          this.router.navigate([this.router.url]);
+        }else{
+          alert(res.headers.get('message'))
+        }
+    
+      });
+    }
 
   }
 }
