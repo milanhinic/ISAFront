@@ -27,6 +27,7 @@ import { DodajIzmeniSaluComponent } from './components/dodaj-izmeni-salu/dodaj-i
 import { ProfilComponent } from './components/profil/profil.component';
 import { PrijateljiComponent } from './components/prijatelji/prijatelji.component';
 import { SalaPreviewComponent } from './components/sala-preview/sala-preview.component';
+import { DodajIzmeniSegmentComponent } from './components/dodaj-izmeni-segment/dodaj-izmeni-segment.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { SalaPreviewComponent } from './components/sala-preview/sala-preview.com
     DodajIzmeniSaluComponent,
     ProfilComponent,
     PrijateljiComponent,
-    SalaPreviewComponent
+    SalaPreviewComponent,
+    DodajIzmeniSegmentComponent
   ],
   imports: [
     BrowserModule,

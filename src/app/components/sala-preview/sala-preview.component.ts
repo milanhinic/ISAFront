@@ -12,10 +12,16 @@ export class SalaPreviewComponent implements OnInit {
   private sala : any;
   private idSala : number;
   private mode: number;
+  private isIzmena: boolean;
+  private isDodavanjeSegmenta: boolean;
 
   constructor(private http:Http, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+
+    this.mode = 1;
+    this.isIzmena = false;
+    this.isDodavanjeSegmenta = false;
 
     this.route.params.subscribe(params => {
       this.idSala = +params['id'];
@@ -30,6 +36,14 @@ export class SalaPreviewComponent implements OnInit {
       }
     });
 
+  }
+
+  izmeni = function(){
+    this.isIzmena = !this.isIzmena;
+  }
+
+  dodajSegment = function(){
+    this.isDodavanjeSegmenta = !this.isDodavanjeSegmenta;
   }
 
 }

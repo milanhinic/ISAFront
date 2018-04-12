@@ -1,10 +1,25 @@
 <div>
   
   <div class="card card-block bg-faded pozadina3 col-lg-8">
-    <h2 class="naslov set-center">{{sala.naziv}}</h2>
-    
+    <div class="row">
+      <div class="col-lg-8">
+        <p class="naslov set-center">{{sala.naziv}}</p>
+      </div>
+      <div class="gap-top-sm col-lg-4">
+          <button class="btn btn-primary btn-sm right-items gap-left" (click)="dodajSegment()">dodajSegment</button>
+          <button class="btn btn-primary btn-sm right-items" (click)="izmeni()">Izmeni</button>
+      </div>
+    </div>
   </div>
+  <div>
+      <div class="col-lg-6" *ngIf="isIzmena">
+          <app-dodaj-izmeni-salu [mode]="1" [idSala]="idSala"></app-dodaj-izmeni-salu>
+      </div>
 
-
+      <div class="col-lg-6" *ngIf="isDodavanjeSegmenta">
+          <app-dodaj-izmeni-segment [mode]="1" [idSala]="1" [idSegment]="1"></app-dodaj-izmeni-segment>
+      </div>
+      
+  </div>
 
 </div>

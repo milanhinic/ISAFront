@@ -27,7 +27,7 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let tempSala of sale">
-                        <td><a (click)="pogledajSalu(tempSala.id)">{{tempSala.naziv}}</a></td>
+                        <td><a (click)="pogledajSalu(tempSala.id)" >{{tempSala.naziv}}</a></td>
                         <td>
                           <button type="button" class="btn btn-info" (click)="izmeniSalu(tempSala.id)" >Izmeni</button>
                         </td>
