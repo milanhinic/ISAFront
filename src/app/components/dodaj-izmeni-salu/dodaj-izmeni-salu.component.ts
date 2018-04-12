@@ -46,12 +46,9 @@ export class DodajIzmeniSaluComponent implements OnInit {
         });
 
         this.http.get('/app/vratiJednuSalu/'+this.idSala).subscribe((res) => {
-          
-          console.log(res['_body'])
-    
+
           if(res['_body'] != ""){
             this.sala = res.json();
-            this.salaForma.patchValue({naziv: this.sala.naziv});
             this.salaForma.patchValue({naziv: this.sala.naziv});
           }else{
             alert(res.headers.get('message'))
@@ -62,41 +59,45 @@ export class DodajIzmeniSaluComponent implements OnInit {
         break;
 
       }else if(niz[i] === 'dodajSalu'){
-        this.mode = 1;
+        this.mode = 0;
         break;
+      }else{
+        this.mode = -1;
       }
     }
 
   }
 
   potvrdi = function(sala:any){
+
     console.log(sala)
-
-    if(this.mode = 0){
-
-      this.http.post('/app/dodajSalu/'+this.idPozBio, sala).subscribe((res) => {   
-        console.log(res['_body'])
-
-        if(res['_body'] != ""){
-          this.router.navigate([this.router.url]);
-        }else{
-          alert(res.headers.get('message'))
-        }
+    console.log(this.sala)
     
-      });
+    if(this.mode != -1){
+      if(this.mode == 0){
 
-    }else{
-      this.sala.naziv = sala.naziv;
-      this.http.put('/app/izmeniSalu/'+this.idSala, this.sala).subscribe((res) => {   
-        console.log(res['_body'])
+        this.http.post('/app/dodajSalu/'+this.idPozBio, sala).subscribe((res) => {   
 
-        if(res['_body'] != ""){
-          this.router.navigate([this.router.url]);
-        }else{
-          alert(res.headers.get('message'))
-        }
-    
-      });
+          if(res['_body'] != ""){
+            this.router.navigate([this.router.url]);
+          }else{
+            alert(res.headers.get('message'))
+          }
+      
+        });
+
+      }else{
+        this.sala.naziv = sala.naziv;
+        this.http.put('/app/izmeniSalu/'+this.idSala, this.sala).subscribe((res) => {   
+
+          if(res['_body'] != ""){
+            this.router.navigate([this.router.url]);
+          }else{
+            alert(res.headers.get('message'))
+          }
+      
+        });
+      }
     }
 
   }

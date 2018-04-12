@@ -105,6 +105,10 @@ import { PrijateljiComponent } from './components/prijatelji/prijatelji.componen
         {
           path : "prijatelji",
           component : PrijateljiComponent
+        },
+        {
+          path : 'izmeniPozBio/:id',
+          component : NoviPozBioComponent
         }
       ]
      ),
