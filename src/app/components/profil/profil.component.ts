@@ -17,12 +17,18 @@ export class ProfilComponent implements OnInit {
   zaIzmenu : any;
   izmena : boolean = false;
 
-  constructor(private alertService : AlertService, private prijavljenKorisnikService: PrijavljenKorisnikService) { }
+  constructor(private alertService : AlertService, private prijavljenKorisnikService: PrijavljenKorisnikService, private router : Router) { }
 
   ngOnInit() {
-    this.prijavljenKorisnikService.dobaviRegistrovanogKorisnika('/app/secured/vratiRegKorisnika').subscribe(res=>{
-      this.logovanKorisnik = res.json();
-    });
+
+    var korisnikToken = localStorage.getItem('logovanKorisnik');
+    if(korisnikToken==null){
+      this.router.navigate(['']);
+    }else{
+      this.prijavljenKorisnikService.dobaviRegistrovanogKorisnika('/app/secured/vratiRegKorisnika').subscribe(res=>{
+        this.logovanKorisnik = res.json();
+      });
+    }
   }
 
   izmeni = function(){

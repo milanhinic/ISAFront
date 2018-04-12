@@ -10,6 +10,7 @@ export class PrijateljiComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    var korisnikToken = localStorage.getItem('logovanKorisnik');
   }
 
 }
