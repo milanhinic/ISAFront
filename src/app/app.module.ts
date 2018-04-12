@@ -26,6 +26,7 @@ import { AktiviranNalogComponent } from './components/aktiviran-nalog/aktiviran-
 import { DodajIzmeniSaluComponent } from './components/dodaj-izmeni-salu/dodaj-izmeni-salu.component';
 import { ProfilComponent } from './components/profil/profil.component';
 import { PrijateljiComponent } from './components/prijatelji/prijatelji.component';
+import { SalaPreviewComponent } from './components/sala-preview/sala-preview.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { PrijateljiComponent } from './components/prijatelji/prijatelji.componen
     NoviPozBioComponent,
     DodajIzmeniSaluComponent,
     ProfilComponent,
-    PrijateljiComponent
+    PrijateljiComponent,
+    SalaPreviewComponent
   ],
   imports: [
     BrowserModule,
@@ -109,6 +111,10 @@ import { PrijateljiComponent } from './components/prijatelji/prijatelji.componen
         {
           path : 'izmeniPozBio/:id',
           component : NoviPozBioComponent
+        },
+        {
+          path : 'sala/:id',
+          component : SalaPreviewComponent
         }
       ]
      ),

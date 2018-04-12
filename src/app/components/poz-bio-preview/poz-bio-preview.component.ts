@@ -12,15 +12,25 @@ import { AgmCoreModule } from '@agm/core';
 })
 export class PozBioPreviewComponent implements OnInit {
 
-  public pozBio: any;
-  public sale: any[];
-  public id: number;
+  private pozBio: any;
+  private sale: any[];
+  private id: number;
+  private idSala: number;
+
   latitude: number = 51.678418;
   longitude: number = 7.809007;
+
+  private isDodavanje: boolean;
+  private isIzmena: boolean;
 
   constructor(private http:Http, private route: ActivatedRoute, private router: Router, private pozBioService: PozBioService) { }
 
   ngOnInit() {
+
+    this.idSala = -1;
+
+    this.isDodavanje = false;
+    this.isIzmena = false;
 
     this.pozBio = this.route.params.subscribe(params => {
       this.id = +params['id'];
@@ -55,12 +65,18 @@ export class PozBioPreviewComponent implements OnInit {
 
   }
 
-  izmeni = function(salaId : number){
-    this.router.navigate(['/izmeniSalu/'+salaId]);
+  pogledajSalu = function(salaId : number){
+    this.router.navigate(['/sala/'+salaId]);
   }
-  
+
+  izmeniSalu = function(salaId : number){
+
+    this.isIzmena = !this.isIzmena;
+    this.idSala = salaId;   
+  }
+
   dodaj = function(){
-    this.router.navigate(['/dodajSalu/poz_bio/'+this.id]);
+    this.isDodavanje = !this.isDodavanje;
   }
   
 
