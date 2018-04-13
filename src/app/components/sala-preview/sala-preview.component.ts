@@ -9,11 +9,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class SalaPreviewComponent implements OnInit {
 
-  private sala : any;
+  private segmenti: any;
+  private sala : any = {};
   private idSala : number;
   private mode: number;
   private isIzmena: boolean;
   private isDodavanjeSegmenta: boolean;
+  private isTipSegmenta: boolean;
 
   constructor(private http:Http, private route: ActivatedRoute, private router: Router) { }
 
@@ -22,6 +24,7 @@ export class SalaPreviewComponent implements OnInit {
     this.mode = 1;
     this.isIzmena = false;
     this.isDodavanjeSegmenta = false;
+    this.isTipSegmenta = false;
 
     this.route.params.subscribe(params => {
       this.idSala = +params['id'];
@@ -32,7 +35,16 @@ export class SalaPreviewComponent implements OnInit {
       if(res['_body'] != ""){
         this.sala = res.json();
       }else{
-        alert('Greska!');
+        alert("Greska!"+res.headers.get("Message"));
+      }
+    });
+
+    this.http.get('/app/vratiSegmenteSala/'+this.idSala).subscribe((res) => {
+      
+      if(res['_body'] != ""){
+        this.segmenti = res.json();
+      }else{
+        alert("Greska!"+res.headers.get("Message"));
       }
     });
 
@@ -44,6 +56,10 @@ export class SalaPreviewComponent implements OnInit {
 
   dodajSegment = function(){
     this.isDodavanjeSegmenta = !this.isDodavanjeSegmenta;
+  }
+
+  dodajTipSegmenta = function(){
+    this.isTipSegmenta = !this.isTipSegmenta;
   }
 
 }

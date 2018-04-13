@@ -14,12 +14,14 @@ export class NoviPozBioComponent implements OnInit {
   private pozBio : any;
   private idPozBio : number;
   private izmena: boolean;
+  private naslov: string;
 
   constructor(private http:Http, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
 
     this.izmena = false;
+    this.naslov = 'Formirajte novo/i:';
 
     this.noviPozBioForma = new FormGroup({
       naziv : new FormControl("",Validators.compose([
@@ -55,6 +57,7 @@ export class NoviPozBioComponent implements OnInit {
           this.noviPozBioForma.patchValue({opis: this.pozBio.opis});
 
           this.izmena = true;
+          this.naslov = 'Unesite izmene:';
 
         }
       })

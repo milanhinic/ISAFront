@@ -78,6 +78,10 @@ export class PozBioPreviewComponent implements OnInit {
   dodaj = function(){
     this.isDodavanje = !this.isDodavanje;
   }
+
+  izmeniPozBio = function(){
+    this.router.navigate(['izmeniPozBio/'+this.pozBio.id]);
+  }
   
 
 }

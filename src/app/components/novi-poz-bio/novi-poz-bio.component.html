@@ -2,7 +2,7 @@
 <div class="card card-block bg-faded pozadina2 container">
   <form [formGroup] = "noviPozBioForma" (ngSubmit) = "potvrdi(noviPozBioForma.value)">
       <fieldset>
-        <legend class="forma-naslov" align="center">Formirajte novo/i:</legend>
+        <legend class="forma-naslov" align="center">{{naslov}}</legend>
         <div class="form-group row mx-auto">
           <div class="col-lg-3"></div>
             <div class="radio col-lg-3">
