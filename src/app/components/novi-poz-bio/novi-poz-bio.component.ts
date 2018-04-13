@@ -69,18 +69,30 @@ export class NoviPozBioComponent implements OnInit {
     
     if(this.izmena){
       value.id = this.idPozBio;
+
+      this.http.put('/app/izmeniPozBio', value).subscribe((res) => {
+
+        if(res['_body'] != ""){
+          window.location.reload();
+        }else{
+          alert(res.headers.get('message'))
+        }
+        
+      });
+      
+    }else{
+      this.http.post('/app/dodajNoviPozBio', value).subscribe((res) => {
+
+        if(res['_body'] != ""){
+          window.location.reload();
+        }else{
+          alert(res.headers.get('message'))
+        }
+        
+      });
     }
 
-    this.http.post('/app/dodajNoviPozBio', value).subscribe((res) => {
-
-      if(res['_body'] != ""){
-        let novaSala = res.json();
-        this.router.navigate(['']);
-      }else{
-        alert(res.headers.get('message'))
-      }
-      
-    });
+    
   }
 
 }

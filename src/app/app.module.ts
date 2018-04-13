@@ -29,6 +29,7 @@ import { PrijateljiComponent } from './components/prijatelji/prijatelji.componen
 import { SalaPreviewComponent } from './components/sala-preview/sala-preview.component';
 import { DodajIzmeniSegmentComponent } from './components/dodaj-izmeni-segment/dodaj-izmeni-segment.component';
 import { TipSegmentaComponent } from './components/tip-segmenta/tip-segmenta.component';
+import { NoviPredFilmComponent } from './components/novi-pred-film/novi-pred-film.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { TipSegmentaComponent } from './components/tip-segmenta/tip-segmenta.com
     PrijateljiComponent,
     SalaPreviewComponent,
     DodajIzmeniSegmentComponent,
-    TipSegmentaComponent
+    TipSegmentaComponent,
+    NoviPredFilmComponent
   ],
   imports: [
     BrowserModule,
@@ -119,6 +121,14 @@ import { TipSegmentaComponent } from './components/tip-segmenta/tip-segmenta.com
         {
           path : 'sala/:id',
           component : SalaPreviewComponent
+        },
+        {
+          path : 'noviPredFilm',
+          component : NoviPredFilmComponent
+        },
+        {
+          path : 'izmeniPredFilm/:id',
+          component : NoviPredFilmComponent
         }
       ]
      ),

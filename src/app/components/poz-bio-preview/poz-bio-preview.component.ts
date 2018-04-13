@@ -36,12 +36,22 @@ export class PozBioPreviewComponent implements OnInit {
       this.id = +params['id'];
     });
 
-    this.http.get('/app/vratiJedan/'+this.id).subscribe((res) => {
+    this.http.get('/app/vratiJedan/'+this.id).subscribe((res1) => {
       
-      if(res['_body'] === ""){
-        this.router.navigate(['/']);
+      if(res1['_body'] != ""){
+        this.pozBio = res1.json();
+
+        this.http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + this.pozBio.adresa ).subscribe((res) => {
+          let temp = res.json();
+          console.log(temp.results[0].geometry.location);
+          this.longitude = res.json().results[0].geometry.location.lng;
+          this.latitude = res.json().results[0].geometry.location.lat;
+        });
+
+        
       }else{
-        this.pozBio = res.json();
+        console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
+        this.router.navigate(['/']);
       }
     });
 
@@ -53,14 +63,6 @@ export class PozBioPreviewComponent implements OnInit {
         this.sale = res.json();
         console.log(this.sale)
       }
-    });
-   
-
-    this.http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + 'novi sad zmaj jovina').subscribe((res) => {
-      let temp = res.json();
-      console.log(temp.results[0].geometry.location);
-      this.longitude = res.json().results[0].geometry.location.lng;
-      this.latitude = res.json().results[0].geometry.location.lat;
     });
 
   }

@@ -104,4 +104,10 @@ agm-map{
 
 a:hover {
     cursor:pointer;
-   }
+}
+
+span {
+    color : red;
+    font-weight: 600;
+    font-family: Helvetica;
+}

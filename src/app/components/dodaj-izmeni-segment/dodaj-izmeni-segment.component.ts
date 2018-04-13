@@ -38,6 +38,7 @@ export class DodajIzmeniSegmentComponent implements OnInit {
         this.tipovi = res.json();
         console.log(res)
       }
+      
     })
 
     if(this.mode == 0){
