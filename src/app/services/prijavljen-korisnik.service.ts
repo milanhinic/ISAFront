@@ -23,4 +23,8 @@ export class PrijavljenKorisnikService {
     return this.http.put(path, body, this.postaviHeadere());
   }
 
+  dobaviAdmine(path:string){
+    return this.http.get(path).map(res => res.json());
+  }
+
 }

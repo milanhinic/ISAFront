@@ -54,6 +54,25 @@
           </div>
           <div class="form-group row">
             <div class="col-md-4 mx-auto">
+              <input type="password" class="form-control" name="sifra" id="sifra" placeholder="Lozinka" formControlName="lozinka">
+              <span class = "error-message" *ngIf="registracijaForma.get('lozinka').hasError('required') && registracijaForma.get('lozinka').dirty">Obavezno unesite lozinku</span>
+              <span class = "error-message" *ngIf="registracijaForma.get('lozinka').hasError('minlength') && registracijaForma.get('lozinka').dirty">Vasa lozinka mora sadrzati bar 8 karaktera</span>
+              <span class = "error-message" *ngIf="registracijaForma.get('lozinka').hasError('maxlength') && registracijaForma.get('lozinka').dirty">Presli ste broj karaktera koji smete uneti</span>
+               </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-4 mx-auto">
+              <input type="password" class="form-control" name="sifra2" id="sifra2" placeholder="Potvrda Lozinke" formControlName="sifraPotvrda">
+              <span class = "error-message" *ngIf="registracijaForma.get('sifraPotvrda').hasError('required') && registracijaForma.get('sifraPotvrda').dirty">Morate potvrditi vasu lozinku</span>
+              <span class = "error-message" *ngIf="registracijaForma.get('sifraPotvrda').hasError('minlength') && registracijaForma.get('sifraPotvrda').dirty">Vasa lozinka mora sadrzati bar 8 karaktera</span>
+              <span class = "error-message" *ngIf="registracijaForma.get('sifraPotvrda').hasError('maxlength') && registracijaForma.get('sifraPotvrda').dirty">Presli ste broj karaktera koji smete uneti</span>
+              <span class = "error-message" *ngIf="registracijaForma.hasError('missmatch') && registracijaForma.get('sifraPotvrda').dirty">Lozinke se ne poklapaju</span>
+              <span class = "success-message" *ngIf="!registracijaForma.hasError('missmatch') && registracijaForma.get('sifraPotvrda').dirty">Lozinke se poklapaju</span>
+               </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-md-4 mx-auto">
               <button type="submit" class="logregBtn btn btn-primary btn-md btn-block" name="izmenaBtn" [disabled] = "!izmenaForma.valid">Izmena</button>
             </div>
           </div>

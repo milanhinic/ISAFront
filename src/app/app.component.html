@@ -17,12 +17,26 @@
       <li class="nav-item">
         <button type="button" class="btn btn-link" (click)="prikaziPozorista()">Pozorista</button>
       </li>
+      <li  class="nav-item">
+        <button type="button" class="btn btn-link" (click)="prikaziAdministatoreFz()">Administratori Fz</button>
+      </li>
+      <li class="nav-item">
+        <button type="button" class="btn btn-link" (click)="prikaziAdministatoreSis()">Administratori Sis</button>
+      </li>
       <li class="nav-item">
           <button type="button" class="btn btn-link">Fan-zona</button>
       </li>
       <li class="nav-item">
         <button type="button" class="btn btn-link" (click)="napraviNovoPB()">Napravi PozBio</button>
-    </li>
+      </li>
+      <li class="nav-item">
+        <button type="button" class="btn btn-link" (click)="napraviNovoAFZ()">Napravi AdmFz</button>
+      </li>
+      <li class="nav-item">
+        <button type="button" class="btn btn-link" (click)="napraviNovoASIS()">Napravi AdmSis</button>
+      </li>
+
+
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li *ngIf = "!logovanKorisnik" class="nav-item">
