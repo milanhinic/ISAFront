@@ -23,7 +23,6 @@ export class PrijavljenKorisnikService {
     return this.http.put(path, body, this.postaviHeadere());
   }
 
-<<<<<<< HEAD
   postuj(path:string, body: any){
     return this.http.post(path, body, this.postaviHeadere());
   }
@@ -31,10 +30,8 @@ export class PrijavljenKorisnikService {
   postujListu(path:string, body: any[]){
     return this.http.post(path, body, this.postaviHeadere());
   }
-=======
   dobaviAdmine(path:string){
     return this.http.get(path).map(res => res.json());
   }
 
->>>>>>> 1eca37f08aa676abf7485549b533f529bd073840
 }
