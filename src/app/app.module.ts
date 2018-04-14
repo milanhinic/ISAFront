@@ -28,7 +28,6 @@ import { AktiviranNalogComponent } from './components/aktiviran-nalog/aktiviran-
 import { DodajIzmeniSaluComponent } from './components/dodaj-izmeni-salu/dodaj-izmeni-salu.component';
 import { ProfilComponent } from './components/profil/profil.component';
 import { PrijateljiComponent } from './components/prijatelji/prijatelji.component';
-<<<<<<< HEAD
 import { NoviAdmFzComponent } from './components/novi-adm-fz/novi-adm-fz.component';
 import { NoviAdmSisComponent } from './components/novi-adm-sis/novi-adm-sis.component';
 import { AdminFzComponent } from './components/admin-fz/admin-fz.component';
@@ -63,7 +62,6 @@ import { NoviPredFilmComponent } from './components/novi-pred-film/novi-pred-fil
     AdminFzComponent,
     FanZonaComponent,
     NoviOglasComponent,
-=======
     SalaPreviewComponent,
     DodajIzmeniSegmentComponent,
     TipSegmentaComponent,
