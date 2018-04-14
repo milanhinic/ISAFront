@@ -7,6 +7,7 @@ import { AgmCoreModule } from '@agm/core';
 
 import { AlertComponent } from './directives/alert.component';
 import { AlertService } from './services/alert.service';
+import { OglasiService } from './services/oglasi.service'
 
 import { AppComponent } from './app.component';
 import { CentralComponent } from './components/central/central.component';
@@ -14,6 +15,7 @@ import { PozBioComponent } from './components/poz-bio/poz-bio.component';
 import { NoviPozBioComponent } from './components/novi-poz-bio/novi-poz-bio.component';
 
 import { PozBioService } from './services/poz-bio.service';
+import { AdminServiceService } from './services/admin-service.service';
 import { RegisterService } from './services/register.service';
 import { PrijavljenKorisnikService } from './services/prijavljen-korisnik.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -26,6 +28,18 @@ import { AktiviranNalogComponent } from './components/aktiviran-nalog/aktiviran-
 import { DodajIzmeniSaluComponent } from './components/dodaj-izmeni-salu/dodaj-izmeni-salu.component';
 import { ProfilComponent } from './components/profil/profil.component';
 import { PrijateljiComponent } from './components/prijatelji/prijatelji.component';
+<<<<<<< HEAD
+import { NoviAdmFzComponent } from './components/novi-adm-fz/novi-adm-fz.component';
+import { NoviAdmSisComponent } from './components/novi-adm-sis/novi-adm-sis.component';
+import { AdminFzComponent } from './components/admin-fz/admin-fz.component';
+import { FanZonaComponent } from './components/fan-zona/fan-zona.component';
+import { NoviOglasComponent } from './components/novi-oglas/novi-oglas.component';
+=======
+import { SalaPreviewComponent } from './components/sala-preview/sala-preview.component';
+import { DodajIzmeniSegmentComponent } from './components/dodaj-izmeni-segment/dodaj-izmeni-segment.component';
+import { TipSegmentaComponent } from './components/tip-segmenta/tip-segmenta.component';
+import { NoviPredFilmComponent } from './components/novi-pred-film/novi-pred-film.component';
+>>>>>>> 40ec0417217aceb4811ab2206cfb1d55dd0cce4b
 
 
 @NgModule({
@@ -42,7 +56,19 @@ import { PrijateljiComponent } from './components/prijatelji/prijatelji.componen
     NoviPozBioComponent,
     DodajIzmeniSaluComponent,
     ProfilComponent,
-    PrijateljiComponent
+    PrijateljiComponent,
+<<<<<<< HEAD
+    NoviAdmFzComponent,
+    NoviAdmSisComponent,
+    AdminFzComponent,
+    FanZonaComponent,
+    NoviOglasComponent,
+=======
+    SalaPreviewComponent,
+    DodajIzmeniSegmentComponent,
+    TipSegmentaComponent,
+    NoviPredFilmComponent
+>>>>>>> 40ec0417217aceb4811ab2206cfb1d55dd0cce4b
   ],
   imports: [
     BrowserModule,
@@ -50,10 +76,6 @@ import { PrijateljiComponent } from './components/prijatelji/prijatelji.componen
     HttpModule,
     RouterModule.forRoot(
       [
-        {
-          path : '',
-          component : CentralComponent
-        },
         {
           path : 'pozorista/stranica/:id',
           component : PozBioComponent
@@ -105,7 +127,53 @@ import { PrijateljiComponent } from './components/prijatelji/prijatelji.componen
         {
           path : "prijatelji",
           component : PrijateljiComponent
+        },
+        {
+<<<<<<< HEAD
+          path : "noviAdmFz",
+          component : NoviAdmFzComponent
+        },
+        {
+          path : "noviAdmSis",
+          component : NoviAdmSisComponent
+        },
+        {
+          path : "adminFz/stranica/:id",
+          component : AdminFzComponent
+        },
+        {
+          path : "adminSi/stranica/:id",
+          component : AdminFzComponent
+        },
+        {
+          path : "fanzona",
+          component : FanZonaComponent
+        },
+        {
+          path : "noviOglas",
+          component : NoviOglasComponent
+        },
+        {
+          path : '',
+          component : CentralComponent
+        },
+=======
+          path : 'izmeniPozBio/:id',
+          component : NoviPozBioComponent
+        },
+        {
+          path : 'sala/:id',
+          component : SalaPreviewComponent
+        },
+        {
+          path : 'noviPredFilm',
+          component : NoviPredFilmComponent
+        },
+        {
+          path : 'izmeniPredFilm/:id',
+          component : NoviPredFilmComponent
         }
+>>>>>>> 40ec0417217aceb4811ab2206cfb1d55dd0cce4b
       ]
      ),
      FormsModule,
@@ -114,7 +182,7 @@ import { PrijateljiComponent } from './components/prijatelji/prijatelji.componen
       apiKey: 'AIzaSyAXBX98N0e-Hh2Yvv1dgTcTnS5CLbUJIvY'
     })
   ],
-  providers: [ PozBioService, RegisterService, HttpClientModule, AlertService, PrijavljenKorisnikService ],
+  providers: [ PozBioService, OglasiService, AdminServiceService,RegisterService, HttpClientModule, AlertService, PrijavljenKorisnikService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

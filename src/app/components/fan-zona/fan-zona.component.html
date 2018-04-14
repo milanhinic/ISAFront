@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="card card-block bg-faded pozadina2 col-lg-10 gap-top">
+      <div class="container">
+          <ul class="nav nav-tabs">
+              <li class="nav-item"><a class="nav-link active" id="tab1" data-toggle="tab" href="#tudjioglasi" role="tab" aria-controls="tab1aria" aria-selected="true">Tudji oglasi</a></li>
+              <li class="nav-item"><a class="nav-link" id="tab2" data-toggle="tab" href="#mojioglasi" role="tab" aria-controls="tab2aria" aria-selected="false">Moji oglasi</a></li>
+          </ul>
+          <div class="tab-content">
+              <div class="tab-pane active" id="tudjioglasi" role="tabpanel" aria-labelledby="tab1aria">
+                  <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Slika</th>
+                          <th scope="col">Naziv</th>
+                          <th scope="col">Aktivno do</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let oglasi of tudjiOglasi" >
+                          <td>{{oglasi.ime}}</td>
+                          <td>{{oglasi.prezime}}</td>
+                          <td>{{oglasi.grad}}</td>
+                          <td>{{oglasi.telefon}}</td>
+                          <td>
+                            <button type="button" class="btn btn-primary" (click)='Pogledaj(oglasi.id)'>Izmeni</button>
+                          </td>
+                        </tr>
+                      </tbody>
+                  </table>
+              </div>
+              <div class="tab-pane" id="mojioglasi" role="tabpanel" aria-labelledby="tab2aria">
+                  <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Slika</th>
+                          <th scope="col">Naziv</th>
+                          <th scope="col">Aktivno do</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let oglasi of mojiOglasi" >
+                          <td>{{oglasi.ime}}</td>
+                          <td>{{oglasi.prezime}}</td>
+                          <td>{{oglasi.grad}}</td>
+                          <td>{{oglasi.telefon}}</td>
+                          <td>
+                            <button type="button" class="btn btn-primary" (click)='Pogledaj(oglasi.id)'>Izmeni</button>
+                          </td>
+                        </tr>
+                      </tbody>
+                  </table>
+
+              </div>
+          </div>
+      </div>
+    </div>    
+</div>
+
