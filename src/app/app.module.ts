@@ -38,6 +38,7 @@ import { DodajIzmeniSegmentComponent } from './components/dodaj-izmeni-segment/d
 import { TipSegmentaComponent } from './components/tip-segmenta/tip-segmenta.component';
 import { NoviPredFilmComponent } from './components/novi-pred-film/novi-pred-film.component';
 import { DodajIzbrisiSedistaComponent } from './components/dodaj-izbrisi-sedista/dodaj-izbrisi-sedista.component';
+import { SortPozBioPipe } from './pipes/sort-poz-bio.pipe';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { DodajIzbrisiSedistaComponent } from './components/dodaj-izbrisi-sedista
     TipSegmentaComponent,
     NoviPredFilmComponent,
     DodajIzbrisiSedistaComponent,
-    NoviPredFilmComponent
+    NoviPredFilmComponent,
+    SortPozBioPipe
   ],
   imports: [
     BrowserModule,
