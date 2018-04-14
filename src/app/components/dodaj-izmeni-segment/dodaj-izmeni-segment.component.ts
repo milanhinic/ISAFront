@@ -56,7 +56,7 @@ export class DodajIzmeniSegmentComponent implements OnInit {
 
     console.log(noviSegment)
 
-    this.http.post("/app/sacuvajSegment/"+this.idSala+"/"+noviSegment.tip, noviSegment).subscribe((res) => {
+    this.http.post("/app/sacuvajSegment/"+this.idSala+"/"+noviSegment.tip+"?brojSedista="+noviSegment.brojSedista, noviSegment).subscribe((res) => {
       if(res['_body'] != ''){
         let res1 = res.json();
         console.log(res1)
