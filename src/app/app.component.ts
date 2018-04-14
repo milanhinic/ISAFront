@@ -53,6 +53,11 @@ export class AppComponent {
 
   }
 
+  prikaziFanZonu() {
+      this.router.navigate(['/fanzona']);
+  }
+
+
   napraviNovoPB(){
     this.router.navigate(['/noviPozBio']);
   }
@@ -71,6 +76,14 @@ export class AppComponent {
 
   idiPrijatelje(){
     this.router.navigate(['/prijatelji']);
+  }
+
+  idiNaFanZonu() {
+    this.router.navigate(['/fanzona']);
+  }
+
+  registrujOglas() {
+    this.router.navigate(['/noviOglas']);
   }
 
   prijava(){

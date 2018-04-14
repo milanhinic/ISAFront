@@ -7,6 +7,7 @@ import { AgmCoreModule } from '@agm/core';
 
 import { AlertComponent } from './directives/alert.component';
 import { AlertService } from './services/alert.service';
+import { OglasiService } from './services/oglasi.service'
 
 import { AppComponent } from './app.component';
 import { CentralComponent } from './components/central/central.component';
@@ -30,6 +31,8 @@ import { PrijateljiComponent } from './components/prijatelji/prijatelji.componen
 import { NoviAdmFzComponent } from './components/novi-adm-fz/novi-adm-fz.component';
 import { NoviAdmSisComponent } from './components/novi-adm-sis/novi-adm-sis.component';
 import { AdminFzComponent } from './components/admin-fz/admin-fz.component';
+import { FanZonaComponent } from './components/fan-zona/fan-zona.component';
+import { NoviOglasComponent } from './components/novi-oglas/novi-oglas.component';
 
 
 @NgModule({
@@ -50,6 +53,8 @@ import { AdminFzComponent } from './components/admin-fz/admin-fz.component';
     NoviAdmFzComponent,
     NoviAdmSisComponent,
     AdminFzComponent,
+    FanZonaComponent,
+    NoviOglasComponent,
   ],
   imports: [
     BrowserModule,
@@ -126,6 +131,14 @@ import { AdminFzComponent } from './components/admin-fz/admin-fz.component';
           component : AdminFzComponent
         },
         {
+          path : "fanzona",
+          component : FanZonaComponent
+        },
+        {
+          path : "noviOglas",
+          component : NoviOglasComponent
+        },
+        {
           path : '',
           component : CentralComponent
         },
@@ -137,7 +150,7 @@ import { AdminFzComponent } from './components/admin-fz/admin-fz.component';
       apiKey: 'AIzaSyAXBX98N0e-Hh2Yvv1dgTcTnS5CLbUJIvY'
     })
   ],
-  providers: [ PozBioService, AdminServiceService,RegisterService, HttpClientModule, AlertService, PrijavljenKorisnikService ],
+  providers: [ PozBioService, OglasiService, AdminServiceService,RegisterService, HttpClientModule, AlertService, PrijavljenKorisnikService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

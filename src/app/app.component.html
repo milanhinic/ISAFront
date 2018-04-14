@@ -24,7 +24,7 @@
         <button type="button" class="btn btn-link" (click)="prikaziAdministatoreSis()">Administratori Sis</button>
       </li>
       <li class="nav-item">
-          <button type="button" class="btn btn-link">Fan-zona</button>
+          <button type="button" class="btn btn-link" (click)="prikaziFanZonu()">Fan-zona</button>
       </li>
       <li class="nav-item">
         <button type="button" class="btn btn-link" (click)="napraviNovoPB()">Napravi PozBio</button>
@@ -59,7 +59,8 @@
           <a class="dropdown-item" href="#">Rezervacije</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Registruj pozoriste/bioskop</a>
-          <a class="dropdown-item" href="#">Pristup fan-zoni</a>
+          <a class="dropdown-item" (click) = "registrujOglas()">Registruj oglas</a>
+          <a class="dropdown-item" (click) = "idiNaFanZonu()">Pristup fan-zoni</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" (click) = "odjava()">Odjavite se</a>
         </div>
