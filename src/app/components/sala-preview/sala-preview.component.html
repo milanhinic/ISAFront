@@ -40,8 +40,8 @@
           <tr *ngFor="let tempSegment of segmenti; let i = index">
             <td>{{i+1}}</td>
             <td>{{tempSegment.brojSedista}}</td>
-            <td>{{tempSegment.tip.naziv}}</td>
-            <td>{{tempSegment.tip.cena}}</td>
+            <td>{{tempSegment.segment.tip.naziv}}</td>
+            <td>{{tempSegment.segment.tip.cena}}</td>
             <td>
               <button type="button" class="btn btn-info" (click)="izmeniSegment(tempSegment.id)">Izmeni</button>
             </td>
@@ -49,5 +49,7 @@
         </tbody>
       </table>
   </div>
-
+  <div class="col-lg-6">
+    
+  </div>
 </div>

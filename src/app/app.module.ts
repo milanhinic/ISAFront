@@ -30,6 +30,7 @@ import { SalaPreviewComponent } from './components/sala-preview/sala-preview.com
 import { DodajIzmeniSegmentComponent } from './components/dodaj-izmeni-segment/dodaj-izmeni-segment.component';
 import { TipSegmentaComponent } from './components/tip-segmenta/tip-segmenta.component';
 import { NoviPredFilmComponent } from './components/novi-pred-film/novi-pred-film.component';
+import { DodajIzbrisiSedistaComponent } from './components/dodaj-izbrisi-sedista/dodaj-izbrisi-sedista.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { NoviPredFilmComponent } from './components/novi-pred-film/novi-pred-fil
     SalaPreviewComponent,
     DodajIzmeniSegmentComponent,
     TipSegmentaComponent,
-    NoviPredFilmComponent
+    NoviPredFilmComponent,
+    DodajIzbrisiSedistaComponent
   ],
   imports: [
     BrowserModule,
