@@ -10,12 +10,17 @@
               </div>
             </div>
             <div class="card card-block bg-faded pozadina3 col-lg-7">
+              <div class="col-lg-10">
               <h2 class="naslov set-center">{{pozBio.naziv}}</h2>
               <p class="blueText">{{pozBio.opis}}</p>
+              </div>
+              <div class="col-lg-2">
+              <button class="btn btn-md btn-primary right-items" (click)="izmeniPozBio()">Izmeni</button>
+              </div>
             </div>
         </div>
         <div class="row">
-          <div class="gap-top col-lg-5">
+          <div class="gap-top col-lg-7">
             <div class="gap-top card card-block bg-faded pozadina3 col-lg-11">
               <div>
                 <table class="table">
@@ -27,9 +32,9 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let tempSala of sale">
-                        <td>{{tempSala.naziv}}</td>
+                        <td><a (click)="pogledajSalu(tempSala.id)" >{{tempSala.naziv}}</a></td>
                         <td>
-                          <button type="button" class="btn btn-info" (click)="izmeni(tempSala.id)">Izmeni</button>
+                          <button type="button" class="btn btn-info" (click)="izmeniSalu(tempSala.id)" >Izmeni</button>
                         </td>
                       </tr>
                     </tbody>
@@ -37,6 +42,12 @@
                 </div>
                 <div>
                     <button type="button" class="btn btn-info form-control" (click)="dodaj()">Dodaj novu salu</button>
+                </div>
+                <div *ngIf="isDodavanje">
+                  <app-dodaj-izmeni-salu [mode]="0" [idPozBio]="id"></app-dodaj-izmeni-salu>
+                </div>
+                <div *ngIf="isIzmena">
+                  <app-dodaj-izmeni-salu [mode]="1" [idPozBio]="id" [idSala]="idSala"></app-dodaj-izmeni-salu>
                 </div>
               </div>
           </div>

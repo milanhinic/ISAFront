@@ -28,11 +28,18 @@ import { AktiviranNalogComponent } from './components/aktiviran-nalog/aktiviran-
 import { DodajIzmeniSaluComponent } from './components/dodaj-izmeni-salu/dodaj-izmeni-salu.component';
 import { ProfilComponent } from './components/profil/profil.component';
 import { PrijateljiComponent } from './components/prijatelji/prijatelji.component';
+<<<<<<< HEAD
 import { NoviAdmFzComponent } from './components/novi-adm-fz/novi-adm-fz.component';
 import { NoviAdmSisComponent } from './components/novi-adm-sis/novi-adm-sis.component';
 import { AdminFzComponent } from './components/admin-fz/admin-fz.component';
 import { FanZonaComponent } from './components/fan-zona/fan-zona.component';
 import { NoviOglasComponent } from './components/novi-oglas/novi-oglas.component';
+=======
+import { SalaPreviewComponent } from './components/sala-preview/sala-preview.component';
+import { DodajIzmeniSegmentComponent } from './components/dodaj-izmeni-segment/dodaj-izmeni-segment.component';
+import { TipSegmentaComponent } from './components/tip-segmenta/tip-segmenta.component';
+import { NoviPredFilmComponent } from './components/novi-pred-film/novi-pred-film.component';
+>>>>>>> 40ec0417217aceb4811ab2206cfb1d55dd0cce4b
 
 
 @NgModule({
@@ -50,11 +57,18 @@ import { NoviOglasComponent } from './components/novi-oglas/novi-oglas.component
     DodajIzmeniSaluComponent,
     ProfilComponent,
     PrijateljiComponent,
+<<<<<<< HEAD
     NoviAdmFzComponent,
     NoviAdmSisComponent,
     AdminFzComponent,
     FanZonaComponent,
     NoviOglasComponent,
+=======
+    SalaPreviewComponent,
+    DodajIzmeniSegmentComponent,
+    TipSegmentaComponent,
+    NoviPredFilmComponent
+>>>>>>> 40ec0417217aceb4811ab2206cfb1d55dd0cce4b
   ],
   imports: [
     BrowserModule,
@@ -115,6 +129,7 @@ import { NoviOglasComponent } from './components/novi-oglas/novi-oglas.component
           component : PrijateljiComponent
         },
         {
+<<<<<<< HEAD
           path : "noviAdmFz",
           component : NoviAdmFzComponent
         },
@@ -142,6 +157,23 @@ import { NoviOglasComponent } from './components/novi-oglas/novi-oglas.component
           path : '',
           component : CentralComponent
         },
+=======
+          path : 'izmeniPozBio/:id',
+          component : NoviPozBioComponent
+        },
+        {
+          path : 'sala/:id',
+          component : SalaPreviewComponent
+        },
+        {
+          path : 'noviPredFilm',
+          component : NoviPredFilmComponent
+        },
+        {
+          path : 'izmeniPredFilm/:id',
+          component : NoviPredFilmComponent
+        }
+>>>>>>> 40ec0417217aceb4811ab2206cfb1d55dd0cce4b
       ]
      ),
      FormsModule,
