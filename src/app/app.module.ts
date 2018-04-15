@@ -4,6 +4,8 @@ import { RouterModule, Routes, Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { AgmCoreModule } from '@agm/core';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AlertComponent } from './directives/alert.component';
 import { AlertService } from './services/alert.service';
@@ -176,11 +178,14 @@ import { SortPozBioPipe } from './pipes/sort-poz-bio.pipe';
         }
       ]
      ),
-     FormsModule,
-     ReactiveFormsModule,
-     AgmCoreModule.forRoot({
+    FormsModule,
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAXBX98N0e-Hh2Yvv1dgTcTnS5CLbUJIvY'
-    })
+    }),
+    OwlDateTimeModule, 
+    OwlNativeDateTimeModule,
+    BrowserAnimationsModule
   ],
   providers: [ PozBioService, OglasiService, AdminServiceService,RegisterService, HttpClientModule, AlertService, PrijavljenKorisnikService ],
   bootstrap: [AppComponent]
