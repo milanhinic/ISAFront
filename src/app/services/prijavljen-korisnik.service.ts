@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions, Headers } from '@angular/http'
+import { Http, RequestOptions, Headers } from '@angular/http';
 
 @Injectable()
 export class PrijavljenKorisnikService {
@@ -16,13 +16,20 @@ export class PrijavljenKorisnikService {
   }
 
   dobaviRegistrovanogKorisnika(path: string){
-    return this.http.get(path, this.postaviHeadere());  
+    return this.http.get(path, this.postaviHeadere());
   }
 
   izmeniKorisnika(path: string, body: any){
     return this.http.put(path, body, this.postaviHeadere());
   }
 
+  postuj(path:string, body: any){
+    return this.http.post(path, body, this.postaviHeadere());
+  }
+
+  postujListu(path:string, body: any[]){
+    return this.http.post(path, body, this.postaviHeadere());
+  }
   dobaviAdmine(path:string){
     return this.http.get(path).map(res => res.json());
   }
