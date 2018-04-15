@@ -1,6 +1,6 @@
 <div class="col-lg-6 mx-auto">
     <div class="card card-block bg-faded pozadina2 container">
-      <form [formGroup] = "noviOglasForma" (ngSubmit) = "potvrdi(noviOglasForma.value)">
+      <form [formGroup] = "noviOglasForma" (ngSubmit) = "posalji(noviOglasForma.value)">
           <fieldset>
             <legend class="forma-naslov" align="center">Formirajte novi oglas:</legend>
             <div class="form-group row mx-auto">
@@ -19,7 +19,7 @@
             </div>
             <div class="form-group row mx-auto">
                 <label for="opis" class="forma-text col-lg-2">Slika : </label>
-                <input type="file" name="putanja" id="putanja" class="form-control col-lg-10" formControlName="putanja">
+                <input type="file" name="putanja" id="putanja" class="form-control col-lg-10"  formControlName="putanja" #file>
               </div>
             <div class="form-group row mx-auto right-items">
               <button type="submit" class="btn btn-primary btn-md " [disabled] = "!noviOglasForma.valid">Potvrdi</button>

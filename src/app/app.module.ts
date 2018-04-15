@@ -41,8 +41,7 @@ import { TipSegmentaComponent } from './components/tip-segmenta/tip-segmenta.com
 import { NoviPredFilmComponent } from './components/novi-pred-film/novi-pred-film.component';
 import { DodajIzbrisiSedistaComponent } from './components/dodaj-izbrisi-sedista/dodaj-izbrisi-sedista.component';
 import { DodajIzmeniProjekcijuComponent } from './components/dodaj-izmeni-projekciju/dodaj-izmeni-projekciju.component';
-
-
+import { SortPozBioPipe } from './pipes/sort-poz-bio.pipe';
 
 @NgModule({
   declarations: [
@@ -70,7 +69,8 @@ import { DodajIzmeniProjekcijuComponent } from './components/dodaj-izmeni-projek
     NoviPredFilmComponent,
     DodajIzbrisiSedistaComponent,
     NoviPredFilmComponent,
-    DodajIzmeniProjekcijuComponent
+    DodajIzmeniProjekcijuComponent,
+    SortPozBioPipe
   ],
   imports: [
     BrowserModule,
@@ -155,10 +155,6 @@ import { DodajIzmeniProjekcijuComponent } from './components/dodaj-izmeni-projek
           component : NoviOglasComponent
         },
         {
-          path : '',
-          component : CentralComponent
-        },
-        {
           path : 'izmeniPozBio/:id',
           component : NoviPozBioComponent
         },
@@ -173,6 +169,10 @@ import { DodajIzmeniProjekcijuComponent } from './components/dodaj-izmeni-projek
         {
           path : 'izmeniPredFilm/:id',
           component : NoviPredFilmComponent
+        },
+        {
+          path : '',
+          component : CentralComponent
         }
       ]
      ),
