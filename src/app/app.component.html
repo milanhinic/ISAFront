@@ -17,23 +17,11 @@
       <li class="nav-item">
         <button type="button" class="btn btn-link" (click)="prikaziPozorista()">Pozorista</button>
       </li>
-      <li  class="nav-item">
-        <button type="button" class="btn btn-link" (click)="prikaziAdministatoreFz()">Administratori Fz</button>
-      </li>
-      <li class="nav-item">
-        <button type="button" class="btn btn-link" (click)="prikaziAdministatoreSis()">Administratori Sis</button>
-      </li>
       <li class="nav-item">
           <button type="button" class="btn btn-link" (click)="prikaziFanZonu()">Fan-zona</button>
       </li>
       <li class="nav-item">
         <button type="button" class="btn btn-link" (click)="napraviNovoPB()">Napravi PozBio</button>
-      </li>
-      <li class="nav-item">
-        <button type="button" class="btn btn-link" (click)="napraviNovoAFZ()">Napravi AdmFz</button>
-      </li>
-      <li class="nav-item">
-        <button type="button" class="btn btn-link" (click)="napraviNovoASIS()">Napravi AdmSis</button>
       </li>
 
 
@@ -56,10 +44,14 @@
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" (click) = "idiNaProfil()">Moj profil</a>
           <a class="dropdown-item" (click) = "idiPrijatelje()">Prijatelji</a>
+          <a class="dropdown-item" (click) = "prikaziAdministatoreFz()">Administratori Fz</a>
+          <a class="dropdown-item" (click) = "prikaziAdministatoreSis()">Administratori Sis</a>
           <a class="dropdown-item" href="#">Rezervacije</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Registruj pozoriste/bioskop</a>
           <a class="dropdown-item" (click) = "registrujOglas()">Registruj oglas</a>
+          <a class="dropdown-item" (click) = "napraviNovoAFZ()">Napravi AdmFz</a>
+          <a class="dropdown-item" (click) = "napraviNovoASIS()">Napravi AdmSis</a>
           <a class="dropdown-item" (click) = "idiNaFanZonu()">Pristup fan-zoni</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" (click) = "odjava()">Odjavite se</a>
