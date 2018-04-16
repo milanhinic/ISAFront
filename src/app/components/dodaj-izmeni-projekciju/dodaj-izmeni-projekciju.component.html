@@ -19,10 +19,11 @@
                       <option *ngFor="let tempSala of sale" [value]="tempSala.id" >{{tempSala.naziv}}</option>
                 </select>    
               </div>
-              
-              <input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Izaberite datum i vreme..." formControlName="datum">
-              <owl-date-time #dt1></owl-date-time>
-
+              <div class="form-group row mx-auto">
+                <label for="sala" class="forma-text col-lg-4">Datum i vreme : </label>
+                <input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Izaberite datum i vreme..." formControlName="datum">
+                <owl-date-time #dt1></owl-date-time>
+              </div>
               <div class="form-group row mx-auto right-items">
                 <button type="submit" class="btn btn-primary btn-md " [disabled] = "!projekcijaForma.valid">Potvrdi</button>
               </div>

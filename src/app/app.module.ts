@@ -44,6 +44,7 @@ import { NoviPredFilmComponent } from './components/novi-pred-film/novi-pred-fil
 import { DodajIzbrisiSedistaComponent } from './components/dodaj-izbrisi-sedista/dodaj-izbrisi-sedista.component';
 import { DodajIzmeniProjekcijuComponent } from './components/dodaj-izmeni-projekciju/dodaj-izmeni-projekciju.component';
 import { SortPozBioPipe } from './pipes/sort-poz-bio.pipe';
+import { ProjekcijaPreviewComponent } from './components/projekcija-preview/projekcija-preview.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { SortPozBioPipe } from './pipes/sort-poz-bio.pipe';
     DodajIzbrisiSedistaComponent,
     NoviPredFilmComponent,
     DodajIzmeniProjekcijuComponent,
-    SortPozBioPipe
+    SortPozBioPipe,
+    ProjekcijaPreviewComponent
   ],
   imports: [
     BrowserModule,
