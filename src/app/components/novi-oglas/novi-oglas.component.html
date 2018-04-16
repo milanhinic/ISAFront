@@ -15,11 +15,11 @@
               </div>
             <div class="form-group row mx-auto">
               <label for="opis" class="forma-text col-lg-2">Vazi do : </label>
-              <input type="date" name="datum" id="datum" class="form-control col-lg-10" formControlName="datum">
+              <input type="date" name="aktivnoDo" id="aktivnoDo" class="form-control col-lg-10" formControlName="aktivnoDo">
             </div>
             <div class="form-group row mx-auto">
                 <label for="opis" class="forma-text col-lg-2">Slika : </label>
-                <input type="file" name="putanja" id="putanja" class="form-control col-lg-10"  formControlName="putanja" #file>
+                <input type="file" name="putanja" id="putanja" class="form-control col-lg-10" (change)="onFileChange($event)" formControlName="putanja" #file>
               </div>
             <div class="form-group row mx-auto right-items">
               <button type="submit" class="btn btn-primary btn-md " [disabled] = "!noviOglasForma.valid">Potvrdi</button>

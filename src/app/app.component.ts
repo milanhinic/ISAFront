@@ -95,6 +95,11 @@ export class AppComponent {
     localStorage.removeItem("logovanKorisnik");
   }
 
+  odobriOglase() {
+    this.router.navigate(['/odobriOglase/stranica/1']);
+
+  }
+
 
   public static updateUserStatus: Subject<boolean> = new Subject();
 
