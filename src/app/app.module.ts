@@ -42,6 +42,7 @@ import { NoviPredFilmComponent } from './components/novi-pred-film/novi-pred-fil
 
 import { DodajIzbrisiSedistaComponent } from './components/dodaj-izbrisi-sedista/dodaj-izbrisi-sedista.component';
 import { SortPozBioPipe } from './pipes/sort-poz-bio.pipe';
+import { RezervacijeComponent } from './components/rezervacije/rezervacije.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { SortPozBioPipe } from './pipes/sort-poz-bio.pipe';
     NoviPredFilmComponent,
     DodajIzbrisiSedistaComponent,
     NoviPredFilmComponent,
-    SortPozBioPipe
+    SortPozBioPipe,
+    RezervacijeComponent
   ],
   imports: [
     BrowserModule,
@@ -168,6 +170,10 @@ import { SortPozBioPipe } from './pipes/sort-poz-bio.pipe';
         {
           path : 'izmeniPredFilm/:id',
           component : NoviPredFilmComponent
+        },
+        {
+          path : 'rezervacije',
+          component : RezervacijeComponent
         },
         {
           path : '',

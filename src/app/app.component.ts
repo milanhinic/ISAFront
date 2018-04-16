@@ -95,8 +95,12 @@ export class AppComponent {
   odjava = function(){
     this.logovanKorisnik = null;
     localStorage.removeItem("logovanKorisnik");
+    window.location.reload();
   }
 
+  idiRezervacije(){
+    this.router.navigate(['/rezervacije']);
+  }
 
   public static updateUserStatus: Subject<boolean> = new Subject();
 

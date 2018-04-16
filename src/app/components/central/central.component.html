@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf = "!logovan" class="container">
     <div class="gap-top">
         <div class="row">
             <div class="card card-block bg-faded pozadina2 col-lg-5">
@@ -17,6 +17,40 @@
         </div>
     </div>
   </div>
-<br/>
+<div *ngIf = "logovan">
+<legend class="leg" align="center">Istorijat poseta</legend>
+<div class="mx-auto card card-block bg-faded pozadina2 col-lg-10 gap-top" >
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Film/Predstava</th>
+              <th scope="col">Bioskop/Pozoriste</th>
+              <th scope="col">Datum</th>
+              <th scope="col">Ocena ambijenta</th>
+              <th scope="col">Ocena projekcije/predstave</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="istorijatPoseta==null || istorijatPoseta?.length === 0">Niste posetili ni jednu predstavu ili projekciju</tr>
+                <tr *ngFor="let i of istorijatPoseta">
+                <td>{{i.projekcijaPredFilmNaziv}}</td>
+                <td>{{i.projekcijaSalaPozBioNaziv}}</td>
+                <td>{{i.projekcijaDatum}}</td>
+                <td>{{i.ocenaAmbijenta}}</td>
+                <td>{{i.ocenaProjekcije}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary">Oceni ambijent</button>
+                    <button type="button" class="btn btn-primary">Oceni projekciju/predstavu</button>
+                </td>
+                </tr>    
+           </tbody>
+        </table>
+        <div>
+          <button class="btn btn-info right-items" (click)="nextIstorijat(this.istorijatStranica)">&#x21E8;</button>
+          <button class="btn btn-info right-items">{{istorijatStranica}}</button>
+          <button class="btn btn-info right-items" (click)="prevIstorijat(this.istorijatStranica)">&#x21E6;</button>
+        </div>
+    </div>
+</div>
   
   
