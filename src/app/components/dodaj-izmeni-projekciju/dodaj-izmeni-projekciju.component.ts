@@ -22,6 +22,7 @@ export class DodajIzmeniProjekcijuComponent implements OnInit {
 
   ngOnInit() {
 
+
     this.projekcijaForma = new FormGroup({
       predFilm : new FormControl("",Validators.compose([
         Validators.required
