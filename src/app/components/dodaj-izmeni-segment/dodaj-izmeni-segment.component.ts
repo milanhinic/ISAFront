@@ -26,6 +26,7 @@ export class DodajIzmeniSegmentComponent implements OnInit {
 
     this.segmentForma = new FormGroup({
       brojSedista : new FormControl("",Validators.compose([
+        Validators.pattern('[0-9]+'),
         Validators.required
       ])),
       tip : new FormControl("",Validators.compose([
