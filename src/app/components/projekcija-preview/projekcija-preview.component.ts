@@ -22,9 +22,6 @@ export class ProjekcijaPreviewComponent implements OnInit {
 
   preuzmiProjekcije = function(){
 
-    console.log(this.datumProjekcija)
-
-    /*
     this.http.post("/app/vratiProjekcijePoDanu?idPozBio="+this.pozBio.id+"&datum="+this.datumProjekcija).subscribe(res => {
       if(res['_body'] != ""){
         console.log(res.json());
@@ -32,7 +29,7 @@ export class ProjekcijaPreviewComponent implements OnInit {
       }else{
         alert(res.headers.get('message'))
       }
-  })*/
+    })
 
   }
 
