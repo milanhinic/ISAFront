@@ -33,7 +33,13 @@ export class PrijateljiComponent implements OnInit {
     if(korisnikToken==null){
       this.router.navigate(['']);
     }else{
-      this.ucitajPrijatelje();
+      var korisnik = JSON.parse(window.atob(korisnikToken.split('.')[1]));
+      var uloga = korisnik.uloga[0].authority;
+      if(uloga!=='RK'){
+        this.router.navigate(['']);
+      }else{
+        this.ucitajPrijatelje();
+      }    
     }
   }
   

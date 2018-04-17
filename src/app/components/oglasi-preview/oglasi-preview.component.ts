@@ -14,12 +14,19 @@ export class OglasiPreviewComponent implements OnInit {
   private oglas: any;
   private id : any;
   private slika : any;
+  private uloga : any;
+  private korisnikToken : string;
+  private logovanKorisnik : any;
 
   constructor(private http:Http, private route: ActivatedRoute, private router: Router, private oglasiService : OglasiService) { }
 
   ngOnInit() {
 
     this.oglas = {};
+
+    this.korisnikToken = localStorage.getItem('logovanKorisnik');
+    this.logovanKorisnik = JSON.parse(window.atob(this.korisnikToken.split('.')[1]));
+    this.uloga = this.logovanKorisnik.uloga[0].authority;
 
     this.route.params.subscribe(params => {
       this.id = +params['id'];
@@ -28,9 +35,7 @@ export class OglasiPreviewComponent implements OnInit {
    this.http.get('/app/oglas/'+this.id).subscribe((data) => {
       
       if(data['_body'] != ""){
-        this.oglas = data.json();
-        console.log(this.oglas.path);
-        
+        this.oglas = data.json();        
       }else{
         console.log('Greska pro dobavljanju oglasa')
         this.router.navigate(['/']);
@@ -65,5 +70,13 @@ export class OglasiPreviewComponent implements OnInit {
 
   }
 
+  IzmeniOglas(value) {
+    this.router.navigate(['/izmeniOglas/'+ value]);
+  }
+
+
+  Ponudi(value) {
+    this.router.navigate(['/ponudi/' + this.oglas.id]);
+  }
 
 }

@@ -22,6 +22,7 @@ export class DodajIzmeniProjekcijuComponent implements OnInit {
 
   ngOnInit() {
 
+
     this.projekcijaForma = new FormGroup({
       predFilm : new FormControl("",Validators.compose([
         Validators.required
@@ -43,13 +44,15 @@ export class DodajIzmeniProjekcijuComponent implements OnInit {
       }
     })
 
-    if(this.pozBio.tip = 'BIO'){
+    if(this.pozBio.tip === 'BIO'){
       this.projType = 0;
-    }else if(this.pozBio.tip = 'POZ'){
+    }else if(this.pozBio.tip === 'POZ'){
       this.projType = 1;
     }else{
       this.projType = -1;
     }
+
+    console.log(this.projType)
 
     this.http.get("/app/vratiSvePredFilmove/"+this.projType).subscribe(res => {
       if(res['_body'] != ""){

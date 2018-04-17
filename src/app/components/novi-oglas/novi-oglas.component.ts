@@ -63,25 +63,6 @@ export class NoviOglasComponent implements OnInit {
       }
     });
 
-    /*
-    this.http.post('/app/sacuvajOglas',value).subscribe((res) => {
-      
-      if(res['_body'] != ""){
-        
-        this.http.post('/app/postaviSliku', formModel).subscribe((slika => {
-          if(res['_body'] != ""){
-            this.router.navigate(['']);    
-           }
-        }))
-        
-        
-      }else{
-        alert(res.headers.get('message'))
-      }
-
-    });
-    */
-
   }
 
 

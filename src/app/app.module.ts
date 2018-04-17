@@ -46,6 +46,11 @@ import { DodajIzmeniProjekcijuComponent } from './components/dodaj-izmeni-projek
 import { SortPozBioPipe } from './pipes/sort-poz-bio.pipe';
 import { OdobriOglaseComponent } from './components/odobri-oglase/odobri-oglase.component';
 import { OglasiPreviewComponent } from './components/oglasi-preview/oglasi-preview.component';
+import { RezervacijeComponent } from './components/rezervacije/rezervacije.component';
+import { ProjekcijaPreviewComponent } from './components/projekcija-preview/projekcija-preview.component';
+import { IzmeniOglasComponent } from './components/izmeni-oglas/izmeni-oglas.component';
+import { IzmenaPodatakaComponent } from './components/izmena-podataka/izmena-podataka.component';
+import { PonudiComponent } from './components/ponudi/ponudi.component';
 
 @NgModule({
   declarations: [
@@ -76,8 +81,13 @@ import { OglasiPreviewComponent } from './components/oglasi-preview/oglasi-previ
     SortPozBioPipe,
     OdobriOglaseComponent,
     OglasiPreviewComponent,
+    RezervacijeComponent,
     DodajIzmeniProjekcijuComponent,
-    SortPozBioPipe
+    SortPozBioPipe,
+    ProjekcijaPreviewComponent,
+    IzmeniOglasComponent,
+    IzmenaPodatakaComponent,
+    PonudiComponent
   ],
   imports: [
     BrowserModule,
@@ -188,6 +198,22 @@ import { OglasiPreviewComponent } from './components/oglasi-preview/oglasi-previ
         {
           path : 'pregledajOglas/:id',
           component : OglasiPreviewComponent
+        },
+        {  
+          path : 'rezervacije',
+          component : RezervacijeComponent
+        },
+        {  
+          path : 'izmeniOglas/:id',
+          component : IzmeniOglasComponent
+        },
+        {  
+          path : 'izmenaPodataka',
+          component : IzmenaPodatakaComponent
+        },
+        {  
+          path : 'ponudi/:id',
+          component : PonudiComponent
         },
         {
           path : '',

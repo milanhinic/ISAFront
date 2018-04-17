@@ -14,8 +14,10 @@
                     <p class="blueText"></p>
                   </div>
                   <div>
-                      <button class="btn btn-md btn-primary" (click)="odobriOglas(oglas.id)">Odobri oglas</button>
-                      <button class="btn btn-md btn-primary" (click)="odbaciOglas(oglas.id)">Odbaci oglas</button>
+                      <button class="btn btn-md btn-primary" *ngIf = "uloga==='AF'"  (click)="odobriOglas(oglas.id)">Odobri oglas</button>
+                      <button class="btn btn-md btn-primary" *ngIf = "uloga==='AF'"  (click)="IzmeniOglas(oglas.id)">Izmeni oglas</button>
+                      <button class="btn btn-md btn-primary" *ngIf = "uloga==='RK'" (click)="Ponudi(oglas.id)">Ponudi</button>
+                      <button class="btn btn-md btn-primary" *ngIf = "uloga==='AF'" (click)="odbaciOglas(oglas.id)">Odbaci oglas</button>
                   </div>
                   <div>
                     <table class="table" border="0">

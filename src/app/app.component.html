@@ -47,7 +47,9 @@
           <a class="dropdown-item" *ngIf = "uloga==='AS'" (click) = "prikaziAdministatoreFz()">Administratori Fz</a>
           <a class="dropdown-item" *ngIf = "uloga==='AS'" (click) = "prikaziAdministatoreSis()">Administratori Sis</a>
           <a class="dropdown-item" *ngIf = "uloga==='AF'" (click) = "odobriOglase()">Odobri oglase</a>
+          <a class="dropdown-item" *ngIf = "uloga==='AF'" (click) = "izmeniPodatke()">Izmeni podatke</a>
           <a class="dropdown-item" href="#">Rezervacije</a>
+          <a class="dropdown-item" *ngIf = "uloga==='RK'" (click) = "idiRezervacije()">Moje rezervacije</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="noviPozBio">Registruj pozoriste/bioskop</a>
           <a class="dropdown-item" href="#">Pristup fan-zoni</a>

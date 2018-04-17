@@ -21,6 +21,9 @@
                           <td>
                             <button type="button" class="btn btn-primary" (click)='Pogledaj(oglasi.id)'>Pogledaj</button>
                           </td>
+                          <td>
+                              <button type="button" *ngIf = "uloga==='AF'" class="btn btn-primary" (click)='Obrisi(oglasi.id)'>Obrisi</button>
+                          </td>
                         </tr>
                       </tbody>
                   </table>
