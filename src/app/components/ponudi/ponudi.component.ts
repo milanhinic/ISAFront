@@ -32,7 +32,6 @@ export class PonudiComponent implements OnInit {
     })
 
   }
-
   posalji(value) {
 
     this.http.post('/app/dodajPonudu/' + this.oglasId, value).subscribe((res) => {

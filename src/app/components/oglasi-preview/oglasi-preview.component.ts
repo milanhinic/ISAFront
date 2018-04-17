@@ -17,6 +17,7 @@ export class OglasiPreviewComponent implements OnInit {
   private uloga : any;
   private korisnikToken : string;
   private logovanKorisnik : any;
+  private ponude : any; 
 
   constructor(private http:Http, private route: ActivatedRoute, private router: Router, private oglasiService : OglasiService) { }
 
@@ -37,10 +38,21 @@ export class OglasiPreviewComponent implements OnInit {
       if(data['_body'] != ""){
         this.oglas = data.json();        
       }else{
-        console.log('Greska pro dobavljanju oglasa')
+        console.log('Greska pri dobavljanju oglasa')
         this.router.navigate(['/']);
       }
    });
+
+   this.http.get('/app/vratiPonude/'+this.id).subscribe((data) => {
+      
+    if(data['_body'] != ""){
+      this.ponude = data.json();
+      console.log(this.ponude);   
+    }else{
+      console.log('Greska pri dobavljanju ponuda')
+      this.router.navigate(['/']);
+    }
+ });
 
 
   }
@@ -77,6 +89,10 @@ export class OglasiPreviewComponent implements OnInit {
 
   Ponudi(value) {
     this.router.navigate(['/ponudi/' + this.oglas.id]);
+  }
+
+  prihvati(value) {
+    
   }
 
 }

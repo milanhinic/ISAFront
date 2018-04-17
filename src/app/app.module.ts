@@ -51,6 +51,7 @@ import { ProjekcijaPreviewComponent } from './components/projekcija-preview/proj
 import { IzmeniOglasComponent } from './components/izmeni-oglas/izmeni-oglas.component';
 import { IzmenaPodatakaComponent } from './components/izmena-podataka/izmena-podataka.component';
 import { PonudiComponent } from './components/ponudi/ponudi.component';
+import { PromeniLozinkuComponent } from './components/promeni-lozinku/promeni-lozinku.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { PonudiComponent } from './components/ponudi/ponudi.component';
     ProjekcijaPreviewComponent,
     IzmeniOglasComponent,
     IzmenaPodatakaComponent,
-    PonudiComponent
+    PonudiComponent,
+    PromeniLozinkuComponent
   ],
   imports: [
     BrowserModule,
@@ -214,6 +216,10 @@ import { PonudiComponent } from './components/ponudi/ponudi.component';
         {  
           path : 'ponudi/:id',
           component : PonudiComponent
+        },
+        {  
+          path : 'promeniLozinku',
+          component : PromeniLozinkuComponent
         },
         {
           path : '',
