@@ -29,7 +29,7 @@ export class ProfilComponent implements OnInit {
     }else{
       var korisnik = JSON.parse(window.atob(korisnikToken.split('.')[1]));
       var uloga = korisnik.uloga[0].authority;
-      if(uloga!=='RK'){
+      if(uloga==='AS'){
         this.router.navigate(['']);
       }else{
         this.prijavljenKorisnikService.dobaviRegistrovanogKorisnika('/app/secured/vratiRegKorisnika').subscribe(res=>{
