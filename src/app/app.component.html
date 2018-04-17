@@ -42,19 +42,19 @@
           {{logovanKorisnik.sub}}
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" (click) = "idiNaProfil()">Moj profil</a>
-          <a class="dropdown-item" (click) = "idiPrijatelje()">Prijatelji</a>
-          <a class="dropdown-item" (click) = "prikaziAdministatoreFz()">Administratori Fz</a>
-          <a class="dropdown-item" (click) = "prikaziAdministatoreSis()">Administratori Sis</a>
-          <a class="dropdown-item" (click) = "odobriOglase()">Odobri oglase</a>
+          <a class="dropdown-item" *ngIf = "uloga==='RK'" (click) = "idiNaProfil()">Moj profil</a>
+          <a class="dropdown-item" *ngIf = "uloga==='RK'" (click) = "idiPrijatelje()">Prijatelji</a>
+          <a class="dropdown-item" *ngIf = "uloga==='AS'" (click) = "prikaziAdministatoreFz()">Administratori Fz</a>
+          <a class="dropdown-item" *ngIf = "uloga==='AS'" (click) = "prikaziAdministatoreSis()">Administratori Sis</a>
+          <a class="dropdown-item" *ngIf = "uloga==='AF'" (click) = "odobriOglase()">Odobri oglase</a>
           <a class="dropdown-item" href="#">Rezervacije</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="noviPozBio">Registruj pozoriste/bioskop</a>
           <a class="dropdown-item" href="#">Pristup fan-zoni</a>
           <a class="dropdown-item" href="#">Registruj pozoriste/bioskop</a>
           <a class="dropdown-item" (click) = "registrujOglas()">Registruj oglas</a>
-          <a class="dropdown-item" (click) = "napraviNovoAFZ()">Napravi AdmFz</a>
-          <a class="dropdown-item" (click) = "napraviNovoASIS()">Napravi AdmSis</a>
+          <a class="dropdown-item" *ngIf = "uloga==='AS'" (click) = "napraviNovoAFZ()">Napravi AdmFz</a>
+          <a class="dropdown-item" *ngIf = "uloga==='AS'" (click) = "napraviNovoASIS()">Napravi AdmSis</a>
           <a class="dropdown-item" (click) = "idiNaFanZonu()">Pristup fan-zoni</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="noviPredFilm">Napravite predstavu/film</a>

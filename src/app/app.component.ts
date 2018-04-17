@@ -13,7 +13,7 @@ export class AppComponent {
   title = 'app';
   korisnikToken : string;
   logovanKorisnik : any;
-
+  uloga : string;
 
   constructor(private pozBioService : PozBioService,private adminService : AdminServiceService, private router: Router) {
    
@@ -23,10 +23,12 @@ export class AppComponent {
     AppComponent.updateUserStatus.subscribe(res => {
       this.korisnikToken = localStorage.getItem('logovanKorisnik');
       this.logovanKorisnik = JSON.parse(window.atob(this.korisnikToken.split('.')[1]));
+      this.uloga = this.logovanKorisnik.uloga[0].authority;
     })
     this.korisnikToken = localStorage.getItem('logovanKorisnik');
     if(this.korisnikToken){
       this.logovanKorisnik = JSON.parse(window.atob(this.korisnikToken.split('.')[1]));
+      this.uloga = this.logovanKorisnik.uloga[0].authority;
     }
   }
 
@@ -54,7 +56,7 @@ export class AppComponent {
   }
 
   prikaziFanZonu() {
-      this.router.navigate(['/fanzona']);
+      this.router.navigate(['/fanzona/stranica/1']);
   }
 
 

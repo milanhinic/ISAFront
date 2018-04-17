@@ -13,9 +13,12 @@ export class SalaPreviewComponent implements OnInit {
   private sala : any = {};
   private idSala : number;
   private mode: number;
+  private zaIzmenu: any;
+
   private isIzmena: boolean;
   private isDodavanjeSegmenta: boolean;
   private isTipSegmenta: boolean;
+  private isIzmenaSegmenta: boolean;
 
   constructor(private http:Http, private route: ActivatedRoute, private router: Router) { }
 
@@ -60,6 +63,16 @@ export class SalaPreviewComponent implements OnInit {
 
   dodajTipSegmenta = function(){
     this.isTipSegmenta = !this.isTipSegmenta;
+  }
+
+  izmeniSegment = function(value){
+    this.isIzmenaSegmenta = !this.isIzmenaSegmenta;
+
+    if(this.isIzmenaSegmenta){
+      this.zaIzmenu = value;
+      console.log(this.zaIzmenu)
+    }
+    
   }
 
 }

@@ -70,7 +70,7 @@ export class OdobriOglaseComponent implements OnInit {
 
   Pogledaj(value) {
       this.stranica = 1;
-      this.router.navigate(['/pregledajOglas',  value]);
+      this.router.navigate(['/pregledajOglas/',  value]);
 
   }
   

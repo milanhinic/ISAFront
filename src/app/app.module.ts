@@ -4,6 +4,8 @@ import { RouterModule, Routes, Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { AgmCoreModule } from '@agm/core';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AlertComponent } from './directives/alert.component';
 import { AlertService } from './services/alert.service';
@@ -39,8 +41,8 @@ import { SalaPreviewComponent } from './components/sala-preview/sala-preview.com
 import { DodajIzmeniSegmentComponent } from './components/dodaj-izmeni-segment/dodaj-izmeni-segment.component';
 import { TipSegmentaComponent } from './components/tip-segmenta/tip-segmenta.component';
 import { NoviPredFilmComponent } from './components/novi-pred-film/novi-pred-film.component';
-
 import { DodajIzbrisiSedistaComponent } from './components/dodaj-izbrisi-sedista/dodaj-izbrisi-sedista.component';
+import { DodajIzmeniProjekcijuComponent } from './components/dodaj-izmeni-projekciju/dodaj-izmeni-projekciju.component';
 import { SortPozBioPipe } from './pipes/sort-poz-bio.pipe';
 import { OdobriOglaseComponent } from './components/odobri-oglase/odobri-oglase.component';
 import { OglasiPreviewComponent } from './components/oglasi-preview/oglasi-preview.component';
@@ -73,7 +75,9 @@ import { OglasiPreviewComponent } from './components/oglasi-preview/oglasi-previ
     NoviPredFilmComponent,
     SortPozBioPipe,
     OdobriOglaseComponent,
-    OglasiPreviewComponent
+    OglasiPreviewComponent,
+    DodajIzmeniProjekcijuComponent,
+    SortPozBioPipe
   ],
   imports: [
     BrowserModule,
@@ -150,7 +154,7 @@ import { OglasiPreviewComponent } from './components/oglasi-preview/oglasi-previ
           component : AdminFzComponent
         },
         {
-          path : "fanzona",
+          path : "fanzona/stranica/:id",
           component : FanZonaComponent
         },
         {
@@ -178,16 +182,27 @@ import { OglasiPreviewComponent } from './components/oglasi-preview/oglasi-previ
           component : OdobriOglaseComponent
         },
         {
+          path : 'odobriOglase/stranica/:id',
+          component : OdobriOglaseComponent
+        },
+        {
+          path : 'pregledajOglas/:id',
+          component : OglasiPreviewComponent
+        },
+        {
           path : '',
           component : CentralComponent
         }
       ]
      ),
-     FormsModule,
-     ReactiveFormsModule,
-     AgmCoreModule.forRoot({
+    FormsModule,
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAXBX98N0e-Hh2Yvv1dgTcTnS5CLbUJIvY'
-    })
+    }),
+    OwlDateTimeModule, 
+    OwlNativeDateTimeModule,
+    BrowserAnimationsModule
   ],
   providers: [ PozBioService, OglasiService, AdminServiceService,RegisterService, HttpClientModule, AlertService, PrijavljenKorisnikService ],
   bootstrap: [AppComponent]

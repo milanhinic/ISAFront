@@ -10,19 +10,29 @@ import { OglasiService } from '../../services/oglasi.service'
 })
 export class FanZonaComponent implements OnInit {
 
-  tudjiOglasi : any;
-  mojiOglasi : any;
-
-
+  private tudjiOglasi : any;
+  private mojiOglasi : any;
+  private stranica : any;
+ 
 
   constructor(private oglasiService : OglasiService,private router: Router, private route: ActivatedRoute) { }
 
-  ngOnInit(
+  ngOnInit() {
     
+    if(this.stranica == undefined || this.stranica <= 0){
+      this.stranica = 1;
+      this.router.navigate(['/fanzona/stranica/'+this.stranica]);
+    }
+    
+    this.oglasiService.dobaviOglase('/app/dobaviOdobreneOglase/'+this.stranica).subscribe((data) => {
+        this.tudjiOglasi = data.content;
+        console.log(this.tudjiOglasi);
+
+    });
 
 
 
-  ) {
+ 
   }
 
 }

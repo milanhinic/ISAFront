@@ -43,13 +43,13 @@
             <td>{{tempSegment.segment.tip.naziv}}</td>
             <td>{{tempSegment.segment.tip.cena}}</td>
             <td>
-              <button type="button" class="btn btn-info" (click)="izmeniSegment(tempSegment.id)">Izmeni</button>
+              <button type="button" class="btn btn-info" (click)="izmeniSegment(tempSegment.segment)">Izmeni</button>
             </td>
           </tr>
         </tbody>
       </table>
   </div>
-  <div class="col-lg-6">
-    
+  <div class="col-lg-6" *ngIf="isIzmenaSegmenta">
+    <app-dodaj-izbrisi-sedista [segment]="zaIzmenu"></app-dodaj-izbrisi-sedista>
   </div>
 </div>
