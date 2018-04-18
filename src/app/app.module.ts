@@ -46,6 +46,8 @@ import { DodajIzmeniProjekcijuComponent } from './components/dodaj-izmeni-projek
 import { SortPozBioPipe } from './pipes/sort-poz-bio.pipe';
 import { RezervacijeComponent } from './components/rezervacije/rezervacije.component';
 import { ProjekcijaPreviewComponent } from './components/projekcija-preview/projekcija-preview.component';
+import { DajGlasComponent } from './components/daj-glas/daj-glas.component';
+import { FilmPredPreviewComponent } from './components/film-pred-preview/film-pred-preview.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +79,9 @@ import { ProjekcijaPreviewComponent } from './components/projekcija-preview/proj
     RezervacijeComponent,
     DodajIzmeniProjekcijuComponent,
     SortPozBioPipe,
-    ProjekcijaPreviewComponent
+    ProjekcijaPreviewComponent,
+    DajGlasComponent,
+    FilmPredPreviewComponent
   ],
   imports: [
     BrowserModule,
@@ -184,6 +188,10 @@ import { ProjekcijaPreviewComponent } from './components/projekcija-preview/proj
         {
           path : '',
           component : CentralComponent
+        },
+        {
+          path : 'predFilm/:id',
+          component : FilmPredPreviewComponent
         }
       ]
      ),

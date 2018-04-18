@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PozBioService } from '../../services/poz-bio.service';
 import { Router } from '@angular/router';
+import { Http } from '@angular/http';
 import { PrijavljenKorisnikService } from '../../services/prijavljen-korisnik.service';
 
 
@@ -15,9 +16,16 @@ export class CentralComponent implements OnInit {
   istorijatStranica : number = 1;
   logovan : boolean = false;
 
-  constructor(private pozBioService : PozBioService, private router: Router, private prijavljenKorisnikService : PrijavljenKorisnikService) { }
+  private mode: number;
+  private idProjekcija: number;
+  private isGlasanje: boolean;
+
+  constructor(private pozBioService : PozBioService, private router: Router, private prijavljenKorisnikService : PrijavljenKorisnikService, private http: Http) { }
 
   ngOnInit() {
+
+    this.isGlasanje = false;
+    this.mode = -1;
 
     var korisnikToken = localStorage.getItem('logovanKorisnik');
     if(korisnikToken!=null){
@@ -69,5 +77,46 @@ export class CentralComponent implements OnInit {
       }
     });
   }
+
+  oceniAmbijent = function(idProj : number){
+    this.mode = 0;
+    this.idProjekcija = idProj;
+    this.isGlasanje = !this.isGlasanje;
+  }
+
+  oceniProjekciju = function(idProj : number){
+    this.mode = 1;
+    this.idProjekcija = idProj;
+    this.isGlasanje = !this.isGlasanje;
+  }
+
+  skloniMe = function(val: boolean){
+    this.isGlasanje = false;
+  }
+
+  ponistiAmbijent = function(idProj : number){
+    
+    this.http.put("/app/secured/izbrisiOcenu/"+0+"?idProjekcije="+idProj,null , this.prijavljenKorisnikService.postaviHeadere()).subscribe(res => {
+      if(res['_body'] == 'true'){
+        console.log(res);
+        window.location.reload();
+      }else{
+        alert(res.headers.get('message'));
+      }
+    })
+    
+  }
+
+  ponistiProjekciju = function(idProj : number){
+    this.http.put("/app/secured/izbrisiOcenu/"+1+"?idProjekcije="+idProj,null , this.prijavljenKorisnikService.postaviHeadere()).subscribe(res => {
+      if(res['_body'] == 'true'){
+        console.log(res);
+        window.location.reload();
+      }else{
+        alert(res.headers.get('message'));
+      }
+    })
+  }
+
 
 }
