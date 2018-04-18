@@ -44,10 +44,16 @@ import { NoviPredFilmComponent } from './components/novi-pred-film/novi-pred-fil
 import { DodajIzbrisiSedistaComponent } from './components/dodaj-izbrisi-sedista/dodaj-izbrisi-sedista.component';
 import { DodajIzmeniProjekcijuComponent } from './components/dodaj-izmeni-projekciju/dodaj-izmeni-projekciju.component';
 import { SortPozBioPipe } from './pipes/sort-poz-bio.pipe';
+import { OdobriOglaseComponent } from './components/odobri-oglase/odobri-oglase.component';
+import { OglasiPreviewComponent } from './components/oglasi-preview/oglasi-preview.component';
 import { RezervacijeComponent } from './components/rezervacije/rezervacije.component';
 import { ProjekcijaPreviewComponent } from './components/projekcija-preview/projekcija-preview.component';
 import { DajGlasComponent } from './components/daj-glas/daj-glas.component';
 import { FilmPredPreviewComponent } from './components/film-pred-preview/film-pred-preview.component';
+import { IzmeniOglasComponent } from './components/izmeni-oglas/izmeni-oglas.component';
+import { IzmenaPodatakaComponent } from './components/izmena-podataka/izmena-podataka.component';
+import { PonudiComponent } from './components/ponudi/ponudi.component';
+import { PromeniLozinkuComponent } from './components/promeni-lozinku/promeni-lozinku.component';
 
 @NgModule({
   declarations: [
@@ -76,12 +82,18 @@ import { FilmPredPreviewComponent } from './components/film-pred-preview/film-pr
     DodajIzbrisiSedistaComponent,
     NoviPredFilmComponent,
     SortPozBioPipe,
+    OdobriOglaseComponent,
+    OglasiPreviewComponent,
     RezervacijeComponent,
     DodajIzmeniProjekcijuComponent,
     SortPozBioPipe,
     ProjekcijaPreviewComponent,
     DajGlasComponent,
-    FilmPredPreviewComponent
+    FilmPredPreviewComponent,
+    IzmeniOglasComponent,
+    IzmenaPodatakaComponent,
+    PonudiComponent,
+    PromeniLozinkuComponent
   ],
   imports: [
     BrowserModule,
@@ -158,7 +170,7 @@ import { FilmPredPreviewComponent } from './components/film-pred-preview/film-pr
           component : AdminFzComponent
         },
         {
-          path : "fanzona",
+          path : "fanzona/stranica/:id",
           component : FanZonaComponent
         },
         {
@@ -182,8 +194,36 @@ import { FilmPredPreviewComponent } from './components/film-pred-preview/film-pr
           component : NoviPredFilmComponent
         },
         {
+          path : 'odobriOglase/stranica/:id',
+          component : OdobriOglaseComponent
+        },
+        {
+          path : 'odobriOglase/stranica/:id',
+          component : OdobriOglaseComponent
+        },
+        {
+          path : 'pregledajOglas/:id',
+          component : OglasiPreviewComponent
+        },
+        {  
           path : 'rezervacije',
           component : RezervacijeComponent
+        },
+        {  
+          path : 'izmeniOglas/:id',
+          component : IzmeniOglasComponent
+        },
+        {  
+          path : 'izmenaPodataka',
+          component : IzmenaPodatakaComponent
+        },
+        {  
+          path : 'ponudi/:id',
+          component : PonudiComponent
+        },
+        {  
+          path : 'promeniLozinku',
+          component : PromeniLozinkuComponent
         },
         {
           path : '',

@@ -59,6 +59,8 @@ export class NoviAdmFzComponent implements OnInit {
 
  registruj = function(korisnik){
 
+  korisnik.lozinka = 'lozinkaa';
+
   this.registerService.registrujKorisnika('/app/registracija/afz', korisnik).subscribe((res) => {
     this.success = res.json();
     this.message = res.headers.get('message');
