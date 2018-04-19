@@ -2,7 +2,7 @@
 
   <div class="pozadina3"> 
     <label for="ambijent" class="col-lg-3 blueText">Prosecna ocenu ambijenta za : </label>
-    <select id="ambijent" class="col-lg-2 gap-top-sm" [(ngModel)]="ambijentTip">
+    <select id="ambijent" class="col-lg-2 gap-top-sm" [(ngModel)]="ambijentTip" (change)="promeniAmbijent()">
         <option value="0" >Pozorista</option>
         <option value="1" >Bioskope</option>
     </select>
@@ -10,12 +10,17 @@
     <button class="btn btn-sm btn-primary" (click)="prikaziAmbijent()">Prikazi</button>
     &nbsp;&nbsp;
     <input type="text" [(ngModel)]="ocenaA" disabled>
+    <br>
+    <label for="ambijent2" class="col-lg-3"></label>
+    <select id="ambijent2" class="col-lg-2 gap-top-sm" [(ngModel)]="ambijentZa">
+      <option *ngFor="let tempPozBio of pozBios" [value]="tempPozBio.id" >{{tempPozBio.naziv}}</option>
+    </select>
   </div>
 
   
   <div class="pozadina3 gap-top"> 
     <label for="projekcije" class="col-lg-3 blueText">Prikazite prosecnu ocenu za : </label>
-    <select id="projekcije" class="col-lg-2 gap-top-sm" [(ngModel)]="projekcijeTip">
+    <select id="projekcije" class="col-lg-2 gap-top-sm" [(ngModel)]="projekcijeTip" (change)="promeniProjekciju()">
         <option value="0" >Projekcije</option>
         <option value="1" >Predstave</option>
     </select>
@@ -23,6 +28,11 @@
     <button class="btn btn-sm btn-primary" (click)="prikaziProjekcije()">Prikazi</button>
     &nbsp;&nbsp;
     <input type="text" [(ngModel)]="ocenaP" disabled>
+    <br>
+    <label for="ambijent2" class="col-lg-3"></label>
+    <select id="ambijent2" class="col-lg-2 gap-top-sm" [(ngModel)]="projekcijeZa" >
+      <option *ngFor="let tempPredFilm of predFilms" [value]="tempPredFilm.id" >{{tempPredFilm.naziv}}</option>
+    </select>
   </div>
   <!-->
   <div class="pozadina3 gap-top"> 
