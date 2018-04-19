@@ -44,4 +44,8 @@ export class ProjekcijaPreviewComponent implements OnInit {
     this.router.navigate(['predFilm/'+val]);
   }
 
+  rezervisiProjekciju = function(idProj){
+    this.router.navigate(['rezervisi/'+idProj]);
+  }
+
 }
