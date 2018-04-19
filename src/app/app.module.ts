@@ -46,6 +46,10 @@ import { DodajIzmeniProjekcijuComponent } from './components/dodaj-izmeni-projek
 import { SortPozBioPipe } from './pipes/sort-poz-bio.pipe';
 import { RezervacijeComponent } from './components/rezervacije/rezervacije.component';
 import { ProjekcijaPreviewComponent } from './components/projekcija-preview/projekcija-preview.component';
+import { RezervacijaGlavnaComponent } from './components/rezervacija-glavna/rezervacija-glavna.component';
+import { RezervacijaMestoComponent } from './components/rezervacija-mesto/rezervacija-mesto.component';
+import { RezervacijaPrijateljiComponent } from './components/rezervacija-prijatelji/rezervacija-prijatelji.component';
+import { KartaService } from './services/karta.service';
 
 @NgModule({
   declarations: [
@@ -77,7 +81,11 @@ import { ProjekcijaPreviewComponent } from './components/projekcija-preview/proj
     RezervacijeComponent,
     DodajIzmeniProjekcijuComponent,
     SortPozBioPipe,
-    ProjekcijaPreviewComponent
+    ProjekcijaPreviewComponent,
+    RezervacijaGlavnaComponent,
+    RezervacijaGlavnaComponent,
+    RezervacijaMestoComponent,
+    RezervacijaPrijateljiComponent
   ],
   imports: [
     BrowserModule,
@@ -182,6 +190,10 @@ import { ProjekcijaPreviewComponent } from './components/projekcija-preview/proj
           component : RezervacijeComponent
         },
         {
+          path : 'rezervisi/:id',
+          component : RezervacijaGlavnaComponent
+        },
+        {
           path : '',
           component : CentralComponent
         }
@@ -196,7 +208,7 @@ import { ProjekcijaPreviewComponent } from './components/projekcija-preview/proj
     OwlNativeDateTimeModule,
     BrowserAnimationsModule
   ],
-  providers: [ PozBioService, OglasiService, AdminServiceService,RegisterService, HttpClientModule, AlertService, PrijavljenKorisnikService ],
+  providers: [ PozBioService, OglasiService, AdminServiceService,RegisterService, HttpClientModule, AlertService, PrijavljenKorisnikService, KartaService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
