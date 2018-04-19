@@ -54,6 +54,7 @@ import { IzmeniOglasComponent } from './components/izmeni-oglas/izmeni-oglas.com
 import { IzmenaPodatakaComponent } from './components/izmena-podataka/izmena-podataka.component';
 import { PonudiComponent } from './components/ponudi/ponudi.component';
 import { PromeniLozinkuComponent } from './components/promeni-lozinku/promeni-lozinku.component';
+import { IzvestajiPreviewComponent } from './components/izvestaji-preview/izvestaji-preview.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,8 @@ import { PromeniLozinkuComponent } from './components/promeni-lozinku/promeni-lo
     IzmeniOglasComponent,
     IzmenaPodatakaComponent,
     PonudiComponent,
-    PromeniLozinkuComponent
+    PromeniLozinkuComponent,
+    IzvestajiPreviewComponent
   ],
   imports: [
     BrowserModule,
@@ -232,6 +234,10 @@ import { PromeniLozinkuComponent } from './components/promeni-lozinku/promeni-lo
         {
           path : 'predFilm/:id',
           component : FilmPredPreviewComponent
+        },
+        {
+          path : 'izvestaji',
+          component : IzvestajiPreviewComponent
         }
       ]
      ),

@@ -59,7 +59,7 @@ export class PozBioPreviewComponent implements OnInit {
 
     this.http.get('/app/ocenaAmbijenta/'+this.id).subscribe((res) => {
       if(res['_body'] != ""){
-        this.ocena = res.json();
+        this.ocena = Math.round(res.json() * 100) / 100;
       }else{
         this.ocena = 0;
       }
