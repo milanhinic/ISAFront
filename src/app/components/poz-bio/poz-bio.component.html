@@ -15,7 +15,6 @@
           <tr>
             <th scope="col">Naziv &nbsp; <button type="button" class="btn btn-primary btn-sm" (click) = "sortiraj('N')">Sortiraj</button></th>
             <th scope="col">Adresa &nbsp; <button type="button" class="btn btn-primary btn-sm" (click) = "sortiraj('A')">Sortiraj</button></th>
-            <th scope="col">Rejting</th>
             <th scope="col">Stranica</th>
           </tr>
         </thead>
@@ -23,7 +22,6 @@
           <tr *ngFor="let tempPozBio of pozBios | sortPozBio : sortParam" >
             <td>{{tempPozBio.naziv}}</td>
             <td>{{tempPozBio.adresa}}</td>
-            <td>0</td>
             <td>
               <button type="button" class="btn btn-primary" (click)='pogledaj(tempPozBio.id)'>Pogledaj</button>
             </td>

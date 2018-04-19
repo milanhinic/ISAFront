@@ -14,7 +14,7 @@ export class ProjekcijaPreviewComponent implements OnInit {
   private projekcije: any[] = [];
   private startAt;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private router: Router) { }
 
   ngOnInit() {
     this.startAt = new Date(Date.now());
@@ -37,6 +37,11 @@ export class ProjekcijaPreviewComponent implements OnInit {
   konvertujDatume = function(dateInMili: number){
     var date = new Date(dateInMili);
     return (date.toString()).substr(3, 18);
+  }
+
+  pogledajPredFilm = function(val: number){
+    console.log(val)
+    this.router.navigate(['predFilm/'+val]);
   }
 
 }

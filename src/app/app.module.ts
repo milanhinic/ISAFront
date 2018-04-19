@@ -44,12 +44,22 @@ import { NoviPredFilmComponent } from './components/novi-pred-film/novi-pred-fil
 import { DodajIzbrisiSedistaComponent } from './components/dodaj-izbrisi-sedista/dodaj-izbrisi-sedista.component';
 import { DodajIzmeniProjekcijuComponent } from './components/dodaj-izmeni-projekciju/dodaj-izmeni-projekciju.component';
 import { SortPozBioPipe } from './pipes/sort-poz-bio.pipe';
+import { OdobriOglaseComponent } from './components/odobri-oglase/odobri-oglase.component';
+import { OglasiPreviewComponent } from './components/oglasi-preview/oglasi-preview.component';
 import { RezervacijeComponent } from './components/rezervacije/rezervacije.component';
 import { ProjekcijaPreviewComponent } from './components/projekcija-preview/projekcija-preview.component';
 import { RezervacijaGlavnaComponent } from './components/rezervacija-glavna/rezervacija-glavna.component';
 import { RezervacijaMestoComponent } from './components/rezervacija-mesto/rezervacija-mesto.component';
 import { RezervacijaPrijateljiComponent } from './components/rezervacija-prijatelji/rezervacija-prijatelji.component';
 import { KartaService } from './services/karta.service';
+import { DajGlasComponent } from './components/daj-glas/daj-glas.component';
+import { FilmPredPreviewComponent } from './components/film-pred-preview/film-pred-preview.component';
+import { IzmeniOglasComponent } from './components/izmeni-oglas/izmeni-oglas.component';
+import { IzmenaPodatakaComponent } from './components/izmena-podataka/izmena-podataka.component';
+import { PonudiComponent } from './components/ponudi/ponudi.component';
+import { PromeniLozinkuComponent } from './components/promeni-lozinku/promeni-lozinku.component';
+import { IzvestajiPreviewComponent } from './components/izvestaji-preview/izvestaji-preview.component';
+import { IzvestajChartComponent } from './components/izvestaj-chart/izvestaj-chart.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +88,8 @@ import { KartaService } from './services/karta.service';
     DodajIzbrisiSedistaComponent,
     NoviPredFilmComponent,
     SortPozBioPipe,
+    OdobriOglaseComponent,
+    OglasiPreviewComponent,
     RezervacijeComponent,
     DodajIzmeniProjekcijuComponent,
     SortPozBioPipe,
@@ -85,7 +97,15 @@ import { KartaService } from './services/karta.service';
     RezervacijaGlavnaComponent,
     RezervacijaGlavnaComponent,
     RezervacijaMestoComponent,
-    RezervacijaPrijateljiComponent
+    RezervacijaPrijateljiComponent,
+    DajGlasComponent,
+    FilmPredPreviewComponent,
+    IzmeniOglasComponent,
+    IzmenaPodatakaComponent,
+    PonudiComponent,
+    PromeniLozinkuComponent,
+    IzvestajiPreviewComponent,
+    IzvestajChartComponent
   ],
   imports: [
     BrowserModule,
@@ -162,7 +182,7 @@ import { KartaService } from './services/karta.service';
           component : AdminFzComponent
         },
         {
-          path : "fanzona",
+          path : "fanzona/stranica/:id",
           component : FanZonaComponent
         },
         {
@@ -186,8 +206,36 @@ import { KartaService } from './services/karta.service';
           component : NoviPredFilmComponent
         },
         {
+          path : 'odobriOglase/stranica/:id',
+          component : OdobriOglaseComponent
+        },
+        {
+          path : 'odobriOglase/stranica/:id',
+          component : OdobriOglaseComponent
+        },
+        {
+          path : 'pregledajOglas/:id',
+          component : OglasiPreviewComponent
+        },
+        {  
           path : 'rezervacije',
           component : RezervacijeComponent
+        },
+        {  
+          path : 'izmeniOglas/:id',
+          component : IzmeniOglasComponent
+        },
+        {  
+          path : 'izmenaPodataka',
+          component : IzmenaPodatakaComponent
+        },
+        {  
+          path : 'ponudi/:id',
+          component : PonudiComponent
+        },
+        {  
+          path : 'promeniLozinku',
+          component : PromeniLozinkuComponent
         },
         {
           path : 'rezervisi/:id',
@@ -196,6 +244,14 @@ import { KartaService } from './services/karta.service';
         {
           path : '',
           component : CentralComponent
+        },
+        {
+          path : 'predFilm/:id',
+          component : FilmPredPreviewComponent
+        },
+        {
+          path : 'izvestaji',
+          component : IzvestajiPreviewComponent
         }
       ]
      ),

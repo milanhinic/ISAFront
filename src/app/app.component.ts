@@ -56,7 +56,7 @@ export class AppComponent {
   }
 
   prikaziFanZonu() {
-      this.router.navigate(['/fanzona']);
+      this.router.navigate(['/fanzona/stranica/1']);
   }
 
 
@@ -98,8 +98,17 @@ export class AppComponent {
     window.location.reload();
   }
 
+  odobriOglase() {
+    this.router.navigate(['/odobriOglase/stranica/1']);
+
+  }
+
   idiRezervacije(){
     this.router.navigate(['/rezervacije']);
+  }
+
+  izmeniPodatke(){
+    this.router.navigate(['/izmenaPodataka'])
   }
 
   public static updateUserStatus: Subject<boolean> = new Subject();

@@ -16,6 +16,7 @@ export class PozBioPreviewComponent implements OnInit {
   private sale: any[];
   private id: number;
   private idSala: number;
+  private ocena: any;
 
   latitude: number = 51.678418;
   longitude: number = 7.809007;
@@ -46,15 +47,21 @@ export class PozBioPreviewComponent implements OnInit {
 
         this.http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + this.pozBio.adresa ).subscribe((res) => {
           let temp = res.json();
-          console.log(temp.results[0].geometry.location);
           this.longitude = res.json().results[0].geometry.location.lng;
           this.latitude = res.json().results[0].geometry.location.lat;
         });
 
         
       }else{
-        console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
         this.router.navigate(['/']);
+      }
+    });
+
+    this.http.get('/app/ocenaAmbijenta/'+this.id).subscribe((res) => {
+      if(res['_body'] != ""){
+        this.ocena = Math.round(res.json() * 100) / 100;
+      }else{
+        this.ocena = 0;
       }
     });
 
@@ -64,7 +71,6 @@ export class PozBioPreviewComponent implements OnInit {
         this.router.navigate(['/']);
       }else{
         this.sale = res.json();
-        console.log(this.sale)
       }
     });
 

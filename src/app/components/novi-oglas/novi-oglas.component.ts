@@ -26,59 +26,42 @@ export class NoviOglasComponent implements OnInit {
         Validators.maxLength(90)
       ])),
       opis : new FormControl(""),
-      datum : new FormControl(""),
+      aktivnoDo : new FormControl(""),
       putanja : new FormControl("")
     })
 
   }
 
-  /*
-  potvrdi = function(value){
-    console.log(value);
-    
-    this.http.post('/app/dodajNoviPozBio', value).subscribe((res) => {
-
-      if(res['_body'] != ""){
-        let novaSala = res.json();
-        this.router.navigate(['']);
-      }else{
-        alert(res.headers.get('message'))
-      }
-      
-    });
-    
-  }
-  */
-
   onFileChange(event) {
     if(event.target.files.length > 0) {
       this.file = event.target.files[0];
+      console.log("File " + this.file)
       //this.noviOglasForma.get('putanja').setValue(file);
     }
   }
 
   private prepareSave(): any {
     let input = new FormData();
+    let image : any = this.fileInput.nativeElement.files[0];
     input.append('naziv', this.noviOglasForma.get('naziv').value);
     input.append('opis', this.noviOglasForma.get('opis').value);
-    input.append('datum', this.noviOglasForma.get('datum').value);
-    input.append('putanja', this.file);
+    input.append('aktivnoDo', this.noviOglasForma.get('aktivnoDo').value);
+    input.append('putanja', image, image.name);
     return input;
   }
 
-  posalji() {
+  posalji(value) {
     const formModel = this.prepareSave();
     
+    console.log(formModel)
+  
     this.http.post('/app/sacuvajOglas',formModel).subscribe((res) => {
-      
       if(res['_body'] != ""){
         this.router.navigate(['']);
       }else{
         alert(res.headers.get('message'))
       }
-
     });
-
 
   }
 

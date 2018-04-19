@@ -29,10 +29,19 @@ export class LoginComponent implements OnInit {
     this.registerService.registrujKorisnika('/app/login', korisnik).subscribe(res=>{
 
         try{
-          this.korisnik = res.text();
-          localStorage.setItem('logovanKorisnik',this.korisnik);
-          AppComponent.updateUserStatus.next(true);
-          this.router.navigate(['']);
+          this.message = res.headers.get('message');
+          if(this.message == "Promeni"){
+            this.korisnik = res.text();
+            localStorage.setItem('logovanKorisnik',this.korisnik);
+            AppComponent.updateUserStatus.next(true);
+            this.router.navigate(['/promeniLozinku']); 
+          }else {
+            this.korisnik = res.text();
+            localStorage.setItem('logovanKorisnik',this.korisnik);
+            AppComponent.updateUserStatus.next(true);
+            this.router.navigate(['']);
+          }
+          
         }catch(error){
           this.message = res.headers.get('message');
           this.alertService.error(this.message);

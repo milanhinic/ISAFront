@@ -7,7 +7,7 @@ export class PrijavljenKorisnikService {
   constructor(private http: Http) { }
 
 
-  private postaviHeadere() : RequestOptions{
+  public postaviHeadere() : RequestOptions{
     let headers = new Headers();
     headers.append('token', localStorage.getItem('logovanKorisnik'));
     let options = new RequestOptions({headers : headers});

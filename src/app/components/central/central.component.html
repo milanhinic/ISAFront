@@ -18,6 +18,7 @@
     </div>
   </div>
 <div *ngIf = "logovan">
+    <app-daj-glas *ngIf="isGlasanje" [mode]="mode" [idProjekcija]="idProjekcija" (skloniMe)="skloniMe($event)"></app-daj-glas>
 <legend class="leg" align="center">Istorijat poseta</legend>
 <div class="mx-auto card card-block bg-faded pozadina2 col-lg-10 gap-top" >
         <table class="table">
@@ -36,11 +37,19 @@
                 <td>{{i.projekcijaPredFilmNaziv}}</td>
                 <td>{{i.projekcijaSalaPozBioNaziv}}</td>
                 <td>{{i.projekcijaDatum}}</td>
-                <td>{{i.ocenaAmbijenta}}</td>
-                <td>{{i.ocenaProjekcije}}</td>
-                <td>
-                    <button type="button" class="btn btn-primary">Oceni ambijent</button>
-                    <button type="button" class="btn btn-primary">Oceni projekciju/predstavu</button>
+                <td *ngIf="i.ocenaAmbijenta==null || i.ocenaAmbijenta == ''">
+                    <button type="button" class="btn btn-primary" (click)="oceniAmbijent(i.id)">Oceni ambijent</button>
+                </td>
+                <td *ngIf="i.ocenaAmbijenta!=null && i.ocenaAmbijenta != ''">
+                    <b>{{i.ocenaAmbijenta}}</b> &nbsp;
+                    <button type="button" class="btn btn-danger" (click)="ponistiAmbijent(i.id)">X</button>
+                </td>
+                <td *ngIf="i.ocenaProjekcije==null || i.ocenaProjekcije == ''">
+                    <button type="button" class="btn btn-primary" (click)="oceniProjekciju(i.id)">Oceni <br> projekciju/predstavu</button>
+                </td>
+                <td *ngIf="i.ocenaProjekcije!=null && i.ocenaProjekcije != ''">
+                    <b>{{i.ocenaProjekcije}}</b> &nbsp;
+                    <button type="button" class="btn btn-danger" (click)="ponistiProjekciju(i.id)">X</button>
                 </td>
                 </tr>    
            </tbody>

@@ -24,7 +24,7 @@
           <tbody>
             <tr *ngFor="let tempProjekcija of projekcije; let i = index">
               <td>{{i+1}}</td>
-              <td>{{tempProjekcija.predFilm.naziv}}</td>
+              <td><a (click)="pogledajPredFilm(tempProjekcija.predFilm.id)"><u>{{tempProjekcija.predFilm.naziv}}</u></a></td>
               <td>{{tempProjekcija.sala.naziv}}</td>
               <td>{{konvertujDatume(tempProjekcija.datum)}}</td>
               <td>
