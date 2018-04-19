@@ -55,7 +55,6 @@ import { IzmenaPodatakaComponent } from './components/izmena-podataka/izmena-pod
 import { PonudiComponent } from './components/ponudi/ponudi.component';
 import { PromeniLozinkuComponent } from './components/promeni-lozinku/promeni-lozinku.component';
 import { IzvestajiPreviewComponent } from './components/izvestaji-preview/izvestaji-preview.component';
-import { IzvestajChartComponent } from './components/izvestaj-chart/izvestaj-chart.component';
 
 @NgModule({
   declarations: [
@@ -96,8 +95,7 @@ import { IzvestajChartComponent } from './components/izvestaj-chart/izvestaj-cha
     IzmenaPodatakaComponent,
     PonudiComponent,
     PromeniLozinkuComponent,
-    IzvestajiPreviewComponent,
-    IzvestajChartComponent
+    IzvestajiPreviewComponent
   ],
   imports: [
     BrowserModule,
