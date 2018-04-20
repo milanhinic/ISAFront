@@ -18,6 +18,7 @@ export class NoviPozBioComponent implements OnInit {
   private naslov: string;
   private uloga: any;
 
+
   constructor(private http:Http, private router: Router, private route: ActivatedRoute, private pks: PrijavljenKorisnikService) { }
 
   ngOnInit() {
@@ -51,6 +52,7 @@ export class NoviPozBioComponent implements OnInit {
         Validators.required
       ])),
       opis : new FormControl("")
+      
     })
 
     this.route.params.subscribe(params => {

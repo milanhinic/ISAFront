@@ -16,7 +16,6 @@
                   <div>
                       <button class="btn btn-md btn-primary" *ngIf = "uloga==='AF'"  (click)="odobriOglas(oglas.id)">Odobri oglas</button>
                       <button class="btn btn-md btn-primary" *ngIf = "uloga==='AF'"  (click)="IzmeniOglas(oglas.id)">Izmeni oglas</button>
-                      <button class="btn btn-md btn-primary" *ngIf = "uloga==='RK'" (click)="Ponudi(oglas.id)">Ponudi</button>
                       <button class="btn btn-md btn-primary" *ngIf = "uloga==='AF'" (click)="odbaciOglas(oglas.id)">Odbaci oglas</button>
                   </div>
                   <div>
@@ -44,6 +43,7 @@
                 </div>
               </div>
           </div>
+          <!--
           <div class="row">
               <div class="card card-block bg-faded pozadina2 col-lg-10 gap-top">
                   <table class="table">
@@ -65,5 +65,6 @@
                   </table>
               </div>
           </div>
+        -->
     </div>
   </div>

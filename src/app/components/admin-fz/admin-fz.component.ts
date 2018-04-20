@@ -25,7 +25,7 @@ export class AdminFzComponent implements OnInit {
     let niz = this.router.url.split('/');
 
     for(let i = 0; i < niz.length; i++){
-      if(niz[i] === 'adminFz' || niz[i] === 'adminSi'){
+      if(niz[i] === 'adminFz' || niz[i] === 'adminSi' || niz[i] === 'adminPb'){
         this.tip = niz[i].substring(0, 7);
         break;
       }
@@ -49,10 +49,15 @@ export class AdminFzComponent implements OnInit {
           this.admini = data.content;
           console.log("Pokupio A FZ")
         });
-    }else{
+    }if(this.tip === 'adminSi'){
       this.prijavKorSer.vratiSadrzaj('/app/adminSis/'+this.stranica).subscribe((data) => {
         this.admini = data.content;
         console.log("Pokupio A S")
+      });
+    }else{
+      this.prijavKorSer.vratiSadrzaj('/app/adminPb/'+this.stranica).subscribe((data) => {
+        this.admini = data.content;
+        console.log("Pokupio A P B")
       });
     }
     
@@ -81,6 +86,8 @@ export class AdminFzComponent implements OnInit {
       this.vratiSadrzaj('/app/adminFz/');
     }else if(this.tip === 'adminSi'){
       this.vratiSadrzaj('/app/adminSis/');
+    }else if(this.tip === 'adminPb'){
+      this.vratiSadrzaj('/app/adminPb/');
     }else{
       this.router.navigate(['']);
     }
@@ -100,7 +107,10 @@ export class AdminFzComponent implements OnInit {
         this.router.navigate(['/adminFz/stranica/'+this.stranica]);
       }else if(this.tip === 'adminSi'){
         this.router.navigate(['/adminSis/stranica/'+this.stranica]);
+      }else if(this.tip === 'adminPb'){
+        this.router.navigate(['/adminPb/stranica/'+this.stranica]);
       }
+      
     });
   }
 
@@ -109,9 +119,12 @@ export class AdminFzComponent implements OnInit {
     this.stranica = 1;
     if(this.prijavKorSer.getTip() === 'adminFz'){
       this.router.navigate(['/admin/edit', param]);
+    }else if(this.prijavKorSer.getTip() === 'adminSi'){
+      this.router.navigate(['/admin/edit', param]);
     }else{
       this.router.navigate(['/admin/edit', param]);
     }
+
   }
   
 
@@ -129,7 +142,7 @@ export class AdminFzComponent implements OnInit {
           }) 
       }});
 
-    }else{
+    }else if(this.prijavKorSer.getTip() === 'adminSi'){
 
       this.http.delete('/app/adminSi/' + param).subscribe((res) => {
        
@@ -139,6 +152,14 @@ export class AdminFzComponent implements OnInit {
           }) 
       }});
 
+    }else {
+      this.http.delete('/app/adminPb/' + param).subscribe((res) => {
+       
+        if(res['_body'] != ""){
+          this.prijavKorSer.vratiSadrzaj('/app/adminPb/'+this.stranica).subscribe((data) => {
+            this.admini = data.content; 
+          }) 
+      }});
     }
   }
   

@@ -55,6 +55,13 @@ export class AppComponent {
 
   }
 
+  prikaziAdministatorePB(){
+    this.adminService.setTip('adminPb');
+    this.router.navigate(['/adminPb/stranica/1']);
+
+
+  }
+
   prikaziFanZonu() {
       this.router.navigate(['/fanzona/stranica/1']);
   }
@@ -70,6 +77,10 @@ export class AppComponent {
 
   napraviNovoASIS(){
     this.router.navigate(['/noviAdmSis']);
+  }
+
+  napraviNovoAPB() {
+    this.router.navigate(['/noviAdmPB']);
   }
 
   idiNaProfil(){
@@ -111,6 +122,22 @@ export class AppComponent {
     this.router.navigate(['/izmenaPodataka'])
   }
 
+  idiNaPoruke() {
+    this.router.navigate(['/mojePoruke/stranica/1'])
+  }
+
+  idiRekvizite() {
+    this.router.navigate(['/rekviziti'])
+  }
+
+  postaviBS() {
+    this.router.navigate(['/skala'])
+  }
+
+  prikaziSkale() {
+    this.router.navigate(['/skale'])
+  }
+    
   izvestaji(){
     this.router.navigate(['/izvestaji']);
   }

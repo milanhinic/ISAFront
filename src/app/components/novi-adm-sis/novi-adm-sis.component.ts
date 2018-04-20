@@ -55,7 +55,7 @@ export class NoviAdmSisComponent implements OnInit {
 
     return g.get('lozinka').value === g.get('sifraPotvrda').value ? null : {'missmatch': true};
 
- }
+  }
 
  registruj = function(korisnik){
 
