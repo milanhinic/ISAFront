@@ -64,6 +64,7 @@ export class PrijateljiComponent implements OnInit {
 
       if(res['_body']!=""){
         var lista = res.json();
+        console.log(lista);
         if(JSON.stringify(lista).toLowerCase() != JSON.stringify(this.prijateljiLista).toLowerCase()){
           this.prijateljiStranica++;
           this.prijateljiLista = lista;

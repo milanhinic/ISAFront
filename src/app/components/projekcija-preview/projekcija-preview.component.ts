@@ -56,5 +56,9 @@ export class ProjekcijaPreviewComponent implements OnInit {
     this.isBrzaRezervacija = !this.isBrzaRezervacija;
     this.zaBrzu = val;
   }
+  
+  rezervisiProjekciju = function(idProj){
+    this.router.navigate(['rezervisi/'+idProj]);
+  }
 
 }

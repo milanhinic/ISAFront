@@ -48,6 +48,10 @@ import { OdobriOglaseComponent } from './components/odobri-oglase/odobri-oglase.
 import { OglasiPreviewComponent } from './components/oglasi-preview/oglasi-preview.component';
 import { RezervacijeComponent } from './components/rezervacije/rezervacije.component';
 import { ProjekcijaPreviewComponent } from './components/projekcija-preview/projekcija-preview.component';
+import { RezervacijaGlavnaComponent } from './components/rezervacija-glavna/rezervacija-glavna.component';
+import { RezervacijaMestoComponent } from './components/rezervacija-mesto/rezervacija-mesto.component';
+import { RezervacijaPrijateljiComponent } from './components/rezervacija-prijatelji/rezervacija-prijatelji.component';
+import { KartaService } from './services/karta.service';
 import { DajGlasComponent } from './components/daj-glas/daj-glas.component';
 import { FilmPredPreviewComponent } from './components/film-pred-preview/film-pred-preview.component';
 import { IzmeniOglasComponent } from './components/izmeni-oglas/izmeni-oglas.component';
@@ -91,6 +95,10 @@ import { BrzaRezervacijaRezervisiComponent } from './components/brza-rezervacija
     DodajIzmeniProjekcijuComponent,
     SortPozBioPipe,
     ProjekcijaPreviewComponent,
+    RezervacijaGlavnaComponent,
+    RezervacijaGlavnaComponent,
+    RezervacijaMestoComponent,
+    RezervacijaPrijateljiComponent,
     DajGlasComponent,
     FilmPredPreviewComponent,
     IzmeniOglasComponent,
@@ -232,6 +240,10 @@ import { BrzaRezervacijaRezervisiComponent } from './components/brza-rezervacija
           component : PromeniLozinkuComponent
         },
         {
+          path : 'rezervisi/:id',
+          component : RezervacijaGlavnaComponent
+        },
+        {
           path : '',
           component : CentralComponent
         },
@@ -254,7 +266,7 @@ import { BrzaRezervacijaRezervisiComponent } from './components/brza-rezervacija
     OwlNativeDateTimeModule,
     BrowserAnimationsModule
   ],
-  providers: [ PozBioService, OglasiService, AdminServiceService,RegisterService, HttpClientModule, AlertService, PrijavljenKorisnikService ],
+  providers: [ PozBioService, OglasiService, AdminServiceService,RegisterService, HttpClientModule, AlertService, PrijavljenKorisnikService, KartaService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
