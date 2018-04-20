@@ -20,6 +20,7 @@
               <th scope="col">Vreme:</th>
               <th scope="col" *ngIf = "uloga==='RK'">Rezervisi:</th>
               <th scope="col" *ngIf = "uloga==='AU'">Kreiraj:</th>
+              <th scope="col" *ngIf = "uloga==='AU'">Izbrisi:</th>
             </tr>
           </thead>
           <tbody>
@@ -33,6 +34,9 @@
               </td>
               <td *ngIf = "uloga==='AU'">
                   <button type="button" class="btn btn-info" (click)="brzaRezervacija(tempProjekcija)">Brze rezervacije</button>
+              </td>
+              <td *ngIf = "uloga==='AU'">
+                <button type="button" class="btn btn-warning" (click)="izbrisi(tempProjekcija)">X</button>
               </td>
             </tr>
           </tbody>

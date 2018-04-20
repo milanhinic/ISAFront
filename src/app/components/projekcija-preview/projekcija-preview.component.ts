@@ -70,4 +70,17 @@ export class ProjekcijaPreviewComponent implements OnInit {
     this.router.navigate(['rezervisi/'+idProj]);
   }
 
+  izbrisi = function(val: any){
+      if(val != undefined){
+      this.http.delete("/app/secured/obrisiProj/"+val.id, this.pks.postaviHeadere()).subscribe(res => {
+        if(res['_body'] != ""){
+          alert('Uspesno brisanje.')
+          window.location.reload();
+        }else{
+          alert('Neuspesno brisanje.')
+        }
+      })
+    }
+  }
+
 }
