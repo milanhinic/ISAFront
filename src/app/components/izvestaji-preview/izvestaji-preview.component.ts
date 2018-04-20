@@ -47,15 +47,26 @@ export class IzvestajiPreviewComponent implements OnInit {
   private xOsa: any[];
   private yOsa: any[];
 
-
   private chart: any[];
+  private uloga: any;
 
 
-  constructor(private http:Http, private rks: PrijavljenKorisnikService) { }
+  constructor(private http:Http, private rks: PrijavljenKorisnikService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.ocenaA = 0.0;
     this.ocenaP = 0.0;
+
+    let korisnikToken = localStorage.getItem('logovanKorisnik');
+    if(korisnikToken){
+      let logovanKorisnik = JSON.parse(window.atob(korisnikToken.split('.')[1]));
+      this.uloga = logovanKorisnik.uloga[0].authority;
+      if(this.uloga !== 'AU'){
+        this.router.navigate(['']);
+      }
+    }else{
+      this.router.navigate(['']);
+    }
 
     this.http.get("/app/vratiSva").subscribe(res => {
       if(res['_body'] != ''){

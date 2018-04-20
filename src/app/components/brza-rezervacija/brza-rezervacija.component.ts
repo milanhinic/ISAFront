@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Http } from '@angular/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PrijavljenKorisnikService } from '../../services/prijavljen-korisnik.service';
 
 @Component({
   selector: 'app-brza-rezervacija',
@@ -16,7 +17,7 @@ export class BrzaRezervacijaComponent implements OnInit {
 
   private segZaBrzu: any;
 
-  constructor(private http:Http, private route: ActivatedRoute, private router: Router) { }
+  constructor(private http:Http, private route: ActivatedRoute, private router: Router, private pks: PrijavljenKorisnikService) { }
 
   ngOnInit() {
 
@@ -42,7 +43,7 @@ export class BrzaRezervacijaComponent implements OnInit {
   ucitajSedista = function(){
     console.log(this.segZaBrzu)
     if(this.segZaBrzu != undefined){
-      this.http.get("app/pripremiZaBrzu/"+this.segZaBrzu).subscribe(res => {
+      this.http.get("app/secured/pripremiZaBrzu/"+this.segZaBrzu, this.pks.postaviHeadere()).subscribe(res => {
         if(res["_body"] != ""){
           this.sedista = res.json();
 
@@ -56,7 +57,6 @@ export class BrzaRezervacijaComponent implements OnInit {
    }
   }
 
-
   potvrdi = function(){
 
     let sedistaZaBrzu = [];
@@ -68,9 +68,9 @@ export class BrzaRezervacijaComponent implements OnInit {
     }
 
     if(sedistaZaBrzu.length > 0){
-      this.http.post("app/formirajBrzu/"+this.projekcija.id, sedistaZaBrzu).subscribe(res => {
+      this.http.post("app/secured/formirajBrzu/"+this.projekcija.id, sedistaZaBrzu, this.pks.postaviHeadere()).subscribe(res => {
         if(res["_body"] != ""){
-          console.log('Proslo!')
+          window.location.reload();
         }else{
           alert(res.headers.get("message"))
         }

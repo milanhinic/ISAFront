@@ -18,8 +18,8 @@
               <th scope="col">Prikazuje se:</th>
               <th scope="col">Sala:</th>
               <th scope="col">Vreme:</th>
-              <th scope="col">Rezervisi:</th>
-              <th scope="col">Kreiraj:</th>
+              <th scope="col" *ngIf = "uloga==='RK'">Rezervisi:</th>
+              <th scope="col" *ngIf = "uloga==='AU'">Kreiraj:</th>
             </tr>
           </thead>
           <tbody>
@@ -28,10 +28,10 @@
               <td><a (click)="pogledajPredFilm(tempProjekcija.predFilm.id)"><u>{{tempProjekcija.predFilm.naziv}}</u></a></td>
               <td>{{tempProjekcija.sala.naziv}}</td>
               <td>{{konvertujDatume(tempProjekcija.datum)}}</td>
-              <td>
+              <td *ngIf = "uloga==='RK'">
                 <button type="button" class="btn btn-info" (click)="rezervisiProjekciju(tempProjekcija.id)" >Rezervisi</button>
               </td>
-              <td>
+              <td *ngIf = "uloga==='AU'">
                   <button type="button" class="btn btn-info" (click)="brzaRezervacija(tempProjekcija)">Brze rezervacije</button>
               </td>
             </tr>

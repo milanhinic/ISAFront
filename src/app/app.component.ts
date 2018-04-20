@@ -115,6 +115,10 @@ export class AppComponent {
     this.router.navigate(['/izvestaji']);
   }
 
+  napraviPredFilm(){
+    this.router.navigate(['/noviPredFilm']);
+  }
+
   public static updateUserStatus: Subject<boolean> = new Subject();
 
 }

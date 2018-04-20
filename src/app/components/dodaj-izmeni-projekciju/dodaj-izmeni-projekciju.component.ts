@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {FormControl, FormGroup, FormArray, Validators, AbstractControl, ValidatorFn} from '@angular/forms';
 import { Http } from '@angular/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PrijavljenKorisnikService } from '../../services/prijavljen-korisnik.service';
 
 
 @Component({
@@ -18,10 +19,9 @@ export class DodajIzmeniProjekcijuComponent implements OnInit {
   private predFilmovi: any[];
   private projType: number;
 
-  constructor(private http: Http, private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private http: Http, private activatedRoute: ActivatedRoute, private router: Router, private pks: PrijavljenKorisnikService) { }
 
   ngOnInit() {
-
 
     this.projekcijaForma = new FormGroup({
       predFilm : new FormControl("",Validators.compose([
@@ -69,7 +69,7 @@ export class DodajIzmeniProjekcijuComponent implements OnInit {
   potvrdi = function(projekcija){
     console.log(projekcija.datum);
 
-    this.http.post("/app/sacuvajProjekciju?idSale="+projekcija.sala+"&idPredFilm="+projekcija.predFilm+"&datum="+projekcija.datum).subscribe(res => {
+    this.http.post("/app/secured/sacuvajProjekciju?idSale="+projekcija.sala+"&idPredFilm="+projekcija.predFilm+"&datum="+projekcija.datum, null, this.pks.postaviHeadere()).subscribe(res => {
         if(res['_body'] != ""){
           console.log(res.json());
           window.location.reload();

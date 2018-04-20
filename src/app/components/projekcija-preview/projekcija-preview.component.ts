@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Http } from '@angular/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PrijavljenKorisnikService } from '../../services/prijavljen-korisnik.service';
 
 @Component({
   selector: 'app-projekcija-preview',
@@ -16,10 +17,18 @@ export class ProjekcijaPreviewComponent implements OnInit {
 
   private isBrzaRezervacija: boolean;
   private zaBrzu: any;
+  private uloga: any[];
 
-  constructor(private http: Http, private router: Router) { }
+  constructor(private http: Http, private router: Router, private pks: PrijavljenKorisnikService) { }
 
   ngOnInit() {
+
+    let korisnikToken = localStorage.getItem('logovanKorisnik');
+    if(korisnikToken){
+      let logovanKorisnik = JSON.parse(window.atob(korisnikToken.split('.')[1]));
+      this.uloga = logovanKorisnik.uloga[0].authority;
+    }
+
     this.startAt = new Date(Date.now());
     console.log(this.startAt)
     this.datumProjekcija = this.startAt;
@@ -56,7 +65,7 @@ export class ProjekcijaPreviewComponent implements OnInit {
     this.isBrzaRezervacija = !this.isBrzaRezervacija;
     this.zaBrzu = val;
   }
-  
+
   rezervisiProjekciju = function(idProj){
     this.router.navigate(['rezervisi/'+idProj]);
   }

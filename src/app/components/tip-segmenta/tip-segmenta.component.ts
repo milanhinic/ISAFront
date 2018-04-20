@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Http } from '@angular/http';
 import {FormControl, FormGroup, Validators, AbstractControl, ValidatorFn} from '@angular/forms';
+import { PrijavljenKorisnikService } from '../../services/prijavljen-korisnik.service';
 
 @Component({
   selector: 'app-tip-segmenta',
@@ -16,7 +17,7 @@ export class TipSegmentaComponent implements OnInit {
   // 0 => dodavanje, 1 => izmena
   @Input() mode: number;
 
-  constructor(private http: Http, private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private http: Http, private activatedRoute: ActivatedRoute, private router: Router, private pks: PrijavljenKorisnikService) { }
 
   ngOnInit() {
 
@@ -42,10 +43,11 @@ export class TipSegmentaComponent implements OnInit {
 
   potvrdi = function(noviTip){
 
-    this.http.post("/app/sacuvajTipSegmenta", noviTip).subscribe((res) => {
+    this.http.post("/app/secured/sacuvajTipSegmenta", noviTip, this.pks.postaviHeadere()).subscribe((res) => {
       if(res['_body'] != ''){
         let retVal = res.json();
         console.log(retVal)
+        window.location.reload();
       }else{
         alert("Greska!"+res.headers.get("Message"));
       }
