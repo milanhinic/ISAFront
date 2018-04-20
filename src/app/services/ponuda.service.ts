@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Headers } from '@angular/http';
+
 @Injectable()
-export class OglasiService {
+export class PonudaService {
 
   constructor(private http : Http) { }
 
@@ -13,33 +14,23 @@ export class OglasiService {
     return options;
   }
 
-  posaljiOglas(path:string, body: any){
+  posaljiPonudu(path:string, body: any){
     return this.http.post(path, body, this.postaviHeadere());
   }
 
-  dobaviOglase(path: string){
+  dobaviPonudu(path: string){
     return this.http.get(path, this.postaviHeadere()).map(res => res.json());
   }
 
-  
-  izmeniOglas(path: string, body: any){
+  izmeniPonudu(path: string, body: any){
     return this.http.put(path, body, this.postaviHeadere());
   }
 
-  rezervisiOglas(path: string){
-    return this.http.get(path, this.postaviHeadere());
+  obrisiPonudu(path: string){
+    return this.http.delete(path, this.postaviHeadere());
   }
 
-  izmeniOglasPost(path: string, body: any){
-    return this.http.post(path, body, this.postaviHeadere());
+  prihvatiPonudu(path: string){
+    return this.http.put(path, this.postaviHeadere());
   }
-
-  obrisiOglas(path: string){
-    return this.http.delete(path,this.postaviHeadere());
-  }
-
-  daLiJeTudji(path: string){
-    return this.http.post(path, this.postaviHeadere());
-  }
-
 }

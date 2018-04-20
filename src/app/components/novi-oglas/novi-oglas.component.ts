@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import {FormControl, FormGroup, Validators, AbstractControl, ValidatorFn} from '@angular/forms';
 import { Http } from '@angular/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { OglasiService } from '../../services/oglasi.service';
 
 @Component({
   selector: 'app-novi-oglas',
@@ -15,7 +16,7 @@ export class NoviOglasComponent implements OnInit {
 
   @ViewChild('file') fileInput: ElementRef;
 
-  constructor(private http:Http, private router: Router, private route: ActivatedRoute) { }
+  constructor(private oglasiService : OglasiService ,private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
 
@@ -55,7 +56,7 @@ export class NoviOglasComponent implements OnInit {
     
     console.log(formModel)
   
-    this.http.post('/app/sacuvajOglas',formModel).subscribe((res) => {
+    this.oglasiService.posaljiOglas('/app/secured/sacuvajOglas',formModel).subscribe((res) => {
       if(res['_body'] != ""){
         this.router.navigate(['']);
       }else{

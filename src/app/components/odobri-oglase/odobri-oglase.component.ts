@@ -21,7 +21,7 @@ export class OdobriOglaseComponent implements OnInit {
       this.router.navigate(['/odobriOglase/stranica/'+this.stranica]);
     }
     
-    this.oglasiService.dobaviOglase('/app/odobriOglase/'+this.stranica).subscribe((data) => {
+    this.oglasiService.dobaviOglase('/app/secured/odobriOglase/'+this.stranica).subscribe((data) => {
         this.oglasi = data.content;
         console.log(this.oglasi);
 
@@ -49,7 +49,7 @@ export class OdobriOglaseComponent implements OnInit {
 
   promeniStranicu(vratiSadrzaj){
     
-    this.vratiSadrzaj('/app/odobriOglase/');
+    this.vratiSadrzaj('/app/secured/odobriOglase/');
   }
 
   vratiSadrzaj(putanja:string){

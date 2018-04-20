@@ -12,5 +12,12 @@ export class RegisterService {
     return this.http.post(path, body);
   }
 
+  dobaviKorisnika(path : string){
+    return this.http.get(path).map(res => res.json());
+  }
+
+  izmeniKorisnika(path: string,  body : any){
+    return this.http.put(path, body);
+  }
 
 }

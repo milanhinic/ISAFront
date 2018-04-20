@@ -5,16 +5,15 @@ import { RegisterService } from '../../services/register.service';
 import { AlertService } from '../../services/alert.service'
 
 @Component({
-  selector: 'app-novi-adm-sis',
-  templateUrl: './novi-adm-sis.component.html',
-  styleUrls: ['./novi-adm-sis.component.css']
+  selector: 'app-novi-adm-pb',
+  templateUrl: './novi-adm-pb.component.html',
+  styleUrls: ['./novi-adm-pb.component.css']
 })
-export class NoviAdmSisComponent implements OnInit {
+export class NoviAdmPbComponent implements OnInit {
 
   registracijaForma;
   message : string;
   success : boolean;
-
 
   constructor(private router : Router, private registerService : RegisterService, private alertService : AlertService) { }
 
@@ -57,18 +56,19 @@ export class NoviAdmSisComponent implements OnInit {
 
   }
 
- registruj = function(korisnik){
+  registruj = function(korisnik){
 
-  this.registerService.registrujKorisnika('/app/registracija/asis', korisnik).subscribe((res) => {
-    this.success = res.json();
-    this.message = res.headers.get('message');
-    if(!this.success){
-      this.alertService.error(this.message);
-    }else{
-      //this.router.navigate(['/uspesnaRegistracija']);
-      this.router.navigate(['']);
-    }
-  });
-}
+    this.registerService.registrujKorisnika('/app/registracija/apb', korisnik).subscribe((res) => {
+      this.success = res.json();
+      this.message = res.headers.get('message');
+      if(!this.success){
+        this.alertService.error(this.message);
+      }else{
+        //this.router.navigate(['/uspesnaRegistracija']);
+        this.router.navigate(['']);
+      }
+    });
+  }
+
 
 }

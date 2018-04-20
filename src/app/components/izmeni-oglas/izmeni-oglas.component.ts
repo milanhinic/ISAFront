@@ -44,10 +44,10 @@ export class IzmeniOglasComponent implements OnInit {
       this.id = +params['id'];
     });
     
-   this.http.get('/app/oglas/'+this.id).subscribe((data) => {
+   this.oglasiService.dobaviOglase('/app/secured/oglas/'+this.id).subscribe((data) => {
       
       if(data['_body'] != ""){
-        this.oglas = data.json();
+        this.oglas = data;
         console.log(this.oglas)
         this.izmeniOglasForma.patchValue({naziv: this.oglas.naziv});
         this.izmeniOglasForma.patchValue({opis: this.oglas.opis});
@@ -118,7 +118,7 @@ export class IzmeniOglasComponent implements OnInit {
 
       if(this.pictureChange == false){
         console.log('Bez slike')
-        this.http.post('/app/izmeniOglas/' + this.oglas.id, formModel).subscribe((res) => {   
+        this.oglasiService.izmeniOglasPost('/app/secured/izmeniOglas/' + this.oglas.id, formModel).subscribe((res) => {   
 
           if(res['_body'] != ""){
             this.router.navigate(['/odobriOglase/stranica/1']);
@@ -130,7 +130,7 @@ export class IzmeniOglasComponent implements OnInit {
 
       }else {
         console.log('Sa slikom')
-        this.http.post('/app/izmeniOglasSaSlikom/' + this.oglas.id, formModel).subscribe((res) => {   
+        this.oglasiService.izmeniOglasPost('/app/secured/izmeniOglasSaSlikom/' + this.oglas.id, formModel).subscribe((res) => {   
 
           if(res['_body'] != ""){
             this.router.navigate(['/odobriOglase/stranica/1']);

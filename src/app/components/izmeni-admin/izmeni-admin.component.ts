@@ -1,25 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators, AbstractControl, ValidatorFn} from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { RegisterService } from '../../services/register.service';
 import { AlertService } from '../../services/alert.service'
 
 @Component({
-  selector: 'app-novi-adm-sis',
-  templateUrl: './novi-adm-sis.component.html',
-  styleUrls: ['./novi-adm-sis.component.css']
+  selector: 'app-izmeni-admin',
+  templateUrl: './izmeni-admin.component.html',
+  styleUrls: ['./izmeni-admin.component.css']
 })
-export class NoviAdmSisComponent implements OnInit {
+export class IzmeniAdminComponent implements OnInit {
 
-  registracijaForma;
+  izmeniForma;
+  admini : any;
   message : string;
   success : boolean;
+  id : any;
+  tip : any;
 
-
-  constructor(private router : Router, private registerService : RegisterService, private alertService : AlertService) { }
+  constructor(private route: ActivatedRoute, private router : Router, private registerService : RegisterService, private alertService : AlertService) { }
 
   ngOnInit() {
-    this.registracijaForma = new FormGroup({
+
+    this.izmeniForma = new FormGroup({
       email : new FormControl("",Validators.compose([
         Validators.required,
         Validators.pattern('[a-zA-z0-9._]{0,64}@[a-z]{2,10}(\\.[a-z]{2,10})+'),
@@ -49,7 +52,36 @@ export class NoviAdmSisComponent implements OnInit {
       ])),
       telefon : new FormControl("",Validators.pattern('\\+?[0-9]{6,12}'))
     },this.passwordMatchValidator)
+
+    this.route.params.subscribe(params => {
+      this.id = +params['id'];
+    });
+    
+   this.registerService.dobaviKorisnika('/app/admin/edit/'+this.id).subscribe((data) => {
+      
+      if(data['_body'] != ""){
+        this.admini = data;
+        console.log(this.admini)
+        this.tip = this.admini.tip
+        this.izmeniForma.patchValue({email: this.admini.email});
+        this.izmeniForma.patchValue({lozinka: this.admini.lozinka});
+        this.izmeniForma.patchValue({sifraPotvrda:  this.admini.sifraPotvrda});
+        this.izmeniForma.patchValue({ime:  this.admini.ime});
+        this.izmeniForma.patchValue({prezime:  this.admini.prezime});
+        this.izmeniForma.patchValue({grad:  this.admini.grad});
+        this.izmeniForma.patchValue({telefon:  this.admini.telefon});
+
+      }else{
+        console.log('Greska pri dobavljanju admina')
+        this.router.navigate(['/']);
+      }
+   });
+  
+  
+  
   }
+
+
 
   passwordMatchValidator = function(g: FormGroup) {
 
@@ -57,9 +89,11 @@ export class NoviAdmSisComponent implements OnInit {
 
   }
 
- registruj = function(korisnik){
+  registruj = function(korisnik){
 
-  this.registerService.registrujKorisnika('/app/registracija/asis', korisnik).subscribe((res) => {
+  korisnik.id = +this.id;
+
+  this.registerService.izmeniKorisnika('/app/sacuvajIzmenjenogAdmina/'+this.tip, korisnik).subscribe((res) => {
     this.success = res.json();
     this.message = res.headers.get('message');
     if(!this.success){
@@ -69,6 +103,11 @@ export class NoviAdmSisComponent implements OnInit {
       this.router.navigate(['']);
     }
   });
-}
+
+  }
+  
+
+
+
 
 }

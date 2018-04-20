@@ -55,6 +55,19 @@ import { IzmenaPodatakaComponent } from './components/izmena-podataka/izmena-pod
 import { PonudiComponent } from './components/ponudi/ponudi.component';
 import { PromeniLozinkuComponent } from './components/promeni-lozinku/promeni-lozinku.component';
 import { IzvestajiPreviewComponent } from './components/izvestaji-preview/izvestaji-preview.component';
+import { PonudaService } from './services/ponuda.service';
+import { OglasKorPreviewComponent } from './components/oglas-kor-preview/oglas-kor-preview.component';
+import { IzmeniPonuduComponent } from './components/izmeni-ponudu/izmeni-ponudu.component';
+import { OglasLicniPreviewComponent } from './components/oglas-licni-preview/oglas-licni-preview.component';
+import { MojePorukeComponent } from './components/moje-poruke/moje-poruke.component';
+import { PorukeService } from './services/poruke.service';
+import { OglasOpstiPreviewComponent } from './components/oglas-opsti-preview/oglas-opsti-preview.component';
+import { NoviAdmPbComponent } from './components/novi-adm-pb/novi-adm-pb.component';
+import { RezOglasiComponent } from './components/rez-oglasi/rez-oglasi.component';
+import { SkalaComponent } from './components/skala/skala.component';
+import { PregledSkalaComponent } from './components/pregled-skala/pregled-skala.component';
+import { IzmeniSkaluComponent } from './components/izmeni-skalu/izmeni-skalu.component';
+import { IzmeniAdminComponent } from './components/izmeni-admin/izmeni-admin.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +108,18 @@ import { IzvestajiPreviewComponent } from './components/izvestaji-preview/izvest
     IzmenaPodatakaComponent,
     PonudiComponent,
     PromeniLozinkuComponent,
-    IzvestajiPreviewComponent
+    IzvestajiPreviewComponent,
+    OglasKorPreviewComponent,
+    IzmeniPonuduComponent,
+    OglasLicniPreviewComponent,
+    MojePorukeComponent,
+    OglasOpstiPreviewComponent,
+    NoviAdmPbComponent,
+    RezOglasiComponent,
+    SkalaComponent,
+    PregledSkalaComponent,
+    IzmeniSkaluComponent,
+    IzmeniAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -164,11 +188,19 @@ import { IzvestajiPreviewComponent } from './components/izvestaji-preview/izvest
           component : NoviAdmSisComponent
         },
         {
+          path : "noviAdmPB",
+          component : NoviAdmPbComponent
+        },
+        {
           path : "adminFz/stranica/:id",
           component : AdminFzComponent
         },
         {
           path : "adminSi/stranica/:id",
+          component : AdminFzComponent
+        },
+        {
+          path : "adminPb/stranica/:id",
           component : AdminFzComponent
         },
         {
@@ -228,16 +260,56 @@ import { IzvestajiPreviewComponent } from './components/izvestaji-preview/izvest
           component : PromeniLozinkuComponent
         },
         {
-          path : '',
-          component : CentralComponent
-        },
-        {
           path : 'predFilm/:id',
           component : FilmPredPreviewComponent
         },
         {
           path : 'izvestaji',
           component : IzvestajiPreviewComponent
+        },
+        {
+          path : 'pregledajKorOglas/:id',
+          component : OglasKorPreviewComponent
+        },
+        {
+          path : 'izmeniPonudu/:id/:idOglas',
+          component : IzmeniPonuduComponent
+        },
+        {
+          path : 'pregledajSvojeOglase/:id',
+          component : OglasLicniPreviewComponent
+        },
+        {
+          path : 'mojePoruke/stranica/:id',
+          component : MojePorukeComponent
+        },
+        {
+          path : 'pregledajOpsteOglase/:id',
+          component : OglasOpstiPreviewComponent
+        },
+        {
+          path : 'rekviziti',
+          component : RezOglasiComponent
+        },
+        {
+          path : 'skala',
+          component : SkalaComponent
+        },
+        {
+          path : 'skale',
+          component : PregledSkalaComponent
+        },
+        {
+          path : 'izmeniSkalu/:id',
+          component : IzmeniSkaluComponent
+        },
+        {
+          path : 'admin/edit/:id',
+          component : IzmeniAdminComponent
+        },
+        {
+          path : '',
+          component : CentralComponent
         }
       ]
      ),
@@ -250,7 +322,7 @@ import { IzvestajiPreviewComponent } from './components/izvestaji-preview/izvest
     OwlNativeDateTimeModule,
     BrowserAnimationsModule
   ],
-  providers: [ PozBioService, OglasiService, AdminServiceService,RegisterService, HttpClientModule, AlertService, PrijavljenKorisnikService ],
+  providers: [PorukeService ,PozBioService, PonudaService, OglasiService, AdminServiceService,RegisterService, HttpClientModule, AlertService, PrijavljenKorisnikService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
