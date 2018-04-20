@@ -14,11 +14,13 @@ export class SalaPreviewComponent implements OnInit {
   private idSala : number;
   private mode: number;
   private zaIzmenu: any;
+  private zaBrzu: any;
 
   private isIzmena: boolean;
   private isDodavanjeSegmenta: boolean;
   private isTipSegmenta: boolean;
   private isIzmenaSegmenta: boolean;
+  private isBrzaRezervacija: boolean;
 
   constructor(private http:Http, private route: ActivatedRoute, private router: Router) { }
 

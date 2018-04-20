@@ -79,8 +79,8 @@
         <option *ngFor="let tempPozBio of pozBiosPr" [value]="tempPozBio.id" >{{tempPozBio.naziv}}</option>
     </select>
   </div>
-  <div *ngIf="isPrikazivanje">
-      <canvas id="izvestaji">{{ chart }}</canvas>
+  <div class="gap-top pozadina3">
+      <canvas #izvestaji id="izvestaji">{{ chart }}</canvas>
   </div>
 
 </div>

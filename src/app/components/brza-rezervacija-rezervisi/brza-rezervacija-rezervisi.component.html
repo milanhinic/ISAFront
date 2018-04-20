@@ -1,0 +1,17 @@
+<div class="card card-block bg-faded pozadina2 container gap-top">
+
+  <div class="row">
+    <label class="blueText">Izberite projekciju koju zelite rezervisati:</label>
+  </div>
+  <div class="row">
+    <select id="projekcije" class="col-lg-6 gap-top-sm" [(ngModel)]="zaRez">
+      <option *ngFor="let tempKarta of karte" [value]="tempKarta.id" >
+        {{tempKarta.projekcija.predFilm.naziv}}, {{konvertujDatume(tempKarta.projekcija.datum)}}, <b>{{tempKarta.sediste.id}}</b>, {{tempKarta.sediste.segment.tip.naziv}}, {{tempKarta.sediste.segment.tip.cena}}    
+      </option>
+    </select>
+  </div>
+  <div class="row">
+    <button class="btn btn-md btn-primary" (click)="potvrdi()" >Potvrdi</button>
+  </div>
+
+</div>

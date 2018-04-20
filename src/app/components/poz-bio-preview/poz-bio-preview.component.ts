@@ -24,6 +24,7 @@ export class PozBioPreviewComponent implements OnInit {
   private isDodavanje: boolean;
   private isIzmena: boolean;
   private isProjekcija: boolean;
+  private isBrza: boolean;
 
   constructor(private http:Http, private route: ActivatedRoute, private router: Router, private pozBioService: PozBioService) { }
 
@@ -35,6 +36,7 @@ export class PozBioPreviewComponent implements OnInit {
     this.isIzmena = false;
     this.isProjekcija = false;
     this.pozBio = {};
+    this.isBrza = false;
 
     this.route.params.subscribe(params => {
       this.id = +params['id'];
@@ -98,5 +100,8 @@ export class PozBioPreviewComponent implements OnInit {
     this.isProjekcija = !this.isProjekcija;
   }
   
+  brzaRezervacija = function(){
+    this.isBrza = !this.isBrza;
+  }
 
 }

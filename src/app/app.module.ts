@@ -55,6 +55,8 @@ import { IzmenaPodatakaComponent } from './components/izmena-podataka/izmena-pod
 import { PonudiComponent } from './components/ponudi/ponudi.component';
 import { PromeniLozinkuComponent } from './components/promeni-lozinku/promeni-lozinku.component';
 import { IzvestajiPreviewComponent } from './components/izvestaji-preview/izvestaji-preview.component';
+import { BrzaRezervacijaComponent } from './components/brza-rezervacija/brza-rezervacija.component';
+import { BrzaRezervacijaRezervisiComponent } from './components/brza-rezervacija-rezervisi/brza-rezervacija-rezervisi.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +97,9 @@ import { IzvestajiPreviewComponent } from './components/izvestaji-preview/izvest
     IzmenaPodatakaComponent,
     PonudiComponent,
     PromeniLozinkuComponent,
-    IzvestajiPreviewComponent
+    IzvestajiPreviewComponent,
+    BrzaRezervacijaComponent,
+    BrzaRezervacijaRezervisiComponent
   ],
   imports: [
     BrowserModule,

@@ -111,6 +111,10 @@ export class AppComponent {
     this.router.navigate(['/izmenaPodataka'])
   }
 
+  izvestaji(){
+    this.router.navigate(['/izvestaji']);
+  }
+
   public static updateUserStatus: Subject<boolean> = new Subject();
 
 }

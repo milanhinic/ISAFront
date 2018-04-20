@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild,ElementRef } from '@angular/core';
 import { Http } from '@angular/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PrijavljenKorisnikService } from '../../services/prijavljen-korisnik.service';
@@ -9,7 +9,10 @@ import { Chart } from 'chart.js';
   templateUrl: './izvestaji-preview.component.html',
   styleUrls: ['./izvestaji-preview.component.css']
 })
+
 export class IzvestajiPreviewComponent implements OnInit {
+
+  @ViewChild("izvestaji") canvasNesto: ElementRef;
 
   private pozorista: any[];
   private bioskopi: any[];
@@ -44,7 +47,6 @@ export class IzvestajiPreviewComponent implements OnInit {
   private xOsa: any[];
   private yOsa: any[];
 
-  private isPrikazivanje: boolean = false;
 
   private chart: any[];
 
@@ -158,7 +160,7 @@ export class IzvestajiPreviewComponent implements OnInit {
 
     if(this.prihodiTip != undefined && this.prihodiZa != undefined && this.izvestajDatum2 != undefined && this.izvestajDatum3 != undefined){
       console.log(reqBody);
-      this.isPrikazivanje = false;
+     
       this.http.post('/app/secured/prihod', reqBody, this.rks.postaviHeadere()).subscribe(res => {
         if(res['_body'] != ''){
           this.prihod = res.json();
@@ -193,7 +195,9 @@ export class IzvestajiPreviewComponent implements OnInit {
           this.xOsa[i] = ''+(i+1);
         }
         
-        this.isPrikazivanje = true;
+        console.log(this.xOsa)
+        console.log(this.yOsa)
+        this.napraviDijagram()
       })
     }
 
@@ -204,16 +208,17 @@ export class IzvestajiPreviewComponent implements OnInit {
     var canvas = <HTMLCanvasElement> document.getElementById("izvestaji");
     var ctx = canvas.getContext("2d");
 
+
     this.chart = new Chart(ctx, {
       type : 'line',
       data: {
         //po x-osi
-        labels : this.poX,
+        labels : this.xOsa,
         datasets : [
           {
             //konkretna posecenost
-            data: this.poY,
-            borderColor : '#66ff33',
+            data: this.yOsa,
+            borderColor : '#003300',
             fill: false
           }
         ]

@@ -22,11 +22,9 @@
                 <div>
                   <button class="btn btn-md btn-info" (click)="izmeniPozBio()">Izmeni...</button>
                 </div>
-                
-                
+
               </div>
-              
-              
+ 
             </div>
         </div>
 
@@ -35,15 +33,20 @@
             <app-projekcija-preview [pozBio]="pozBio"></app-projekcija-preview>
           </div>
           <div>
-            <button class="btn btn-md btn-warning gap-left">Brza rezervacija</button>
-            <label class="col-lg-8"></label>
+            <button class="btn btn-md btn-warning gap-left" (click)="brzaRezervacija()">Brza rezervacija</button>
+            <label class="col-lg-6"></label>
             <button class="btn btn-md btn-info" (click)="dodajProjekciju()">Dodaj projekciju</button>
           </div>
         </div>
+
         <div *ngIf="isProjekcija" class="col-lg-6">
             <app-dodaj-izmeni-projekciju [pozBio]="pozBio"></app-dodaj-izmeni-projekciju>
         </div>
 
+        <div *ngIf="isBrza" class="col-lg-6">
+          <app-brza-rezervacija-rezervisi [pozBio]="pozBio"></app-brza-rezervacija-rezervisi>
+        </div>
+        
         <div class="row card card-block bg-faded pozadina3 col-lg-8 gap-top">
             <div>
               <p class="blueText naslov set-center">Sale : </p>
