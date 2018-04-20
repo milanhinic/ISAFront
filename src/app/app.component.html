@@ -21,10 +21,8 @@
           <button type="button" class="btn btn-link" (click)="prikaziFanZonu()">Fan-zona</button>
       </li>
       <li class="nav-item">
-        <button type="button" class="btn btn-link" (click)="napraviNovoPB()">Napravi PozBio</button>
+        <button type="button" class="btn btn-link" >Napravi PozBio</button>
       </li>
-
-
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li *ngIf = "!logovanKorisnik" class="nav-item">
@@ -50,14 +48,12 @@
           <a class="dropdown-item" *ngIf = "uloga==='AS'" (click) = "prikaziSkale()">Skale</a>
           <a class="dropdown-item" *ngIf = "uloga==='AF'" (click) = "odobriOglase()">Odobri oglase</a>
           <a class="dropdown-item" *ngIf = "uloga==='AF'" (click) = "izmeniPodatke()">Izmeni podatke</a>
-          <a class="dropdown-item" href="#">Rezervacije</a>
           <a class="dropdown-item" *ngIf = "uloga==='RK'" (click) = "idiRezervacije()">Moje rezervacije</a>
           <a class="dropdown-item" *ngIf = "uloga==='RK'" (click) = "idiRekvizite()">Moji rekviziti</a>
           <a class="dropdown-item" *ngIf = "uloga==='RK'" (click) = "idiNaPoruke()">Moje poruke</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="noviPozBio">Registruj pozoriste/bioskop</a>
+          <a class="dropdown-item" (click)="napraviNovoPB()">Registruj pozoriste/bioskop</a>
           <a class="dropdown-item" href="#">Pristup fan-zoni</a>
-          <a class="dropdown-item" href="#">Registruj pozoriste/bioskop</a>
           <a class="dropdown-item" (click) = "registrujOglas()">Registruj oglas</a>
           <a class="dropdown-item" *ngIf = "uloga==='AS'" (click) = "napraviNovoAFZ()">Napravi AdmFz</a>
           <a class="dropdown-item" *ngIf = "uloga==='AS'" (click) = "napraviNovoASIS()">Napravi AdmSis</a>
@@ -65,8 +61,10 @@
           <a class="dropdown-item" *ngIf = "uloga==='AS'" (click) = "postaviBS()">Postavi bodovnu skalu</a>
           <a class="dropdown-item" *ngIf = "uloga==='AS'" (click) = "napraviNovoPB()">Napravi Poz/Bio</a>
           <a class="dropdown-item" (click) = "idiNaFanZonu()">Pristup fan-zoni</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="noviPredFilm">Napravite predstavu/film</a>
+          <div class="dropdown-divider" *ngIf = "uloga==='AU'"></div>
+          <a class="dropdown-item" *ngIf = "uloga==='AU'" (click) = "napraviNovoPB()">Napravi Poz/Bio</a>
+          <a class="dropdown-item" *ngIf = "uloga==='AU'" (click) = "napraviPredFilm()">Napravite predstavu/film</a>
+          <a class="dropdown-item" *ngIf = "uloga==='AU'" (click)="izvestaji()">Pregled izvestaja</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" (click) = "odjava()">Odjavite se</a>
         </div>

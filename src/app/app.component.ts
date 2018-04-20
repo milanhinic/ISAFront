@@ -137,6 +137,14 @@ export class AppComponent {
   prikaziSkale() {
     this.router.navigate(['/skale'])
   }
+    
+  izvestaji(){
+    this.router.navigate(['/izvestaji']);
+  }
+
+  napraviPredFilm(){
+    this.router.navigate(['/noviPredFilm']);
+  }
 
   public static updateUserStatus: Subject<boolean> = new Subject();
 

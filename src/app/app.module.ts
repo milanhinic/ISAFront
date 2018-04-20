@@ -48,6 +48,10 @@ import { OdobriOglaseComponent } from './components/odobri-oglase/odobri-oglase.
 import { OglasiPreviewComponent } from './components/oglasi-preview/oglasi-preview.component';
 import { RezervacijeComponent } from './components/rezervacije/rezervacije.component';
 import { ProjekcijaPreviewComponent } from './components/projekcija-preview/projekcija-preview.component';
+import { RezervacijaGlavnaComponent } from './components/rezervacija-glavna/rezervacija-glavna.component';
+import { RezervacijaMestoComponent } from './components/rezervacija-mesto/rezervacija-mesto.component';
+import { RezervacijaPrijateljiComponent } from './components/rezervacija-prijatelji/rezervacija-prijatelji.component';
+import { KartaService } from './services/karta.service';
 import { DajGlasComponent } from './components/daj-glas/daj-glas.component';
 import { FilmPredPreviewComponent } from './components/film-pred-preview/film-pred-preview.component';
 import { IzmeniOglasComponent } from './components/izmeni-oglas/izmeni-oglas.component';
@@ -68,6 +72,8 @@ import { SkalaComponent } from './components/skala/skala.component';
 import { PregledSkalaComponent } from './components/pregled-skala/pregled-skala.component';
 import { IzmeniSkaluComponent } from './components/izmeni-skalu/izmeni-skalu.component';
 import { IzmeniAdminComponent } from './components/izmeni-admin/izmeni-admin.component';
+import { BrzaRezervacijaComponent } from './components/brza-rezervacija/brza-rezervacija.component';
+import { BrzaRezervacijaRezervisiComponent } from './components/brza-rezervacija-rezervisi/brza-rezervacija-rezervisi.component';
 
 @NgModule({
   declarations: [
@@ -102,6 +108,10 @@ import { IzmeniAdminComponent } from './components/izmeni-admin/izmeni-admin.com
     DodajIzmeniProjekcijuComponent,
     SortPozBioPipe,
     ProjekcijaPreviewComponent,
+    RezervacijaGlavnaComponent,
+    RezervacijaGlavnaComponent,
+    RezervacijaMestoComponent,
+    RezervacijaPrijateljiComponent,
     DajGlasComponent,
     FilmPredPreviewComponent,
     IzmeniOglasComponent,
@@ -119,7 +129,9 @@ import { IzmeniAdminComponent } from './components/izmeni-admin/izmeni-admin.com
     SkalaComponent,
     PregledSkalaComponent,
     IzmeniSkaluComponent,
-    IzmeniAdminComponent
+    IzmeniAdminComponent,
+    BrzaRezervacijaComponent,
+    BrzaRezervacijaRezervisiComponent
   ],
   imports: [
     BrowserModule,
@@ -260,6 +272,14 @@ import { IzmeniAdminComponent } from './components/izmeni-admin/izmeni-admin.com
           component : PromeniLozinkuComponent
         },
         {
+          path : 'rezervisi/:id',
+          component : RezervacijaGlavnaComponent
+        },
+        {
+          path : '',
+          component : CentralComponent
+        },
+        {
           path : 'predFilm/:id',
           component : FilmPredPreviewComponent
         },
@@ -322,7 +342,7 @@ import { IzmeniAdminComponent } from './components/izmeni-admin/izmeni-admin.com
     OwlNativeDateTimeModule,
     BrowserAnimationsModule
   ],
-  providers: [PorukeService ,PozBioService, PonudaService, OglasiService, AdminServiceService,RegisterService, HttpClientModule, AlertService, PrijavljenKorisnikService ],
+  providers: [PorukeService ,PozBioService, PonudaService, OglasiService, AdminServiceService,RegisterService, HttpClientModule, AlertService, PrijavljenKorisnikService, PozBioService, OglasiService, AdminServiceService,RegisterService, HttpClientModule, AlertService, PrijavljenKorisnikService, KartaService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

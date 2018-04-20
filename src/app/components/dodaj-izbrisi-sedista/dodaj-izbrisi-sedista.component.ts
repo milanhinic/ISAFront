@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import {FormControl, FormGroup, FormArray, Validators, AbstractControl, ValidatorFn} from '@angular/forms';
 import { Http } from '@angular/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PrijavljenKorisnikService } from '../../services/prijavljen-korisnik.service';
+import { ProjekcijaPreviewComponent } from '../projekcija-preview/projekcija-preview.component';
 
 @Component({
   selector: 'app-dodaj-izbrisi-sedista',
@@ -19,7 +21,7 @@ export class DodajIzbrisiSedistaComponent implements OnInit {
 
   @Input() segment: any;
 
-  constructor(private http: Http, private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private http: Http, private activatedRoute: ActivatedRoute, private router: Router, private pks: PrijavljenKorisnikService) { }
 
   ngOnInit() {
 
@@ -57,7 +59,7 @@ export class DodajIzbrisiSedistaComponent implements OnInit {
 
     console.log(sedistaZaBrisanje)
 
-    this.http.post("app/obrisiSedista", sedistaZaBrisanje).subscribe(res => {
+    this.http.post("app/secured/obrisiSedista", sedistaZaBrisanje, this.pks.postaviHeadere()).subscribe(res => {
       if(res["_body"] != ""){
         window.location.reload();
       }else{
@@ -68,7 +70,7 @@ export class DodajIzbrisiSedistaComponent implements OnInit {
 
   potvrdiDodavanje = function(){
     
-    this.http.post("app/dodajSedista/"+this.segment.id+"?brojSedista="+this.brojSedista.value).subscribe(res => {
+    this.http.post("app/secured/dodajSedista/"+this.segment.id+"?brojSedista="+this.brojSedista.value, this.pks.postaviHeadere()).subscribe(res => {
       if(res["_body"] != ""){
         window.location.reload();
       }else{
@@ -77,13 +79,5 @@ export class DodajIzbrisiSedistaComponent implements OnInit {
     })
 
   }
-
-  /*
-  buildSkills = function() {
-    const arr = this.user.skills.map(skill => {
-      return this.fb.control(skill.selected);
-    });
-    return this.fb.array(arr);
-  }*/
 
 }

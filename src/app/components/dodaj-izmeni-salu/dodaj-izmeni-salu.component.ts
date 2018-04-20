@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {FormControl, FormGroup, Validators, AbstractControl, ValidatorFn} from '@angular/forms';
 import { Http } from '@angular/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PrijavljenKorisnikService } from '../../services/prijavljen-korisnik.service';
 
 @Component({
   selector: 'app-dodaj-izmeni-salu',
@@ -18,9 +19,8 @@ export class DodajIzmeniSaluComponent implements OnInit {
   @Input() mode: number;
   @Input() idPozBio:number;
   @Input() idSala:number;
-  
 
-  constructor(private http:Http, private route: ActivatedRoute, private router: Router) { }
+  constructor(private http:Http, private route: ActivatedRoute, private router: Router, private pks: PrijavljenKorisnikService) { }
 
   ngOnInit() {
 
@@ -68,7 +68,7 @@ export class DodajIzmeniSaluComponent implements OnInit {
     
       if(this.mode == 0){
 
-        this.http.post('/app/dodajSalu/'+this.idPozBio, sala).subscribe((res) => {   
+        this.http.post('/app/secured/dodajSalu/'+this.idPozBio, sala, this.pks.postaviHeadere()).subscribe((res) => {   
 
           if(res['_body'] != ""){
             window.location.reload();
@@ -80,7 +80,7 @@ export class DodajIzmeniSaluComponent implements OnInit {
 
       }else if(this.mode == 1){
         this.sala.naziv = sala.naziv;
-        this.http.put('/app/izmeniSalu/'+this.idSala, this.sala).subscribe((res) => {   
+        this.http.put('/app/secured/izmeniSalu/'+this.idSala, this.sala, this.pks.postaviHeadere()).subscribe((res) => {   
 
           if(res['_body'] != ""){
             window.location.reload();

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators, AbstractControl, ValidatorFn} from '@angular/forms';
 import { Http } from '@angular/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PrijavljenKorisnikService } from '../../services/prijavljen-korisnik.service';
 
 @Component({
   selector: 'app-novi-poz-bio',
@@ -15,11 +16,23 @@ export class NoviPozBioComponent implements OnInit {
   private idPozBio : number;
   private izmena: boolean;
   private naslov: string;
+  private uloga: any;
 
 
-  constructor(private http:Http, private router: Router, private route: ActivatedRoute) { }
+  constructor(private http:Http, private router: Router, private route: ActivatedRoute, private pks: PrijavljenKorisnikService) { }
 
   ngOnInit() {
+
+    let korisnikToken = localStorage.getItem('logovanKorisnik');
+    if(korisnikToken){
+      let logovanKorisnik = JSON.parse(window.atob(korisnikToken.split('.')[1]));
+      this.uloga = logovanKorisnik.uloga[0].authority;
+      if(this.uloga !== 'AU'){
+        this.router.navigate(['']);
+      }
+    }else{
+      this.router.navigate(['']);
+    }
 
     this.izmena = false;
     this.naslov = 'Formirajte novo/i:';
@@ -72,7 +85,7 @@ export class NoviPozBioComponent implements OnInit {
     if(this.izmena){
       value.id = this.idPozBio;
 
-      this.http.put('/app/izmeniPozBio', value).subscribe((res) => {
+      this.http.put('/app/secured/izmeniPozBio', value, this.pks.postaviHeadere()).subscribe((res) => {
 
         if(res['_body'] != ""){
           window.location.reload();
@@ -83,7 +96,7 @@ export class NoviPozBioComponent implements OnInit {
       });
       
     }else{
-      this.http.post('/app/dodajNoviPozBio', value).subscribe((res) => {
+      this.http.post('/app/secured/dodajNoviPozBio', value, this.pks.postaviHeadere()).subscribe((res) => {
 
         if(res['_body'] != ""){
           window.location.reload();

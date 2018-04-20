@@ -5,7 +5,7 @@
     <input class="col-lg-8" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Izaberite datum i vreme projekcija..." [(ngModel)]="datumProjekcija" readonly>
     <owl-date-time #dt1></owl-date-time>
   </div>
-  <div class="row">
+  <div class="row gap-top-sm">
       <button class="btn btn-info btn-md" (click)="preuzmiProjekcije()" [disabled]="datumProjekcija === undefined">Potvrdi</button>
   </div>
   <br>
@@ -18,7 +18,8 @@
               <th scope="col">Prikazuje se:</th>
               <th scope="col">Sala:</th>
               <th scope="col">Vreme:</th>
-              <th scope="col">Rezervisi:</th>
+              <th scope="col" *ngIf = "uloga==='RK'">Rezervisi:</th>
+              <th scope="col" *ngIf = "uloga==='AU'">Kreiraj:</th>
             </tr>
           </thead>
           <tbody>
@@ -27,8 +28,11 @@
               <td><a (click)="pogledajPredFilm(tempProjekcija.predFilm.id)"><u>{{tempProjekcija.predFilm.naziv}}</u></a></td>
               <td>{{tempProjekcija.sala.naziv}}</td>
               <td>{{konvertujDatume(tempProjekcija.datum)}}</td>
-              <td>
+              <td *ngIf = "uloga==='RK'">
                 <button type="button" class="btn btn-info" (click)="rezervisiProjekciju(tempProjekcija.id)" >Rezervisi</button>
+              </td>
+              <td *ngIf = "uloga==='AU'">
+                  <button type="button" class="btn btn-info" (click)="brzaRezervacija(tempProjekcija)">Brze rezervacije</button>
               </td>
             </tr>
           </tbody>
@@ -36,4 +40,8 @@
 
   </div>
 
+</div>
+
+<div *ngIf="isBrzaRezervacija" class="gap-top-sm gap-left">
+    <app-brza-rezervacija [projekcija]="zaBrzu"></app-brza-rezervacija>
 </div>

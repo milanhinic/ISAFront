@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {FormControl, FormGroup, Validators, AbstractControl, ValidatorFn} from '@angular/forms';
 import { Http } from '@angular/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PrijavljenKorisnikService } from '../../services/prijavljen-korisnik.service';
 
 @Component({
   selector: 'app-dodaj-izmeni-segment',
@@ -20,7 +21,7 @@ export class DodajIzmeniSegmentComponent implements OnInit {
   private naslov: string = '';
   private tipovi: any[];
 
-  constructor(private http: Http, private activatedRoute: ActivatedRoute, private router: Router ) { }
+  constructor(private http: Http, private activatedRoute: ActivatedRoute, private router: Router, private pks: PrijavljenKorisnikService ) { }
 
   ngOnInit() {
 
@@ -57,7 +58,7 @@ export class DodajIzmeniSegmentComponent implements OnInit {
 
     console.log(noviSegment)
 
-    this.http.post("/app/sacuvajSegment/"+this.idSala+"/"+noviSegment.tip+"?brojSedista="+noviSegment.brojSedista, noviSegment).subscribe((res) => {
+    this.http.post("/app/secured/sacuvajSegment/"+this.idSala+"/"+noviSegment.tip+"?brojSedista="+noviSegment.brojSedista, noviSegment, this.pks.postaviHeadere()).subscribe((res) => {
       if(res['_body'] != ''){
         let res1 = res.json();
         console.log(res1)

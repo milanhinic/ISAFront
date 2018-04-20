@@ -1,21 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild,ElementRef } from '@angular/core';
 import { Http } from '@angular/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PrijavljenKorisnikService } from '../../services/prijavljen-korisnik.service';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-izvestaji-preview',
   templateUrl: './izvestaji-preview.component.html',
   styleUrls: ['./izvestaji-preview.component.css']
 })
+
 export class IzvestajiPreviewComponent implements OnInit {
+
+  @ViewChild("izvestaji") canvasNesto: ElementRef;
 
   private pozorista: any[];
   private bioskopi: any[];
   private predstave: any[];
   private filmovi: any[];
   private pozBios: any[];
+  private pozBiosPr: any[];
   private predFilms: any[];
+  private poslovanjePB: any[];
 
   private ambijentTip: number;
   private ambijentZa: number;
@@ -27,17 +33,40 @@ export class IzvestajiPreviewComponent implements OnInit {
   private ocenaP: number;
 
   private prihodiTip: number; 
-  private pozBio: any;
+  private prihodiZa: any;
 
   private izvestajDatum1: any;
   private izvestajDatum2: any;
   private izvestajDatum3: any;
 
-  constructor(private http:Http, private rks: PrijavljenKorisnikService) { }
+  //D, N, M
+  private izvestajTip: number;
+  private poslovanjeTip: number;
+  private poslovanjeZa: number;
+
+  private xOsa: any[];
+  private yOsa: any[];
+
+  private chart: any[];
+  private uloga: any;
+
+
+  constructor(private http:Http, private rks: PrijavljenKorisnikService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.ocenaA = 0.0;
     this.ocenaP = 0.0;
+
+    let korisnikToken = localStorage.getItem('logovanKorisnik');
+    if(korisnikToken){
+      let logovanKorisnik = JSON.parse(window.atob(korisnikToken.split('.')[1]));
+      this.uloga = logovanKorisnik.uloga[0].authority;
+      if(this.uloga !== 'AU'){
+        this.router.navigate(['']);
+      }
+    }else{
+      this.router.navigate(['']);
+    }
 
     this.http.get("/app/vratiSva").subscribe(res => {
       if(res['_body'] != ''){
@@ -81,6 +110,29 @@ export class IzvestajiPreviewComponent implements OnInit {
     }
   }
 
+  promeniPrihod = function(){
+
+    if(this.prihodiTip == 0){
+      this.pozBiosPr = this.pozorista;
+    }else if(this.prihodiTip == 1){
+      this.pozBiosPr = this.bioskopi;
+    }else{
+      this.pozBios = [];
+    }
+
+  }
+
+  promeniIzvestaj = function(){
+    
+    if(this.poslovanjeTip == 0){
+      this.poslovanjePB = this.pozorista;
+    }else if(this.poslovanjeTip == 1){
+      this.poslovanjePB = this.bioskopi;
+    }else{
+      this.poslovanjePB = [];
+    }
+  }
+
   prikaziAmbijent = function(){
     if(this.ambijentTip != undefined && this.ambijentZa != undefined){
       this.http.get('/app/ocenaAmbijenta/'+this.ambijentZa).subscribe(res => {
@@ -109,8 +161,94 @@ export class IzvestajiPreviewComponent implements OnInit {
   }
 
   prikaziPrihode = function(){
-    console.log(this.izvestajDatum2)
-    console.log(this.izvestajDatum3)
+
+    let reqBody = {
+      idPozBio : this.prihodiZa,
+      datumOd : ''+this.izvestajDatum2,
+      datumDo : ''+this.izvestajDatum3,
+      mode : -1
+    }
+
+    if(this.prihodiTip != undefined && this.prihodiZa != undefined && this.izvestajDatum2 != undefined && this.izvestajDatum3 != undefined){
+      console.log(reqBody);
+     
+      this.http.post('/app/secured/prihod', reqBody, this.rks.postaviHeadere()).subscribe(res => {
+        if(res['_body'] != ''){
+          this.prihod = res.json();
+        }
+      })
+    }
+  }
+
+  prikaziIzvestaj = function(){
+
+    console.log('tip: '+this.izvestajTip)
+    console.log('za: '+this.poslovanjeZa)
+    console.log('datum: '+this.izvestajDatum1)
+
+    let reqBody = {
+      idPozBio : this.poslovanjeZa,
+      datumOd : ''+this.izvestajDatum1,
+      datumDo : '',
+      mode : this.izvestajTip
+    }
+
+    if(this.izvestajTip != undefined && this.poslovanjeZa != undefined && this.izvestajDatum1 != undefined){
+      console.log(reqBody);
+
+      this.http.post('/app/secured/dijagram', reqBody, this.rks.postaviHeadere()).subscribe(res => {
+        console.log('PROSLO!');
+  
+        this.yOsa = res.json();
+        this.xOsa = [];
+
+        for(let i = 0; i < this.yOsa.length; i++){
+          this.xOsa[i] = ''+(i+1);
+        }
+        
+        console.log(this.xOsa)
+        console.log(this.yOsa)
+        this.napraviDijagram()
+      })
+    }
+
+  }
+
+  napraviDijagram = function(){
+
+    var canvas = <HTMLCanvasElement> document.getElementById("izvestaji");
+    var ctx = canvas.getContext("2d");
+
+
+    this.chart = new Chart(ctx, {
+      type : 'line',
+      data: {
+        //po x-osi
+        labels : this.xOsa,
+        datasets : [
+          {
+            //konkretna posecenost
+            data: this.yOsa,
+            borderColor : '#003300',
+            fill: false
+          }
+        ]
+      },
+      options : {
+        legend : {
+          display: false
+        },
+        scales: {
+          xAxes: [{
+            display: true
+          }],
+          yAxes: [{
+            display: true
+          }]
+        }
+      }
+    });
   }
 
 }
+
